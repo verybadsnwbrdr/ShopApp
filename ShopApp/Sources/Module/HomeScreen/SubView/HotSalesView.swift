@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HotSalesView: View {
-	@Binding var models: [HomeStore]
+	@ObservedObject var viewModel: MainViewModel
 	
 	var body: some View {
 		VStack {
@@ -16,7 +16,7 @@ struct HotSalesView: View {
 					   buttonTitle: Localization.seeMore.rawValue)
 			ScrollView(.horizontal, showsIndicators: false) {
 				HStack {
-					ForEach($models, id: \.id) { model in
+					ForEach($viewModel.homeStore, id: \.id) { model in
 						RoundedRectangle(cornerRadius: 10)
 							.frame(width: 360, height: 180)
 							.overlay(alignment: .bottomLeading) {
@@ -36,7 +36,7 @@ struct HotSalesView: View {
 										Text(model.title.wrappedValue)
 											.foregroundColor(.white)
 											.font(Fonts.twentyFive.systemBold)
-										Text(model.subTitle.wrappedValue)
+										Text(model.subtitle.wrappedValue)
 											.foregroundColor(.white)
 											.font(Fonts.eleven.systemRegular)
 									}
@@ -65,13 +65,6 @@ struct HotSalesView: View {
 
 struct HotSalesView_Previews: PreviewProvider {
 	static var previews: some View {
-		HotSalesView(models: .constant(
-			[HomeStore(id: 1,
-					   isNew: true,
-					   title: "Iphone 12",
-					   subTitle: "dasd",
-					   picture: "asd",
-					   isBuy: "true")]
-		))
+		HotSalesView(viewModel: MainViewModel(coordinator: CoordinatorObject()))
 	}
 }

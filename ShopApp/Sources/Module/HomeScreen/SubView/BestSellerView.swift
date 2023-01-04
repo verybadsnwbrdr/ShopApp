@@ -13,17 +13,23 @@ struct BestSellerView: View {
 		GridItem(.flexible()),
 		GridItem(.flexible())
 	]
-	@Binding var bestSeller: [BestSeller]
+
+	@ObservedObject var viewModel: MainViewModel
 	
 	var body: some View {
 		VStack {
 			HeaderView(title: Localization.bestSeller.rawValue,
 					   buttonTitle: Localization.seeMore.rawValue)
 			LazyVGrid(columns: columns, spacing: 14) {
-				ForEach($bestSeller, id: \.id) { model in
+				ForEach($viewModel.bestSeller, id: \.id) { model in
 					RoundedRectangle(cornerRadius: 10)
 						.foregroundColor(.white)
 						.frame(height: 227)
+						.overlay(alignment: .top) {
+//							Image(systemName: "heart")
+							viewModel.fetchImage(model.wrappedValue)
+
+						}
 						.overlay(alignment: .bottomLeading) {
 							PriceAndNameView(name: model.title.wrappedValue,
 											 discountPrice: model.discountPrice.wrappedValue,
@@ -37,7 +43,7 @@ struct BestSellerView: View {
 								.foregroundColor(.white)
 								.overlay {
 									Button {
-										model.isFavorites.wrappedValue.toggle()
+										viewModel.makeFavourite(model)
 									} label: {
 										Image(model.isFavorites.wrappedValue ?
 											  Images.favouriteFill.rawValue :
@@ -62,13 +68,6 @@ struct BestSellerView: View {
 
 struct BestSellerView_Previews: PreviewProvider {
 	static var previews: some View {
-		BestSellerView(bestSeller: .constant(
-			[BestSeller(id: 2,
-					   isFavorites: true,
-					   title: "Samsung Galaxy s20 Ultr",
-					   priceWithoutDiscount: 1500,
-					   discountPrice: 1047,
-					   picture: "asd")])
-		)
+		BestSellerView(viewModel: MainViewModel(coordinator: CoordinatorObject()))
 	}
 }

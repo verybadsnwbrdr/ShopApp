@@ -17,11 +17,11 @@ struct MainView: View {
 			VStack {
 				TopHomeSubView()
 					.padding([.leading, .trailing], 35)
-				SelectCategoryView(categories: $viewModel.categories)
+				SelectCategoryView(viewModel: viewModel)
 				SearchAndQRView(text: $text)
 					.padding([.leading, .trailing], 35)
-				HotSalesView(models: $viewModel.homeStore)
-				BestSellerView(bestSeller: $viewModel.bestSeller)
+				HotSalesView(viewModel: viewModel)
+				BestSellerView(viewModel: viewModel)
 			}
 			.padding(.leading, 17)
 			.padding([.top, .bottom])
