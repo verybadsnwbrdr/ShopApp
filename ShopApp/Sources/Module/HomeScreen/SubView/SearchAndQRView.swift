@@ -19,7 +19,6 @@ struct SearchAndQRView: View {
 					HStack {
 						Images.search.image
 						TextField(text: $text) {
-							// MARK: - TextField width
 							Localization.search.text
 								.font(Fonts.twelve.regular)
 						}
@@ -28,14 +27,16 @@ struct SearchAndQRView: View {
 					}
 					.offset(x: 24)
 				}
-			Circle()
-				.frame(width: 34)
-				.foregroundColor(Colors.orange.color)
-				.shadow(color: Colors.shadow.color,
-						radius: 20)
-				.overlay {
-					Images.qrCode.image
-				}
+			Button(action: { }) {
+				Circle()
+					.frame(width: 34)
+					.foregroundColor(Colors.orange.color)
+					.shadow(color: Colors.shadow.color,
+							radius: 20)
+					.overlay {
+						Images.qrCode.image
+					}
+			}
 		}
     }
 }

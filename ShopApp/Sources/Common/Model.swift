@@ -38,13 +38,13 @@ struct HomeStore: Codable {
 }
 
 struct BestSeller: Codable {
-	let id: Int
-	let isFavorites: Bool
-	let title: String
-	let priceWithoutDiscount: Int
-	let discountPrice: Int
-	let picture: String
-
+	var id: Int
+	var isFavorites: Bool
+	var title: String
+	var priceWithoutDiscount: Int
+	var discountPrice: Int
+	var picture: String
+	
 	enum CodingKeys: String, CodingKey {
 		case id
 		case isFavorites = "is_favorites"
@@ -53,4 +53,26 @@ struct BestSeller: Codable {
 		case discountPrice = "discount_price"
 		case picture
 	}
+}
+
+extension BestSeller {
+	static var mock = [
+		BestSeller(id: 2,
+				   isFavorites: true,
+				   title: "Samsung Galaxy s20 Ultr",
+				   priceWithoutDiscount: 1500,
+				   discountPrice: 1047,
+				   picture: "asd")
+	]
+}
+
+extension HomeStore {
+	static var mock = [
+		HomeStore(id: 1,
+				  isNew: true,
+				  title: "Iphone 12",
+				  subTitle: "dasd",
+				  picture: "asd",
+				  isBuy: "true")
+	]
 }

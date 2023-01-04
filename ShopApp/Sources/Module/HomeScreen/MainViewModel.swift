@@ -10,7 +10,9 @@ import Foundation
 class MainViewModel: ObservableObject, Identifiable {
 	
 	@Published var items = Model.mock
-	@Published var categories = HomeScreenModel.mockModels
+	@Published var categories: [HomeScreenModel] = HomeScreenModel.mockModels
+	@Published var bestSeller: [BestSeller] = BestSeller.mock
+	@Published var homeStore: [HomeStore] = HomeStore.mock
 	
 	private unowned let coordinator: CoordinatorObject
 	
