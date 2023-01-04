@@ -19,6 +19,9 @@ enum Images: String {
 	case computer
 	case books
 	
+	case favouriteFill
+	case favourite
+	
 	var image: Image { .init(rawValue) }
 	var sytemImage: Image { .init(systemName: rawValue) }
 }

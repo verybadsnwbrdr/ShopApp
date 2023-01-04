@@ -28,96 +28,34 @@ struct MainView: View {
 					
 					ScrollView(.horizontal, showsIndicators: false) {
 						HStack(spacing: 18) {
-							ForEach(viewModel.categories, id: \.category) { model in
-								VStack {
-									Circle()
-										.frame(width: 71, height: 71)
-										.foregroundColor(
-											model.isSelected ? Colors.orange.color : .white
-										)
-										.overlay {
-											model.image.image
-										}
-									Text(model.category)
-										.foregroundColor(Colors.darkBlue.color)
-										.font(Fonts.twelve.medium)
-									
-								}
+							ForEach($viewModel.categories, id: \.category) { model in
+								CircleView(isSelected: model.isSelected,
+										   radius: 71,
+										   image: model.image.wrappedValue,
+										   category: model.category.wrappedValue)
 								.onTapGesture {
-									
+									model.isSelected.wrappedValue.toggle()
 								}
 							}
 						}
 					}
+					.shadow(color: Colors.shadow.color,
+							radius: 20)
 				}
 				.padding(.leading, 17)
 				
-				HStack {
-					RoundedRectangle(cornerRadius: 50)
-						.frame(height: 34)
-						.foregroundColor(.white)
-						.overlay {
-							HStack {
-								Images.search.image
-								TextField(text: $text) {
-									// MARK: - TextField width
-									Localization.search.text
-										.font(Fonts.twelve.regular)
-								}
-							}
-							.offset(x: 24)
-						}
-					Circle()
-						.frame(width: 34)
-						.foregroundColor(Colors.orange.color)
-						.overlay {
-							Images.qrCode.image
-						}
-				}
+				SearchAndQRView(text: $text)
 				.padding([.leading, .trailing], 35)
+				
 				VStack {
 					HeaderView(title: Localization.hotSales.rawValue,
 							   buttonTitle: Localization.seeMore.rawValue)
-					ZStack {
-						ScrollView(.horizontal, showsIndicators: false) {
-							HStack {
-								ForEach(0..<3) { model in
-									RoundedRectangle(cornerRadius: 10)
-										.frame(width: 360, height: 180)
-										.overlay(alignment: .bottomLeading) {
-											VStack(alignment: .leading, spacing: 20) {
-												Circle()
-													.frame(width: 27)
-													.foregroundColor(Colors.orange.color)
-													.overlay {
-														Localization.new.text
-															.foregroundColor(.white)
-															.font(Fonts.ten.systemBold)
-													}
-												VStack(spacing: 5) {
-													Localization.iphone.text
-														.foregroundColor(.white)
-														.font(Fonts.twentyFive.systemBold)
-													Localization.superMega.text
-														.foregroundColor(.white)
-														.font(Fonts.eleven.systemRegular)
-												}
-												
-												Button(action: { }) {
-													RoundedRectangle(cornerRadius: 5)
-														.foregroundColor(.white)
-														.frame(width: 98, height: 23)
-														.overlay {
-															Localization.buyNow.text
-																.font(Fonts.eleven.systemBold)
-																.foregroundColor(Colors.darkBlue.color)
-														}
-												}
-											}
-											.padding(.leading, 25)
-											.padding(.bottom, 26)
-										}
-								}
+					ScrollView(.horizontal, showsIndicators: false) {
+						HStack {
+							ForEach(0..<3) { model in
+								HotSalesView(isNew: true,
+											 title: Localization.iphone.rawValue,
+											 subtitle: Localization.superMega.rawValue)
 							}
 						}
 					}
@@ -129,23 +67,13 @@ struct MainView: View {
 							   buttonTitle: Localization.seeMore.rawValue)
 					LazyVGrid(columns: columns, spacing: 14) {
 						ForEach(0..<4) { model in
-							RoundedRectangle(cornerRadius: 10)
-								.foregroundColor(.white)
-								.frame(height: 227)
-								.overlay(alignment: .leading) {
-									VStack(alignment: .leading) {
-										Text("$1,047")
-											.font(Fonts.sixteen.bold)
-											.foregroundColor(Colors.darkBlue.color)
-										Text("Samsung Galaxy s20 Ultra")
-											.font(Fonts.ten.regular)
-											.foregroundColor(Colors.darkBlue.color)
-									}
-									.padding(.leading, 21)
-								}
-								
+							BestSellerView(name: "Samsung Galaxy s20 Ultr",
+										   discountPrice: 1047,
+										   priceWithoutDiscount: 1500)
 						}
 					}
+					.shadow(color: Colors.shadow.color,
+							radius: 40)
 					.padding(.trailing, 21)
 				}
 				.padding(.leading, 17)
