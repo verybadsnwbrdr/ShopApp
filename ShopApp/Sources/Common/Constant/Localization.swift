@@ -14,6 +14,11 @@ enum Localization: String {
 	case viewAll = "view all"
 	case seeMore = "see more"
 	case search = "Search"
+	case buyNow = "Buy now!"
+	case new = "New"
+	case iphone = "Iphone 12"
+	case superMega = "Súper. Mega. Rápido."
+	case bestSeller = "Best Seller"
 	
 	var text: Text { .init(rawValue) }
 }

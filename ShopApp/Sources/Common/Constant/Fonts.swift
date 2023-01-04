@@ -31,12 +31,11 @@ enum Fonts: CGFloat {
 		.custom("MarkPro-Regular", size: rawValue)
 	}
 	
-//	var uifont: UIFont? {
-//		Font(.init(<#T##name: CFString##CFString#>, size: <#T##CGFloat#>))
-//		.init(name: "MarkPro-Bold", size: rawValue) }
+	var systemBold: Font {
+		.system(size: rawValue, weight: .bold)
+	}
 	
-	var test: Font {
-		.custom("Mark Pro", size: rawValue)
-		.weight(.bold)
+	var systemRegular: Font {
+		.system(size: rawValue, weight: .regular)
 	}
 }
