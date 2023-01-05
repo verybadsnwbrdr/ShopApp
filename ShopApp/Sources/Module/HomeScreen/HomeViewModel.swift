@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-class MainViewModel: ObservableObject, Identifiable {
-	
-//	@Published var items = Model.mock
+class HomeViewModel: ObservableObject, Identifiable {
+
 	@Published var categories: [HomeScreenModel] = HomeScreenModel.mockModels
 	@Published var bestSeller: [BestSeller] = [] // = BestSeller.mock
 	@Published var homeStore: [HomeStore] = [] // = HomeStore.mock
@@ -42,12 +41,4 @@ class MainViewModel: ObservableObject, Identifiable {
 	func makeFavourite(_ model: Binding<BestSeller>) {
 		model.isFavorites.wrappedValue.toggle()
 	}
-	
-	
-//	func fetchImage(_ stringURL: String) -> some View {
-//		guard let url = URL(string: stringURL) else { return Colors.darkGray.color }
-//		URLSession.shared.dataTaskPublisher(for: url)
-//			.map { UIImage(data: $0.data).map(Image.init) }
-//
-//	}
 }

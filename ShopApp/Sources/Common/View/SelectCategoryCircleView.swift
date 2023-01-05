@@ -1,5 +1,5 @@
 //
-//  CircleView.swift
+//  SelectCategoryCircleView.swift
 //  ShopApp
 //
 //  Created by Anton on 04.01.2023.
@@ -7,16 +7,14 @@
 
 import SwiftUI
 
-struct CircleView: View {
+struct SelectCategoryCircleView: View {
 	@Binding var isSelected: Bool
-	var radius: CGFloat
 	var image: Images
 	var category: String
 	
     var body: some View {
 		VStack {
 			Circle()
-				.frame(width: radius)
 				.foregroundColor(
 					isSelected ? Colors.orange.color : .white
 				)
@@ -33,10 +31,9 @@ struct CircleView: View {
     }
 }
 
-struct CircleView_Previews: PreviewProvider {
+struct SelectCategoryCircleView_Previews: PreviewProvider {
     static var previews: some View {
-		CircleView(isSelected: .constant(true),
-				   radius: 71,
+		SelectCategoryCircleView(isSelected: .constant(true),
 				   image: .books,
 				   category: "Books")
     }
