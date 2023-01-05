@@ -17,7 +17,7 @@ class ModelService {
 	
 	func fetchBestSeller(complition: @escaping (Model) -> ()) {
 		let urlStr = "https://run.mocky.io/v3/654bd15e-b121-49ba-a588-960956b15175"
-		let url = URL(string: urlStr)!
+		guard let url = URL(string: urlStr) else { return }
 		URLSession.shared.dataTask(with: url) { data, response, error in
 			guard let data = data else { return }
 			do {
@@ -28,6 +28,14 @@ class ModelService {
 			} catch {
 				print("Ошибка при декодировке JSON")
 			}
+		}.resume()
+	}
+	
+	func fetchImage(stringURL: String, complition: @escaping (Data) -> ()) {
+		guard let url = URL(string: stringURL) else { return }
+		URLSession.shared.dataTask(with: url) { data, response, error in
+			guard let data = data else { return }
+			complition(data)
 		}.resume()
 	}
 }

@@ -19,6 +19,22 @@ struct HotSalesView: View {
 					ForEach($viewModel.homeStore, id: \.id) { model in
 						RoundedRectangle(cornerRadius: 10)
 							.frame(width: 360, height: 180)
+							.overlay(alignment: .leading) {
+								GeometryReader { geo in
+									AsyncImage(url: URL(string: model.picture.wrappedValue)) { image in
+										image
+											.resizable()
+											.scaledToFit()
+									} placeholder: {
+										ProgressView()
+									}
+									.offset(x: 98)
+									.frame(width: geo.size.width,
+										   height: geo.size.height)
+									.cornerRadius(10)
+									.clipped()
+								}
+							}
 							.overlay(alignment: .bottomLeading) {
 								VStack(alignment: .leading, spacing: 20) {
 									if model.isNew.wrappedValue != nil {
@@ -55,6 +71,7 @@ struct HotSalesView: View {
 								.padding(.leading, 25)
 								.padding(.bottom, 26)
 							}
+
 					}
 				}
 				.padding(.trailing, 21)

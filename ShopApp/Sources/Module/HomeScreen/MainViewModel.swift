@@ -43,11 +43,11 @@ class MainViewModel: ObservableObject, Identifiable {
 		model.isFavorites.wrappedValue.toggle()
 	}
 	
-	func fetchImage(_ model: BestSeller) -> some View {
-		var image = Image(systemName: "heart")
-		Image.fetchImage(stringURL: model.picture) { data in
-			image = Image(uiImage: UIImage(data: data) ?? UIImage())
-		}
-		return image
-	}
+	
+//	func fetchImage(_ stringURL: String) -> some View {
+//		guard let url = URL(string: stringURL) else { return Colors.darkGray.color }
+//		URLSession.shared.dataTaskPublisher(for: url)
+//			.map { UIImage(data: $0.data).map(Image.init) }
+//
+//	}
 }

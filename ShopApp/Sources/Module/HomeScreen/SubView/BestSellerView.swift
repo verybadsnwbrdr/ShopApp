@@ -26,9 +26,15 @@ struct BestSellerView: View {
 						.foregroundColor(.white)
 						.frame(height: 227)
 						.overlay(alignment: .top) {
-//							Image(systemName: "heart")
-							viewModel.fetchImage(model.wrappedValue)
-
+							AsyncImage(url: URL(string: model.picture.wrappedValue)) { image in
+								image
+									.resizable()
+									.scaledToFit()
+							} placeholder: {
+								ProgressView()
+							}
+							.frame(height: 168)
+							.offset(y: 5)
 						}
 						.overlay(alignment: .bottomLeading) {
 							PriceAndNameView(name: model.title.wrappedValue,
@@ -59,8 +65,8 @@ struct BestSellerView: View {
 						}
 				}
 			}
-			.shadow(color: Colors.shadow.color,
-					radius: 40)
+//			.shadow(color: Colors.shadow.color,
+//					radius: 40)
 			.padding(.trailing, 21)
 		}
 	}
