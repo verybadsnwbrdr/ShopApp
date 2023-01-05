@@ -10,28 +10,26 @@ import SwiftUI
 struct HomeView: View {
 	
 	@ObservedObject var viewModel: HomeViewModel
-	@State var text = String()
 	
 	var body: some View {
 		ScrollView(.vertical, showsIndicators: false) {
-			VStack {
+			VStack(spacing: 24) {
 				TopHomeSubView()
 					.padding([.leading, .trailing], 35)
 				SelectCategoryView(categories: $viewModel.categories,
 								   action: { viewModel.selectCategory($0) })
-				
-				SearchAndQRView(text: $text)
+				SearchAndQRView(text: $viewModel.text)
 					.padding([.leading, .trailing], 35)
 				HotSalesView(homeStores: $viewModel.homeStore)
 				BestSellerView(bestSellers: $viewModel.bestSeller,
 							   action: { viewModel.makeFavourite($0) })
 			}
 			.padding(.leading, 17)
-			.padding([.top, .bottom])
+			.padding(.top)
 		}
-		.background(
-			Colors.backroundColor.color
-		)
+//		.background(
+//			Colors.backroundColor.color
+//		)
 	}
 }
 

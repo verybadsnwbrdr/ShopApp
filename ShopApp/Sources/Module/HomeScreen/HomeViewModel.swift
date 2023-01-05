@@ -8,7 +8,8 @@
 import SwiftUI
 
 class HomeViewModel: ObservableObject, Identifiable {
-
+	
+	@Published var text: String = String()
 	@Published var categories: [HomeScreenModel] = HomeScreenModel.mockModels
 	@Published var bestSeller: [BestSeller] = [] // = BestSeller.mock
 	@Published var homeStore: [HomeStore] = [] // = HomeStore.mock

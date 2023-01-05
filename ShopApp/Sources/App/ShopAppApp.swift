@@ -11,7 +11,8 @@ import SwiftUI
 struct ShopAppApp: App {
     var body: some Scene {
         WindowGroup {
-			HomeView(viewModel: HomeViewModel(coordinator: CoordinatorObject()))
+//			HomeView(viewModel: HomeViewModel(coordinator: CoordinatorObject()))
+			CoordinatorView(coordinator: CoordinatorObject())
         }
     }
 }

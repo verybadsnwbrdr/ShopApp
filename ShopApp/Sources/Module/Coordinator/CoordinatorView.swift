@@ -12,7 +12,14 @@ struct CoordinatorView: View {
 	@ObservedObject var coordinator: CoordinatorObject
 	
     var body: some View {
-		Text("")
+		ZStack {
+			HomeView(viewModel: HomeViewModel(coordinator: CoordinatorObject()))
+				.padding(.bottom, 45)
+			TabBarView()
+		}
+		.background(
+			Colors.backroundColor.color
+		)
     }
 }
 
