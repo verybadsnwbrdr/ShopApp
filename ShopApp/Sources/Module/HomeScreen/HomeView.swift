@@ -1,5 +1,5 @@
 //
-//  MainView.swift
+//  HomeView.swift
 //  ShopApp
 //
 //  Created by Anton on 03.01.2023.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct HomeView: View {
 	
-	@ObservedObject var viewModel: MainViewModel
+	@ObservedObject var viewModel: HomeViewModel
 	@State var text = String()
 	
 	var body: some View {
@@ -17,11 +17,14 @@ struct MainView: View {
 			VStack {
 				TopHomeSubView()
 					.padding([.leading, .trailing], 35)
-				SelectCategoryView(categories: $viewModel.categories)
+				SelectCategoryView(categories: $viewModel.categories,
+								   action: { viewModel.selectCategory($0) })
+				
 				SearchAndQRView(text: $text)
 					.padding([.leading, .trailing], 35)
-				HotSalesView(models: $viewModel.homeStore)
-				BestSellerView(bestSeller: $viewModel.bestSeller)
+				HotSalesView(homeStores: $viewModel.homeStore)
+				BestSellerView(bestSellers: $viewModel.bestSeller,
+							   action: { viewModel.makeFavourite($0) })
 			}
 			.padding(.leading, 17)
 			.padding([.top, .bottom])
@@ -32,9 +35,9 @@ struct MainView: View {
 	}
 }
 
-struct MainView_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
 	static var previews: some View {
-		MainView(viewModel: MainViewModel(coordinator: CoordinatorObject()))
+		HomeView(viewModel: HomeViewModel(coordinator: CoordinatorObject()))
 	}
 }
 

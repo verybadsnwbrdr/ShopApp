@@ -7,32 +7,27 @@
 
 import Foundation
 
-struct Model: Identifiable {
-	var id = UUID()
-	var text: String
-	
-}
+struct Model: Codable {
+	let homeStore: [HomeStore]
+	let bestSeller: [BestSeller]
 
-extension Model {
-	static let mock = [
-		Model(text: "Test")
-	]
+	enum CodingKeys: String, CodingKey {
+		case homeStore = "home_store"
+		case bestSeller = "best_seller"
+	}
 }
 
 struct HomeStore: Codable {
 	var id: Int
 	var isNew: Bool?
-	var title: String
-	var subTitle: String
+	var title, subtitle: String
 	var picture: String
-	var isBuy: String
-	
+	var isBuy: Bool
+
 	enum CodingKeys: String, CodingKey {
 		case id
 		case isNew = "is_new"
-		case title
-		case subTitle
-		case picture
+		case title, subtitle, picture
 		case isBuy = "is_buy"
 	}
 }
@@ -41,10 +36,9 @@ struct BestSeller: Codable {
 	var id: Int
 	var isFavorites: Bool
 	var title: String
-	var priceWithoutDiscount: Int
-	var discountPrice: Int
+	var priceWithoutDiscount, discountPrice: Int
 	var picture: String
-	
+
 	enum CodingKeys: String, CodingKey {
 		case id
 		case isFavorites = "is_favorites"
@@ -71,8 +65,8 @@ extension HomeStore {
 		HomeStore(id: 1,
 				  isNew: true,
 				  title: "Iphone 12",
-				  subTitle: "dasd",
+				  subtitle: "dasd",
 				  picture: "asd",
-				  isBuy: "true")
+				  isBuy: true)
 	]
 }

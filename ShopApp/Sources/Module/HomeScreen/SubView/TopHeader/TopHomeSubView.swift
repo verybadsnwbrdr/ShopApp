@@ -11,7 +11,9 @@ struct TopHomeSubView: View {
     var body: some View {
 		HStack {
 			Spacer()
-			Button(action: {}) {
+			Button {
+				
+			} label: {
 				Images.location.image
 				Localization.location.text
 					.font(Fonts.fifteen.medium)
@@ -20,7 +22,9 @@ struct TopHomeSubView: View {
 					.foregroundColor(Colors.darkGray.color)
 			}
 			Spacer()
-			Button(action: {}) {
+			Button {
+				
+			} label: {
 				Images.filter.image
 			}
 		}

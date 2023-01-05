@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SelectCategoryView: View {
 	@Binding var categories: [HomeScreenModel]
+	var action: (Binding<HomeScreenModel>) -> ()
 	
     var body: some View {
 		VStack {
@@ -17,12 +18,12 @@ struct SelectCategoryView: View {
 			ScrollView(.horizontal, showsIndicators: false) {
 				HStack(spacing: 18) {
 					ForEach($categories, id: \.category) { model in
-						CircleView(isSelected: model.isSelected,
-								   radius: 71,
+						SelectCategoryCircleView(isSelected: model.isSelected,
 								   image: model.image.wrappedValue,
 								   category: model.category.wrappedValue)
+						.frame(width: 71)
 						.onTapGesture {
-							model.isSelected.wrappedValue.toggle()
+							action(model)
 						}
 					}
 				}
@@ -36,6 +37,7 @@ struct SelectCategoryView: View {
 
 struct SelectCategoryView_Previews: PreviewProvider {
     static var previews: some View {
-		SelectCategoryView(categories: .constant(HomeScreenModel.mockModels))
+		SelectCategoryView(categories: .constant(HomeScreenModel.mockModels),
+						   action: { _ in })
     }
 }

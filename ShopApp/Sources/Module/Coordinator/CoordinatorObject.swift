@@ -15,11 +15,11 @@ enum CoordinatorTab {
 class CoordinatorObject: ObservableObject {
 	
 	@Published var tab = CoordinatorTab.home
-	@Published var mainViewModel: MainViewModel!
-	@Published var detailViewModel: MainViewModel?
+	@Published var mainViewModel: HomeViewModel!
+	@Published var detailViewModel: HomeViewModel?
 	
 	init() {
-		self.mainViewModel = MainViewModel(coordinator: self)
+		self.mainViewModel = HomeViewModel(coordinator: self)
 	}
 	
 	func open(_ item: Model) {
