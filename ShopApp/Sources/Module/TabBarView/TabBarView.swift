@@ -9,6 +9,9 @@ import SwiftUI
 
 struct TabBarView: View {
 	
+	//	@Binding var selection: CoordinatorTab
+	//	@ObservedObject var coordinator: CoordinatorObject
+	
 	var body: some View {
 		VStack {
 			Spacer()
@@ -18,7 +21,7 @@ struct TabBarView: View {
 					.frame(height: 72)
 				HStack(spacing: 52) {
 					Button {
-						
+						//							coordinator.select(.home)
 					} label: {
 						HStack {
 							Images.dot.image
@@ -27,7 +30,7 @@ struct TabBarView: View {
 					}
 					
 					Button {
-						
+						//							coordinator.select(.bag)
 					} label: {
 						Images.bag.image
 					}
@@ -53,6 +56,7 @@ struct TabBarView: View {
 
 struct TabBarView_Previews: PreviewProvider {
 	static var previews: some View {
+		//		TabBarView(selection: .constant(.home), coordinator: CoordinatorObject(modelService: ModelService()))
 		TabBarView()
 	}
 }

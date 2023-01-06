@@ -14,7 +14,7 @@ struct HomeView: View {
 	var body: some View {
 		ScrollView(.vertical, showsIndicators: false) {
 			VStack(spacing: 24) {
-				TopHomeSubView()
+				TopHomeSubView(openFilter: viewModel.openFilter)
 					.padding([.leading, .trailing], 35)
 				SelectCategoryView(categories: $viewModel.categories,
 								   action: { viewModel.selectCategory($0) })
@@ -22,20 +22,21 @@ struct HomeView: View {
 					.padding([.leading, .trailing], 35)
 				HotSalesView(homeStores: $viewModel.homeStore)
 				BestSellerView(bestSellers: $viewModel.bestSeller,
-							   action: { viewModel.makeFavourite($0) })
+							   makeFavourite: { viewModel.makeFavourite($0) },
+							   openDetailView: viewModel.openDetail )
 			}
 			.padding(.leading, 17)
 			.padding(.top)
 		}
-//		.background(
-//			Colors.backroundColor.color
-//		)
+		.background(
+			Colors.backroundColor.color
+		)
 	}
 }
 
 struct HomeView_Previews: PreviewProvider {
 	static var previews: some View {
-		HomeView(viewModel: HomeViewModel(coordinator: CoordinatorObject()))
+		HomeView(viewModel: .init(coordinator: CoordinatorObject(modelService: ModelService())))
 	}
 }
 

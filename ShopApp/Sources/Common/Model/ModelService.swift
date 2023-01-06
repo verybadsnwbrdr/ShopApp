@@ -8,13 +8,7 @@
 import Foundation
 
 class ModelService {
-//	var bestSeller: [BestSeller] = []
-//	var model: Model
-//
-//	init() {
-//		fetchBestSeller()
-//	}
-	
+
 	func fetchBestSeller(complition: @escaping (Model) -> ()) {
 		let urlStr = "https://run.mocky.io/v3/654bd15e-b121-49ba-a588-960956b15175"
 		guard let url = URL(string: urlStr) else { return }

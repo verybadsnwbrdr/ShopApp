@@ -8,34 +8,22 @@
 import SwiftUI
 
 struct FilterView: View {
+	
+	@ObservedObject var viewModel: FilterViewModel
+	
     var body: some View {
-		VStack(spacing: 20) {
+		VStack(spacing: 22) {
 			HStack {
-				Button {
-					
-				} label: {
-					RoundedRectangle(cornerRadius: 10)
-						.fill(Colors.darkBlue.color)
-						.frame(width: 37, height: 37)
-						.overlay {
-							Images.cancel.image
-						}
-				}
+				SquareRoundedButtonView(buttonAction: viewModel.close,
+										image: Images.cancel,
+										color: .darkBlue)
 				Spacer()
 				Localization.filterOptions.text
 					.tint(Colors.darkBlue.color)
 				Spacer()
-				Button {
-					
-				} label: {
-					RoundedRectangle(cornerRadius: 10)
-						.fill(Colors.orange.color)
-						.frame(width: 86, height: 37)
-						.overlay {
-							Localization.done.text
-								.tint(.white)
-						}
-				}
+				TextButtonView(buttonAction: viewModel.close,
+							   title: Localization.done.rawValue)
+				.frame(width: 86, height: 37)
 			}
 			.font(Fonts.eighteen.medium)
 			SectionsFilterView(sectionName: "Brand", filter: "Samsung")
@@ -50,6 +38,6 @@ struct FilterView: View {
 
 struct FilterView_Previews: PreviewProvider {
     static var previews: some View {
-        FilterView()
+		FilterView(viewModel: FilterViewModel(coordinator: CoordinatorObject(modelService: ModelService())))
     }
 }

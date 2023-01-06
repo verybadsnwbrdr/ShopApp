@@ -33,6 +33,7 @@ struct HotSalesLeftPartView: View {
 					.foregroundColor(.white)
 					.font(Fonts.eleven.systemRegular)
 			}
+			
 			Button {
 				
 			} label: {

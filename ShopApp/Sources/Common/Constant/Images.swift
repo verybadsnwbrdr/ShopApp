@@ -29,6 +29,13 @@ enum Images: String {
 	
 	case cancel
 	
+	case star
+	case ram
+	case camera
+	case core
+	case sd
+	case check
+	
 	var image: Image { .init(rawValue) }
 	var sytemImage: Image { .init(systemName: rawValue) }
 }

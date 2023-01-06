@@ -26,8 +26,12 @@ class HomeViewModel: ObservableObject, Identifiable {
 		}
 	}
 	
-	func open(_ item: Model) {
-		coordinator.open(item)
+	func openDetail() {
+		coordinator.open(.detail)
+	}
+	
+	func openFilter() {
+		coordinator.openFilter()
 	}
 	
 	func selectCategory(_ model: Binding<HomeScreenModel>) {

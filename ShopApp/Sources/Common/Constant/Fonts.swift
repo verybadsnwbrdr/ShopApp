@@ -9,9 +9,11 @@ import SwiftUI
 
 enum Fonts: CGFloat {
 	case twentyFive = 25
+	case twenty = 20
 	case eighteen = 18
 	case sixteen = 16
 	case fifteen = 15
+	case thirteen = 13
 	case twelve = 12
 	case eleven = 11
 	case ten = 10
