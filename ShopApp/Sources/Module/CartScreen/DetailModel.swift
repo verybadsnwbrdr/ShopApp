@@ -11,7 +11,7 @@ struct DetailModel: Codable {
 	let cpu, camera: String
 	let capacity, color: [String]
 	let id: String
-	let images: [String]
+	var images: [String]
 	let isFavorites: Bool
 	let price: Int
 	let rating: Double

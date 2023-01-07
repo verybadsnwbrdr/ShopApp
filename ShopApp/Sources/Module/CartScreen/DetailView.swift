@@ -27,14 +27,17 @@ struct DetailView: View {
 			}
 			.padding([.leading, .trailing], 20)
 			
-			Image("")
+			CarouselView(images: $viewModel.model.images)
+				.frame(height: 270)
+				.padding([.top, .bottom], 20)
+
 			Spacer()
 			RoundedRectangle(cornerRadius: 30)
 				.fill(.white)
 				.shadow(color: Colors.shadow.color, radius: 20)
-				.frame(height: 430)
+				.frame(height: 380)
 				.overlay {
-					VStack(alignment: .leading, spacing: 30) {
+					VStack(alignment: .leading, spacing: 20) {
 						HStack {
 							Text(viewModel.model.title)
 								.font(Fonts.twentyFive.medium)
@@ -50,7 +53,7 @@ struct DetailView: View {
 						}
 						
 						HStack {
-							Text("Shop")
+							Localization.shop.text
 								.overlay(alignment: .bottom) {
 									RoundedRectangle(cornerRadius: 1)
 										.fill(Colors.orange.color)
@@ -58,13 +61,12 @@ struct DetailView: View {
 										.offset(y: 8)
 								}
 							Spacer()
-							Text("Details")
+							Localization.details.text
 							Spacer()
-							Text("Features")
+							Localization.features.text
 						}
 						.font(Fonts.twenty.bold)
 						.tint(Colors.darkBlue.color)
-						
 						
 						HStack {
 							OptionsView(image: .core, title: viewModel.model.cpu)
@@ -77,21 +79,24 @@ struct DetailView: View {
 						}
 						.foregroundColor(Colors.lightGray.color)
 						
-						Text("Select color and capacity")
-							.font(Fonts.sixteen.medium)
-							.tint(Colors.darkBlue.color)
-						HStack {
-							HStack(spacing: 18) {
-								ColorSelectButtonView(isSelected: .constant(true),
-													  color: .darkBlue)
-								ColorSelectButtonView(isSelected: .constant(false),
-													  color: .orange)
+						VStack(alignment: .leading) {
+							Localization.selectColorAndCapacity.text
+								.font(Fonts.sixteen.medium)
+								.tint(Colors.darkBlue.color)
+							HStack {
+								HStack(spacing: 18) {
+									ColorSelectButtonView(isSelected: .constant(true),
+														  color: .darkBlue)
+									ColorSelectButtonView(isSelected: .constant(false),
+														  color: .orange)
+								}
+								Spacer()
+								StorageSelectionView(buttonAction: {})
 							}
-							Spacer()
-							StorageSelectionView(buttonAction: {})
 						}
+						
 						TextButtonView(buttonAction: {},
-									   title: "Add to card")
+									   title: Localization.addToCard.rawValue + "    $" + viewModel.model.price.description)
 						.frame(height: 54)
 					}
 					.padding([.leading, .trailing], 37)
@@ -100,7 +105,8 @@ struct DetailView: View {
 		.background(
 			Colors.backroundColor.color
 		)
-		.padding(.bottom, 50)
+		.padding(.top, 20)
+		.padding(.bottom, 60)
 		.ignoresSafeArea(.all, edges: .bottom)
 	}
 }
@@ -108,5 +114,11 @@ struct DetailView: View {
 struct DetailView_Previews: PreviewProvider {
 	static var previews: some View {
 		DetailView(viewModel: DetailViewModel(coordinator: CoordinatorObject(modelService: ModelService()), modelService: .init()))
+	}
+}
+
+private extension Localization {
+	enum DetailView: String {
+		case shop
 	}
 }

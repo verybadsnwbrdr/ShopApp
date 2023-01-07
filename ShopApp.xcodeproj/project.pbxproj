@@ -49,6 +49,7 @@
 		3AE7A3E329682101000A306A /* ColorSelectButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3E229682101000A306A /* ColorSelectButtonView.swift */; };
 		3AE7A3E52968222F000A306A /* TextButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3E42968222E000A306A /* TextButtonView.swift */; };
 		3AE7A3E7296823D5000A306A /* StorageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3E6296823D5000A306A /* StorageSelectionView.swift */; };
+		3AE7A3E929692843000A306A /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3E829692843000A306A /* CarouselView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +96,7 @@
 		3AE7A3E229682101000A306A /* ColorSelectButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectButtonView.swift; sourceTree = "<group>"; };
 		3AE7A3E42968222E000A306A /* TextButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButtonView.swift; sourceTree = "<group>"; };
 		3AE7A3E6296823D5000A306A /* StorageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageSelectionView.swift; sourceTree = "<group>"; };
+		3AE7A3E829692843000A306A /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,6 +355,7 @@
 				3AE7A3E029681B1A000A306A /* OptionsView.swift */,
 				3AE7A3E229682101000A306A /* ColorSelectButtonView.swift */,
 				3AE7A3E6296823D5000A306A /* StorageSelectionView.swift */,
+				3AE7A3E829692843000A306A /* CarouselView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				3AB187A3296408B40010B711 /* CoordinatorObject.swift in Sources */,
 				3AB187BB296424E50010B711 /* TopHomeSubView.swift in Sources */,
 				3AE7A3D62967D42D000A306A /* TabBarViewModel.swift in Sources */,
+				3AE7A3E929692843000A306A /* CarouselView.swift in Sources */,
 				3AE7A3D8296805DC000A306A /* DetailModel.swift in Sources */,
 				3AB187C92965DD1D0010B711 /* SearchAndQRView.swift in Sources */,
 				3AB187BD296473EA0010B711 /* HomeScreenModel.swift in Sources */,
