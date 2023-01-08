@@ -14,32 +14,30 @@ struct NumberIncrementButtonView: View {
 	
     var body: some View {
 		RoundedRectangle(cornerRadius: 26)
-			.fill(Colors.darkGray.color)
+			.fill(Colors.incrementButtonColor.color)
 			.frame(width: 26, height: 68)
 			.overlay {
 				VStack(spacing: 6) {
-					Button {
-						minus()
-					} label: {
-						Images.minus.sytemImage
-							.resizable()
-							.scaledToFit()
-							.frame(width: 9)
-					}
+					button(systemImage: .minus, action: minus)
 					Text(counter.description)
 						.font(Fonts.twenty.medium)
-					Button {
-						plus()
-					} label: {
-						Images.plus.sytemImage
-							.resizable()
-							.scaledToFit()
-							.frame(width: 9)
-					}
+					button(systemImage: .plus, action: plus)
 				}
 				.foregroundColor(Colors.white.color)
 			}
     }
+	
+	private func button(systemImage: Images,
+						action: @escaping () -> ()) -> some View {
+		Button {
+			action()
+		} label: {
+			systemImage.sytemImage
+				.resizable()
+				.scaledToFit()
+				.frame(width: 9, height: 9)
+		}
+	}
 }
 
 struct NumberIncrementButtonView_Previews: PreviewProvider {

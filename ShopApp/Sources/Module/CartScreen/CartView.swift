@@ -12,15 +12,14 @@ struct CartView: View {
 		VStack {
 			Localization.myCart.text
 				.font(Fonts.thirtyFive.bold)
-			Spacer()
+			
 			VStack {
-				HStack {
-					Spacer()
+				HStack(spacing: 17) {
 					RoundedRectangle(cornerRadius: 10)
 						.fill(.white)
 						.frame(width: 88, height: 88)
-					Spacer()
-					VStack(alignment: .leading) {
+					
+					VStack(alignment: .leading, spacing: 7) {
 						Text("Galaxy Note 20 Ultra")
 							.foregroundColor(Colors.white.color)
 							.multilineTextAlignment(.leading)
@@ -28,32 +27,64 @@ struct CartView: View {
 							.foregroundColor(Colors.orange.color)
 					}
 					.font(Fonts.twenty.medium)
+					
 					Spacer()
+					
 					NumberIncrementButtonView(counter: .constant(2),
 											  minus: {},
 											  plus: {})
-					Spacer()
+					
 					Button {
 						
 					} label: {
 						Images.bucket.image
 					}
-					Spacer()
 				}
+				.padding([.leading, .trailing], 33)
+				Spacer()
+				Divider()
+					.background(Color.white)
+					.padding(4)
+				
+				VStack(alignment: .leading) {
+
+						
+					HStack {
+						Text("Total")
+
+							.tint(.white)
+					}
+					Spacer()
+					HStack {
+						Text("Delivery")
+						
+					}
+					Divider()
+						
+				}
+				.frame(height: 90)
+				.padding([.leading, .trailing], 33)
+				.font(Fonts.fifteen.bold)
+				.foregroundColor(.white)
+				
+				Divider()
+					.background(Color.white)
+					.padding(4)
+				
+				TextButtonView(buttonAction: {},
+							   title: "Checkout")
+				.frame(height: 54)
+				.padding(.bottom, 44)
 			}
+			
+			.padding(.top, 80)
 			.background(
 				RoundedRectangle(cornerRadius: 30)
 					.fill(Colors.darkBlue.color)
-					.frame(height: 690)
 			)
+			
 		}
-//		.background(ignoresSafeAreaEdges: .all)
-//		.ignoresSafeArea(.all, edges: .bottom)
-		.background(
-			RoundedRectangle(cornerRadius: 30, style: .continuous)
-				.fill(.white)
-				.shadow(color: Colors.shadow.color, radius: 20)
-		)
+		.ignoresSafeArea(.all, edges: .bottom)
     }
 }
 

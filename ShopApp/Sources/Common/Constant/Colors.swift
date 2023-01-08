@@ -15,6 +15,7 @@ enum Colors: String {
 	case darkGray
 	case backroundColor
 	case shadow
+	case incrementButtonColor
 	
 	var color: Color { .init(rawValue) }
 }
