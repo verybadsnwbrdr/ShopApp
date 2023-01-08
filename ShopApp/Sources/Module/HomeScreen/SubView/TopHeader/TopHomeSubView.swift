@@ -17,7 +17,7 @@ struct TopHomeSubView: View {
 				
 			} label: {
 				Images.location.image
-				Localization.location.text
+				Localization.location.textView
 					.font(Fonts.fifteen.medium)
 					.foregroundColor(Colors.darkBlue.color)
 				Images.chevronDown.sytemImage

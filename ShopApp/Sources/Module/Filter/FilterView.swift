@@ -18,7 +18,7 @@ struct FilterView: View {
 										image: Images.cancel,
 										color: .darkBlue)
 				Spacer()
-				Localization.filterOptions.text
+				Localization.filterOptions.textView
 					.tint(Colors.darkBlue.color)
 				Spacer()
 				TextButtonView(buttonAction: viewModel.close,
@@ -38,6 +38,6 @@ struct FilterView: View {
 
 struct FilterView_Previews: PreviewProvider {
     static var previews: some View {
-		FilterView(viewModel: FilterViewModel(coordinator: CoordinatorObject(modelService: ModelService())))
+		FilterView(viewModel: FilterViewModel(coordinator: .shared))
     }
 }

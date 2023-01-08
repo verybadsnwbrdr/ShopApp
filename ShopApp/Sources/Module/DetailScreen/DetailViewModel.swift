@@ -23,8 +23,8 @@ class DetailViewModel: ObservableObject, Identifiable {
 		
 	}
 	
-	func close() {
-		coordinator.close()
+	func previousScreen() {
+		coordinator.previousScreen()
 	}
 	
 	func makeFavourite(_ model: Binding<DetailModel>) {
@@ -33,5 +33,9 @@ class DetailViewModel: ObservableObject, Identifiable {
 	
 	func selectColor(_ color: String) {
 		
+	}
+	
+	func openCart() {
+		self.coordinator.openCart()
 	}
 }

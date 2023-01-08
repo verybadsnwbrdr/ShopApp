@@ -30,6 +30,11 @@ enum Localization: String {
 	case addToCard = "Add to card"
 	
 	case myCart = "My Cart"
+	case addAddress = "Add address"
+	case total = "Total"
+	case delivery = "Delivery"
+	case checkOut = "Checkout"
+	case free = "Free"
 	
-	var text: Text { .init(rawValue) }
+	var textView: Text { .init(rawValue) }
 }

@@ -20,13 +20,13 @@ struct HomeView: View {
 								   action: { viewModel.selectCategory($0) })
 				SearchAndQRView(text: $viewModel.text)
 					.padding([.leading, .trailing], 35)
-				HotSalesView(homeStores: $viewModel.homeStore)
+				HotSalesView(homeStores: $viewModel.homeStore,
+							 openDetail: viewModel.openDetail)
 				BestSellerView(bestSellers: $viewModel.bestSeller,
 							   makeFavourite: { viewModel.makeFavourite($0) },
 							   openDetailView: viewModel.openDetail )
 			}
 			.padding(.leading, 17)
-//			.padding(.top)
 		}
 		.background(Colors.backroundColor.color)
 	}
@@ -34,7 +34,7 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
 	static var previews: some View {
-		HomeView(viewModel: .init(coordinator: CoordinatorObject(modelService: ModelService())))
+		HomeView(viewModel: .init(coordinator: .shared))
 	}
 }
 

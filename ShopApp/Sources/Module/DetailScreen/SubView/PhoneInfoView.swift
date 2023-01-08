@@ -19,7 +19,7 @@ struct PhoneInfoView: View {
 								rating: model.rating)
 			Spacer()
 			HStack {
-				Localization.shop.text
+				Localization.shop.textView
 					.overlay(alignment: .bottom) {
 						RoundedRectangle(cornerRadius: 1)
 							.fill(Colors.orange.color)
@@ -27,9 +27,9 @@ struct PhoneInfoView: View {
 							.offset(y: 8)
 					}
 				Spacer()
-				Localization.details.text
+				Localization.details.textView
 				Spacer()
-				Localization.features.text
+				Localization.features.textView
 			}
 			.font(Fonts.twenty.bold)
 			.tint(Colors.darkBlue.color)
@@ -46,7 +46,7 @@ struct PhoneInfoView: View {
 			.foregroundColor(Colors.lightGray.color)
 			Spacer()
 			VStack(alignment: .leading) {
-				Localization.selectColorAndCapacity.text
+				Localization.selectColorAndCapacity.textView
 					.font(Fonts.sixteen.medium)
 					.tint(Colors.darkBlue.color)
 				HStack {
@@ -60,11 +60,13 @@ struct PhoneInfoView: View {
 			}
 			Spacer()
 			TextButtonView(buttonAction: {},
-						   title: Localization.addToCard.rawValue + "    $" + model.price.description)
+						   title:
+							Localization.addToCard.rawValue + "       " + model.price.moneyDescription())
 			.frame(height: 54)
 		}
 		.padding([.leading, .trailing], 37)
-		.padding([.top, .bottom])
+		.padding(.top)
+		.padding(.bottom, 44)
 		.background(
 			RoundedRectangle(cornerRadius: 30, style: .continuous)
 				.fill(.white)
@@ -75,7 +77,7 @@ struct PhoneInfoView: View {
 
 struct PhoneInfoView_Previews: PreviewProvider {
     static var previews: some View {
-		PhoneInfoView(model: .constant(DetailViewModel.init(coordinator: CoordinatorObject(modelService: ModelService()), modelService: DetailModelService()).model),
+		PhoneInfoView(model: .constant(DetailViewModel.init(coordinator: CoordinatorObject.shared, modelService: DetailModelService()).model),
 					  makeFavourite: { $0 },
 					  selectColor: { $0 })
     }

@@ -56,6 +56,10 @@
 		3AE7A3F7296AAFA0000A306A /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3F6296AAFA0000A306A /* CartViewModel.swift */; };
 		3AE7A3F9296AAFB1000A306A /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3F8296AAFB1000A306A /* CartView.swift */; };
 		3AE7A3FC296AB5AF000A306A /* NumberIncrementButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3FB296AB5AF000A306A /* NumberIncrementButtonView.swift */; };
+		3AECEC8E296ADB6900141409 /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AECEC8D296ADB6900141409 /* CartModel.swift */; };
+		3AECEC90296AE80800141409 /* Image+Extension .swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AECEC8F296AE80800141409 /* Image+Extension .swift */; };
+		3AECEC92296AE96800141409 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AECEC91296AE96800141409 /* Int+Extension.swift */; };
+		3AECEC94296AF2C000141409 /* CartModelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AECEC93296AF2C000141409 /* CartModelService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +113,10 @@
 		3AE7A3F6296AAFA0000A306A /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		3AE7A3F8296AAFB1000A306A /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		3AE7A3FB296AB5AF000A306A /* NumberIncrementButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberIncrementButtonView.swift; sourceTree = "<group>"; };
+		3AECEC8D296ADB6900141409 /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
+		3AECEC8F296AE80800141409 /* Image+Extension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension .swift"; sourceTree = "<group>"; };
+		3AECEC91296AE96800141409 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
+		3AECEC93296AF2C000141409 /* CartModelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModelService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +156,8 @@
 				3AE7A3FA296AB533000A306A /* SubView */,
 				3AE7A3F6296AAFA0000A306A /* CartViewModel.swift */,
 				3AE7A3F8296AAFB1000A306A /* CartView.swift */,
+				3AECEC8D296ADB6900141409 /* CartModel.swift */,
+				3AECEC93296AF2C000141409 /* CartModelService.swift */,
 			);
 			path = CartScreen;
 			sourceTree = "<group>";
@@ -169,6 +179,8 @@
 			children = (
 				3AB187D129660FD00010B711 /* AsyncImage+Extension.swift */,
 				3AE7A3F3296A9D8F000A306A /* Color+Extension.swift */,
+				3AECEC8F296AE80800141409 /* Image+Extension .swift */,
+				3AECEC91296AE96800141409 /* Int+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -493,8 +505,10 @@
 				3AB187BD296473EA0010B711 /* HomeScreenModel.swift in Sources */,
 				3AB187E62966D3930010B711 /* FilterView.swift in Sources */,
 				3AB187D229660FD00010B711 /* AsyncImage+Extension.swift in Sources */,
+				3AECEC8E296ADB6900141409 /* CartModel.swift in Sources */,
 				3AB187C32965D4E40010B711 /* PriceAndNameView.swift in Sources */,
 				3AB187B8296420360010B711 /* Images.swift in Sources */,
+				3AECEC94296AF2C000141409 /* CartModelService.swift in Sources */,
 				3AB187CB2965DD8B0010B711 /* HotSalesView.swift in Sources */,
 				3AB187E82966D79F0010B711 /* SectionsFilterView.swift in Sources */,
 				3AB187C12964850C0010B711 /* HeaderView.swift in Sources */,
@@ -506,6 +520,7 @@
 				3AB187C72965DC6F0010B711 /* BestSellerView.swift in Sources */,
 				3AB187A1296408840010B711 /* CoordinatorView.swift in Sources */,
 				3AB187AA29640AA40010B711 /* Model.swift in Sources */,
+				3AECEC92296AE96800141409 /* Int+Extension.swift in Sources */,
 				3AE7A3F4296A9D8F000A306A /* Color+Extension.swift in Sources */,
 				3AB187D42966B3000010B711 /* AsyncImageView.swift in Sources */,
 				3AB187A6296408FD0010B711 /* HomeView.swift in Sources */,
@@ -513,6 +528,7 @@
 				3AE7A3EC296A8C0E000A306A /* PhoneInfoView.swift in Sources */,
 				3AB187E32966CD5C0010B711 /* TabBarTest.swift in Sources */,
 				3AB187B2296415CE0010B711 /* Fonts.swift in Sources */,
+				3AECEC90296AE80800141409 /* Image+Extension .swift in Sources */,
 				3AE7A3DC2968086A000A306A /* SquareRoundedButtonView.swift in Sources */,
 				3AE7A3E7296823D5000A306A /* StorageSelectionView.swift in Sources */,
 				3AB187B02964139C0010B711 /* DetailViewModel.swift in Sources */,

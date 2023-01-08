@@ -16,14 +16,14 @@ struct CoordinatorView: View {
 			ZStack {
 				HomeView(viewModel: coordinator.homeViewModel)
 					.padding(.bottom, 45)
-				TabBarView()
+				TabBarView(coordinator: self.coordinator)
 			}
 			.navigationDestination(for: CoordinatorTab.self) { tab in
 				switch tab {
 				case .detail:
 					DetailView(viewModel: coordinator.detailViewModel!)
-				default:
-					Images.books.image
+				case .cart:
+					CartView(viewModel: coordinator.cartViewModel!)
 				}
 			}
 		}
@@ -38,6 +38,6 @@ struct CoordinatorView: View {
 
 struct CoordinatorView_Previews: PreviewProvider {
 	static var previews: some View {
-		CoordinatorView(coordinator: CoordinatorObject(modelService: ModelService()))
+		CoordinatorView(coordinator: .shared)
 	}
 }
