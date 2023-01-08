@@ -11,8 +11,9 @@ struct PhoneInfoView: View {
 	@Binding var model: DetailModel
 	var makeFavourite: (Binding<DetailModel>) -> ()
 	var selectColor: (String) -> ()
+	var addToCart: () -> ()
 	
-    var body: some View {
+	var body: some View {
 		VStack(alignment: .leading) {
 			HeaderPhoneInfoView(title: model.title,
 								makeFavourite: { makeFavourite($model) },
@@ -59,7 +60,7 @@ struct PhoneInfoView: View {
 				}
 			}
 			Spacer()
-			TextButtonView(buttonAction: {},
+			TextButtonView(buttonAction: addToCart,
 						   title:
 							Localization.addToCard.rawValue + "       " + model.price.moneyDescription())
 			.frame(height: 54)
@@ -72,13 +73,14 @@ struct PhoneInfoView: View {
 				.fill(.white)
 				.shadow(color: Colors.shadow.color, radius: 20)
 		)
-    }
+	}
 }
 
 struct PhoneInfoView_Previews: PreviewProvider {
-    static var previews: some View {
+	static var previews: some View {
 		PhoneInfoView(model: .constant(DetailViewModel.init(coordinator: CoordinatorObject.shared, modelService: DetailModelService()).model),
 					  makeFavourite: { $0 },
-					  selectColor: { $0 })
-    }
+					  selectColor: { $0 },
+					  addToCart: { })
+	}
 }

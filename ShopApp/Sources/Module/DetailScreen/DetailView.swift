@@ -16,7 +16,8 @@ struct DetailView: View {
 			Spacer()
 			PhoneInfoView(model: $viewModel.model,
 						  makeFavourite: { viewModel.makeFavourite($0) },
-						  selectColor: { viewModel.selectColor($0) })
+						  selectColor: { viewModel.selectColor($0) },
+						  addToCart: viewModel.addToCart)
 		}
 		.padding(.top)
 		.background(Colors.backroundColor.color, ignoresSafeAreaEdges: .all)

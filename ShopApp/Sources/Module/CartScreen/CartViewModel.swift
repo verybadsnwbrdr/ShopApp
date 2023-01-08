@@ -6,25 +6,26 @@
 //
 
 import SwiftUI
+import Combine
 
 final class CartViewModel: ObservableObject {
 	private unowned let coordinator: CoordinatorObject
-	@Published var modelService: CartModelService
-	@Published var models: [CartModel] {
-		didSet {
-			totalPrice = models.map { $0.price }.reduce(0, +)
-			count = models.count
-		}
-	}
+	@ObservedObject var modelService: CartModelService
+	@Published var models: [CartModel] = []
+	
 	@Published var totalPrice: Int = 0
 	@Published var count: Int = 0
-	
+
+
 	init(coordinator: CoordinatorObject,
-		 modelService: CartModelService,
-		 models: [CartModel]) {
+		 modelService: CartModelService) {
 		self.coordinator = coordinator
 		self.modelService = modelService
-		self.models = models
+//		self.models = modelService.models
+//			.sink(receiveValue: { <#[CartModel]#> in
+//				<#code#>
+//			})
+			
 	}
 	
 	func previousScreen() {
@@ -45,6 +46,10 @@ final class CartViewModel: ObservableObject {
 	
 	func removeAll() {
 		self.modelService.removeAll()
+	}
+	
+	func add() {
+		models.append(.mockModel)
 	}
 }
 

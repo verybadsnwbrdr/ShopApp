@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 class CartModelService: ObservableObject {
 	@Published var models: [CartModel] = []
@@ -21,4 +22,10 @@ class CartModelService: ObservableObject {
 	func removeAll() {
 		models.removeAll()
 	}
+	
+	let publisher = PassthroughSubject<[CartModel], Never>()
+	private(set) var modelsS: [CartModel] = [] {
+		didSet { publisher.send(modelsS)}
+	}
+	
 }

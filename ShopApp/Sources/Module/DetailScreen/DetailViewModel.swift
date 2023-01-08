@@ -38,4 +38,8 @@ class DetailViewModel: ObservableObject, Identifiable {
 	func openCart() {
 		self.coordinator.openCart()
 	}
+	
+	func addToCart() {
+		self.coordinator.addToCard()
+	}
 }

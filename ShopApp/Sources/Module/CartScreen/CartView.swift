@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CartView: View {
 	@ObservedObject var viewModel: CartViewModel
+//	@Binding var model: [CartModel]
 	
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -16,39 +17,50 @@ struct CartView: View {
 				.font(Fonts.thirtyFive.bold)
 				.padding([.leading, .trailing], 42)
 				.padding(.bottom, 30)
-			
 			VStack {
-				VStack(spacing: 30) {
-					ForEach($viewModel.models, id: \.id) { model in
-						HStack(spacing: 17) {
-							RoundedRectangle(cornerRadius: 10)
-								.fill(.white)
-								.frame(width: 88, height: 88)
-							
-							VStack(alignment: .leading, spacing: 7) {
-								Text(model.name.wrappedValue)
-									.foregroundColor(Colors.white.color)
-									.multilineTextAlignment(.leading)
-								Text(model.finalPrice.wrappedValue.moneyDescription())
-									.foregroundColor(Colors.orange.color)
+				ScrollView {
+					VStack(spacing: 30) {
+						ForEach($viewModel.models) { model in
+							HStack(spacing: 17) {
+								RoundedRectangle(cornerRadius: 10)
+									.fill(.white)
+									.frame(width: 88, height: 88)
+									.overlay {
+										Text(model.id.wrappedValue.description)
+//										Text(model.id.description)
+											.foregroundColor(Colors.darkBlue.color)
+									}
+								
+								VStack(alignment: .leading, spacing: 7) {
+									Text(model.name.wrappedValue)
+//									Text(model.name)
+										.foregroundColor(Colors.white.color)
+										.multilineTextAlignment(.leading)
+									Text(model.finalPrice.wrappedValue.moneyDescription())
+//									Text(model.finalPrice.moneyDescription())
+										.foregroundColor(Colors.orange.color)
+								}
+								.font(Fonts.twenty.medium)
+								
+								Spacer()
+
+								NumberIncrementButtonView(
+//									counter: $viewModel.count,
+									counter: .constant(1),
+									minus: { viewModel.removeFromCart(model.id) },
+									plus: { viewModel.addToCart(model.wrappedValue) }
+//									plus: { viewModel.addToCart(model) }
+								)
+								
+								Button {
+									viewModel.removeAll()
+								} label: {
+									Images.bucket.image
+								}
 							}
-							.font(Fonts.twenty.medium)
 							
-							Spacer()
-							
-							NumberIncrementButtonView(
-								counter: $viewModel.count,
-								minus: { viewModel.removeFromCart(model.id.wrappedValue) },
-								plus: { viewModel.addToCart(model.wrappedValue) }
-							)
-							
-							Button {
-								viewModel.removeAll()
-							} label: {
-								Images.bucket.image
-							}
+							.padding([.leading, .trailing], 33)
 						}
-						.padding([.leading, .trailing], 33)
 					}
 				}
 				
@@ -80,13 +92,13 @@ struct CartView: View {
 					.padding(4)
 					.padding(.bottom, 27)
 				
-				TextButtonView(buttonAction: {},
+				TextButtonView(buttonAction: { },
 							   title: Localization.checkOut.rawValue)
 				.frame(height: 54)
 				.padding(.bottom, 44)
 				.padding([.leading, .trailing], 44)
 			}
-			.padding(.top, 80)
+			.padding(.top, 60)
 			.background(
 				RoundedRectangle(cornerRadius: 30)
 					.fill(Colors.darkBlue.color)
@@ -125,9 +137,44 @@ struct CartView_Previews: PreviewProvider {
 	static var previews: some View {
 		CartView(viewModel: CartViewModel(
 			coordinator: CoordinatorObject.shared,
-			modelService: CartModelService(),
+			modelService: CartModelService()/*,
 			models: [.mockModel,
-					 .mockModel])
+					 .mockModel]*/)
 		)
 	}
 }
+
+//ForEach($viewModel.models, id: \.id) { model in
+//	HStack(spacing: 17) {
+//		RoundedRectangle(cornerRadius: 10)
+//			.fill(.white)
+//			.frame(width: 88, height: 88)
+//			.overlay {
+//				Text(model.id.wrappedValue.description)
+//					.foregroundColor(Colors.darkBlue.color)
+//			}
+//
+//		VStack(alignment: .leading, spacing: 7) {
+//			Text(model.name.wrappedValue)
+//				.foregroundColor(Colors.white.color)
+//				.multilineTextAlignment(.leading)
+//			Text(model.finalPrice.wrappedValue.moneyDescription())
+//				.foregroundColor(Colors.orange.color)
+//		}
+//		.font(Fonts.twenty.medium)
+//
+//		Spacer()
+//
+//		NumberIncrementButtonView(
+//			counter: $viewModel.count,
+//			minus: { viewModel.removeFromCart(model.id) },
+//			plus: { viewModel.addToCart(model.wrappedValue) }
+//		)
+//
+//		Button {
+//			viewModel.removeAll()
+//		} label: {
+//			Images.bucket.image
+//		}
+//	}
+//	.padding([.leading, .trailing], 33)

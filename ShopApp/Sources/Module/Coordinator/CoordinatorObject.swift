@@ -51,13 +51,16 @@ class CoordinatorObject: ObservableObject {
 	
 	func openCart() {
 		self.cartViewModel = .init(coordinator: self,
-								   modelService: self.cartModelService,
-								   models: [CartModel.mockModel])
+								   modelService: self.cartModelService/*,
+								   models: []*/)
 		path.append(.cart)
 	}
 	
 	func homeScreen() {
 		path.removeAll()
-		
+	}
+	
+	func addToCard() {
+		self.cartModelService.addToCart(.init(name: "test", picture: "sasd", price: 1500, finalPrice: 1500, number: 1))
 	}
 }

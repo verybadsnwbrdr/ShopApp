@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CartModel {
+struct CartModel: Identifiable {
 	var id = UUID()
 	var name: String
 	var picture: String
