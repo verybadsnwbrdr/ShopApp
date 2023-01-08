@@ -46,10 +46,16 @@
 		3AE7A3DC2968086A000A306A /* SquareRoundedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3DB2968086A000A306A /* SquareRoundedButtonView.swift */; };
 		3AE7A3DF2968110E000A306A /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3DE2968110E000A306A /* RatingView.swift */; };
 		3AE7A3E129681B1A000A306A /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3E029681B1A000A306A /* OptionsView.swift */; };
-		3AE7A3E329682101000A306A /* ColorSelectButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3E229682101000A306A /* ColorSelectButtonView.swift */; };
+		3AE7A3E329682101000A306A /* ColorSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3E229682101000A306A /* ColorSelectView.swift */; };
 		3AE7A3E52968222F000A306A /* TextButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3E42968222E000A306A /* TextButtonView.swift */; };
 		3AE7A3E7296823D5000A306A /* StorageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3E6296823D5000A306A /* StorageSelectionView.swift */; };
 		3AE7A3E929692843000A306A /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3E829692843000A306A /* CarouselView.swift */; };
+		3AE7A3EC296A8C0E000A306A /* PhoneInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3EB296A8C0E000A306A /* PhoneInfoView.swift */; };
+		3AE7A3EE296A90E3000A306A /* HeaderPhoneInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3ED296A90E3000A306A /* HeaderPhoneInfoView.swift */; };
+		3AE7A3F4296A9D8F000A306A /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3F3296A9D8F000A306A /* Color+Extension.swift */; };
+		3AE7A3F7296AAFA0000A306A /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3F6296AAFA0000A306A /* CartViewModel.swift */; };
+		3AE7A3F9296AAFB1000A306A /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3F8296AAFB1000A306A /* CartView.swift */; };
+		3AE7A3FC296AB5AF000A306A /* NumberIncrementButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7A3FB296AB5AF000A306A /* NumberIncrementButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,10 +99,16 @@
 		3AE7A3DB2968086A000A306A /* SquareRoundedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareRoundedButtonView.swift; sourceTree = "<group>"; };
 		3AE7A3DE2968110E000A306A /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		3AE7A3E029681B1A000A306A /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
-		3AE7A3E229682101000A306A /* ColorSelectButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectButtonView.swift; sourceTree = "<group>"; };
+		3AE7A3E229682101000A306A /* ColorSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectView.swift; sourceTree = "<group>"; };
 		3AE7A3E42968222E000A306A /* TextButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButtonView.swift; sourceTree = "<group>"; };
 		3AE7A3E6296823D5000A306A /* StorageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageSelectionView.swift; sourceTree = "<group>"; };
 		3AE7A3E829692843000A306A /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		3AE7A3EB296A8C0E000A306A /* PhoneInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneInfoView.swift; sourceTree = "<group>"; };
+		3AE7A3ED296A90E3000A306A /* HeaderPhoneInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderPhoneInfoView.swift; sourceTree = "<group>"; };
+		3AE7A3F3296A9D8F000A306A /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		3AE7A3F6296AAFA0000A306A /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		3AE7A3F8296AAFB1000A306A /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		3AE7A3FB296AB5AF000A306A /* NumberIncrementButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberIncrementButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,11 +145,9 @@
 		3AB187AC296413690010B711 /* CartScreen */ = {
 			isa = PBXGroup;
 			children = (
-				3AE7A3DD296810FE000A306A /* SubView */,
-				3AB187AD296413850010B711 /* DetailView.swift */,
-				3AB187AF2964139C0010B711 /* DetailViewModel.swift */,
-				3AE7A3D7296805DC000A306A /* DetailModel.swift */,
-				3AE7A3D929680628000A306A /* DetailModelService.swift */,
+				3AE7A3FA296AB533000A306A /* SubView */,
+				3AE7A3F6296AAFA0000A306A /* CartViewModel.swift */,
+				3AE7A3F8296AAFB1000A306A /* CartView.swift */,
 			);
 			path = CartScreen;
 			sourceTree = "<group>";
@@ -158,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				3AB187D129660FD00010B711 /* AsyncImage+Extension.swift */,
+				3AE7A3F3296A9D8F000A306A /* Color+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -297,10 +308,11 @@
 		3ACF06F42963F27E004DD16D /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				3AB187E42966D3760010B711 /* Filter */,
 				3AB187DF2966C9BB0010B711 /* TabBarView */,
 				3AB187AB296412C10010B711 /* Coordinator */,
+				3AB187E42966D3760010B711 /* Filter */,
 				3AB187A4296408EC0010B711 /* HomeScreen */,
+				3AE7A3F5296AAF50000A306A /* DetailScreen */,
 				3AB187AC296413690010B711 /* CartScreen */,
 			);
 			path = Module;
@@ -351,11 +363,41 @@
 		3AE7A3DD296810FE000A306A /* SubView */ = {
 			isa = PBXGroup;
 			children = (
-				3AE7A3DE2968110E000A306A /* RatingView.swift */,
-				3AE7A3E029681B1A000A306A /* OptionsView.swift */,
-				3AE7A3E229682101000A306A /* ColorSelectButtonView.swift */,
-				3AE7A3E6296823D5000A306A /* StorageSelectionView.swift */,
+				3AE7A3EA296A8BE5000A306A /* PhoneInfo */,
+				3AE7A3EB296A8C0E000A306A /* PhoneInfoView.swift */,
 				3AE7A3E829692843000A306A /* CarouselView.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		3AE7A3EA296A8BE5000A306A /* PhoneInfo */ = {
+			isa = PBXGroup;
+			children = (
+				3AE7A3E6296823D5000A306A /* StorageSelectionView.swift */,
+				3AE7A3E029681B1A000A306A /* OptionsView.swift */,
+				3AE7A3DE2968110E000A306A /* RatingView.swift */,
+				3AE7A3E229682101000A306A /* ColorSelectView.swift */,
+				3AE7A3ED296A90E3000A306A /* HeaderPhoneInfoView.swift */,
+			);
+			path = PhoneInfo;
+			sourceTree = "<group>";
+		};
+		3AE7A3F5296AAF50000A306A /* DetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3AE7A3DD296810FE000A306A /* SubView */,
+				3AB187AD296413850010B711 /* DetailView.swift */,
+				3AB187AF2964139C0010B711 /* DetailViewModel.swift */,
+				3AE7A3D7296805DC000A306A /* DetailModel.swift */,
+				3AE7A3D929680628000A306A /* DetailModelService.swift */,
+			);
+			path = DetailScreen;
+			sourceTree = "<group>";
+		};
+		3AE7A3FA296AB533000A306A /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				3AE7A3FB296AB5AF000A306A /* NumberIncrementButtonView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -430,12 +472,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AE7A3E329682101000A306A /* ColorSelectButtonView.swift in Sources */,
+				3AE7A3E329682101000A306A /* ColorSelectView.swift in Sources */,
 				3AB187C52965D72A0010B711 /* SelectCategoryCircleView.swift in Sources */,
 				3AE7A3E52968222F000A306A /* TextButtonView.swift in Sources */,
 				3AB187E12966C9D10010B711 /* TabBarView.swift in Sources */,
 				3AE7A3DA29680628000A306A /* DetailModelService.swift in Sources */,
 				3AE7A3DF2968110E000A306A /* RatingView.swift in Sources */,
+				3AE7A3F7296AAFA0000A306A /* CartViewModel.swift in Sources */,
+				3AE7A3EE296A90E3000A306A /* HeaderPhoneInfoView.swift in Sources */,
 				3AE7A3D32967BEE7000A306A /* FilterViewModel.swift in Sources */,
 				3AB187B429641C8D0010B711 /* Colors.swift in Sources */,
 				3AB187B629641F6F0010B711 /* Localization.swift in Sources */,
@@ -456,13 +500,17 @@
 				3AB187C12964850C0010B711 /* HeaderView.swift in Sources */,
 				3AB187CD2965E4800010B711 /* SelectCategoryView.swift in Sources */,
 				3AB187D92966BAA30010B711 /* HotSalesLeftPartView.swift in Sources */,
+				3AE7A3FC296AB5AF000A306A /* NumberIncrementButtonView.swift in Sources */,
+				3AE7A3F9296AAFB1000A306A /* CartView.swift in Sources */,
 				3AB187CF2965F4C80010B711 /* ModelService.swift in Sources */,
 				3AB187C72965DC6F0010B711 /* BestSellerView.swift in Sources */,
 				3AB187A1296408840010B711 /* CoordinatorView.swift in Sources */,
 				3AB187AA29640AA40010B711 /* Model.swift in Sources */,
+				3AE7A3F4296A9D8F000A306A /* Color+Extension.swift in Sources */,
 				3AB187D42966B3000010B711 /* AsyncImageView.swift in Sources */,
 				3AB187A6296408FD0010B711 /* HomeView.swift in Sources */,
 				3ACF06E42963F1A9004DD16D /* ShopAppApp.swift in Sources */,
+				3AE7A3EC296A8C0E000A306A /* PhoneInfoView.swift in Sources */,
 				3AB187E32966CD5C0010B711 /* TabBarTest.swift in Sources */,
 				3AB187B2296415CE0010B711 /* Fonts.swift in Sources */,
 				3AE7A3DC2968086A000A306A /* SquareRoundedButtonView.swift in Sources */,

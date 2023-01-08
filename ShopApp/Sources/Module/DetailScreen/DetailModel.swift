@@ -8,14 +8,14 @@
 import Foundation
 
 struct DetailModel: Codable {
-	let cpu, camera: String
-	let capacity, color: [String]
-	let id: String
+	var cpu, camera: String
+	var capacity, color: [String]
+	var id: String
 	var images: [String]
-	let isFavorites: Bool
-	let price: Int
-	let rating: Double
-	let sd, ssd, title: String
+	var isFavorites: Bool
+	var price: Int
+	var rating: Double
+	var sd, ssd, title: String
 
 	enum CodingKeys: String, CodingKey {
 		case cpu = "CPU"

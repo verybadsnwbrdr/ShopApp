@@ -26,11 +26,9 @@ struct HomeView: View {
 							   openDetailView: viewModel.openDetail )
 			}
 			.padding(.leading, 17)
-			.padding(.top)
+//			.padding(.top)
 		}
-		.background(
-			Colors.backroundColor.color
-		)
+		.background(Colors.backroundColor.color)
 	}
 }
 

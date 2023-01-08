@@ -45,6 +45,10 @@ class CoordinatorObject: ObservableObject {
 		self.filterViewModel = nil
 	}
 	
+	func openCart() {
+		
+	}
+	
 //	func select(_ tab: CoordinatorTab) {
 //		self.tab = tab
 //	}

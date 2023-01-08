@@ -5,7 +5,7 @@
 //  Created by Anton on 03.01.2023.
 //
 
-import Foundation
+import SwiftUI
 
 class DetailViewModel: ObservableObject, Identifiable {
 	
@@ -27,4 +27,11 @@ class DetailViewModel: ObservableObject, Identifiable {
 		coordinator.close()
 	}
 	
+	func makeFavourite(_ model: Binding<DetailModel>) {
+		model.isFavorites.wrappedValue.toggle()
+	}
+	
+	func selectColor(_ color: String) {
+		
+	}
 }

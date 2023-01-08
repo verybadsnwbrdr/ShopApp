@@ -12,25 +12,27 @@ struct CoordinatorView: View {
 	@ObservedObject var coordinator: CoordinatorObject
 	
 	var body: some View {
-		ZStack {
-			NavigationStack(path: $coordinator.path) {
+		NavigationStack(path: $coordinator.path) {
+			ZStack {
 				HomeView(viewModel: coordinator.homeViewModel)
 					.padding(.bottom, 45)
-					.navigationDestination(for: CoordinatorTab.self) { tab in
-						switch tab {
-						case .detail:
-							DetailView(viewModel: coordinator.detailViewModel!)
-						default:
-							Images.books.image
-						}
+				TabBarView()
 			}
-		}
-			TabBarView()
+			.navigationDestination(for: CoordinatorTab.self) { tab in
+				switch tab {
+				case .detail:
+					DetailView(viewModel: coordinator.detailViewModel!)
+				default:
+					Images.books.image
+				}
+			}
 		}
 		.sheet(item: $coordinator.filterViewModel) { viewModel in
 			FilterView(viewModel: viewModel)
 				.presentationDetents([.height(375)])
 		}
+		.padding(.top)
+		.background(Colors.backroundColor.color, ignoresSafeAreaEdges: .all)
 	}
 }
 

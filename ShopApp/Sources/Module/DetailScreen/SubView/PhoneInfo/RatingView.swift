@@ -11,7 +11,6 @@ struct RatingView: View {
 	
 	let rating: Double
 	private let maxRating = 5
-	
 	private var roundedRating: Int {
 		Int(rating.rounded())
 	}
@@ -31,6 +30,6 @@ struct RatingView: View {
 
 struct RatingView_Previews: PreviewProvider {
     static var previews: some View {
-		RatingView(rating: 2.6)
+		RatingView(rating: 0.5)
     }
 }

@@ -29,5 +29,7 @@ enum Localization: String {
 	case selectColorAndCapacity = "Select color and capacity"
 	case addToCard = "Add to card"
 	
+	case myCart = "My Cart"
+	
 	var text: Text { .init(rawValue) }
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 enum Colors: String {
+	case white
 	case orange
 	case darkBlue
 	case lightGray

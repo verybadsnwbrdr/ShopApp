@@ -9,38 +9,35 @@ import SwiftUI
 
 struct CarouselView: View {
 	@Binding var images: [String]
-	
-	private func getScale(proxy: GeometryProxy) -> CGFloat {
-//		var scale: CGFloat = 1.2
-		let midX = proxy.frame(in: .global).midX
-		let size = UIScreen.main.bounds.width
-		let center = size / 2
-		let test = ((midX > 0 && midX < size) ? abs(center - midX) : center) / (size * 1.8)
-		return 1.2 - test
-	}
-	
+	private let screenWidth = UIScreen.main.bounds.width
+
     var body: some View {
 		ScrollView(.horizontal, showsIndicators: false) {
-			HStack(spacing: 50) {
+			HStack(spacing: 5) {
 				ForEach(images, id: \.self) { item in
 					GeometryReader { proxy in
 						let scale = getScale(proxy: proxy)
 						RoundedRectangle(cornerRadius: 20)
 							.fill(.white)
-							.frame(width: 240)
 							.clipped()
 							.overlay {
 								AsyncImageView(stringURL: item, cornerRadius: 20)
-									.padding(8)
+									.padding(5)
 							}
 							.scaleEffect(CGSize(width: scale, height: scale))
 					}
-					.frame(width: 230, height: 260)
+					.frame(width: screenWidth / 3 * 2)
 				}
 			}
-			.padding(32)
 		}
     }
+	
+	private func getScale(proxy: GeometryProxy) -> CGFloat {
+		let midX = proxy.frame(in: .global).midX
+		let center = screenWidth / 2
+		let test = ((midX > 0 && midX < screenWidth) ? abs(center - midX) : center) / (screenWidth * 2)
+		return 1 - test
+	}
 }
 
 struct CarouselView_Previews: PreviewProvider {

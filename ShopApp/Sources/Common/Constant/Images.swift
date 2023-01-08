@@ -36,6 +36,10 @@ enum Images: String {
 	case sd
 	case check
 	
+	case minus
+	case plus
+	case bucket
+	
 	var image: Image { .init(rawValue) }
 	var sytemImage: Image { .init(systemName: rawValue) }
 }
