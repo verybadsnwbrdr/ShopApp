@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct TabBarView: View {
-	
-//	@Binding var selection: CoordinatorTab
+
 	@ObservedObject var coordinator: CoordinatorObject
 	
 	var body: some View {
@@ -33,7 +32,7 @@ struct TabBarView: View {
 						coordinator.openCart()
 					} label: {
 						Images.bag.image
-							.badge(5)
+							.badge(coordinator.cartViewModel.count)
 					}
 					
 					Button {

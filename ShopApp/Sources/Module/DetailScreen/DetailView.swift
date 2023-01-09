@@ -12,7 +12,7 @@ struct DetailView: View {
 
 	var body: some View {
 		VStack {
-			CarouselView(images: $viewModel.model.images)
+			CarouselView(images: viewModel.model.images)
 			Spacer()
 			PhoneInfoView(model: $viewModel.model,
 						  makeFavourite: { viewModel.makeFavourite($0) },

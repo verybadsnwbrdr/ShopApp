@@ -12,15 +12,21 @@ struct CartModel: Identifiable {
 	var name: String
 	var picture: String
 	var price: Int
-	var finalPrice: Int
+//	var finalPrice: Int = 0
+	var finalPrice: Int { price * number }
 	var deliveryPrice: Int?
 	var number: Int
+//	{
+//		willSet {
+//			finalPrice = price * newValue
+//		}
+//	}
 }
 
 extension CartModel {
 	static var mockModel = CartModel(name: "Samsung",
 									 picture: "",
 									 price: 1500,
-									 finalPrice: 3000,
+//									 finalPrice: 3000,
 									 number: 2)
 }

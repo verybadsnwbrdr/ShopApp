@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CoordinatorView: View {
-	
 	@ObservedObject var coordinator: CoordinatorObject
 	
 	var body: some View {
@@ -19,12 +18,7 @@ struct CoordinatorView: View {
 				TabBarView(coordinator: self.coordinator)
 			}
 			.navigationDestination(for: CoordinatorTab.self) { tab in
-				switch tab {
-				case .detail:
-					DetailView(viewModel: coordinator.detailViewModel!)
-				case .cart:
-					CartView(viewModel: coordinator.cartViewModel!)
-				}
+				coordinator.openScreen(tab)
 			}
 		}
 		.sheet(item: $coordinator.filterViewModel) { viewModel in

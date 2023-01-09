@@ -9,23 +9,31 @@ import SwiftUI
 import Combine
 
 final class CartViewModel: ObservableObject {
-	private unowned let coordinator: CoordinatorObject
-	@ObservedObject var modelService: CartModelService
-	@Published var models: [CartModel] = []
 	
-	@Published var totalPrice: Int = 0
-	@Published var count: Int = 0
-
+	private unowned let coordinator: CoordinatorObject
+	private var cancellable: AnyCancellable?
+	
+	@ObservedObject var modelService: CartModelService
+	
+	@Published private(set) var models: [CartModel] = []
+	@Published private(set) var totalPrice: Int = 0
+	@Published private(set) var count: Int = 0
+	
 
 	init(coordinator: CoordinatorObject,
 		 modelService: CartModelService) {
 		self.coordinator = coordinator
 		self.modelService = modelService
-//		self.models = modelService.models
-//			.sink(receiveValue: { <#[CartModel]#> in
-//				<#code#>
-//			})
-			
+		fetch()
+	}
+	
+	private func fetch() {
+		cancellable = modelService.$models
+			.sink { [unowned self] models in
+				self.models = models
+				totalPrice = models.map { $0.finalPrice }.reduce(0, +)
+				count = models.map { $0.number }.reduce(0, +)
+			}
 	}
 	
 	func previousScreen() {
@@ -43,13 +51,13 @@ final class CartViewModel: ObservableObject {
 	func removeFromCart(_ id: UUID) {
 		self.modelService.removeFromCart(id)
 	}
-	
-	func removeAll() {
-		self.modelService.removeAll()
+
+	func increment(_ id: UUID) {
+		self.modelService.increment(id)
 	}
 	
-	func add() {
-		models.append(.mockModel)
+	func decrement(_ id: UUID) {
+		self.modelService.decrement(id)
 	}
 }
 

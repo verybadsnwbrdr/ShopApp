@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NumberIncrementButtonView: View {
-	@Binding var counter: Int
+	var counter: Int
 	var minus: () -> ()
 	var plus: () -> ()
 	
@@ -30,7 +30,7 @@ struct NumberIncrementButtonView: View {
 	private func button(systemImage: Images,
 						action: @escaping () -> ()) -> some View {
 		Button {
-			action()
+			withAnimation(.easeInOut, action)
 		} label: {
 			systemImage.sytemImage
 				.resizable()
@@ -40,10 +40,10 @@ struct NumberIncrementButtonView: View {
 	}
 }
 
-struct NumberIncrementButtonView_Previews: PreviewProvider {
-    static var previews: some View {
-		NumberIncrementButtonView(counter: .constant(2),
-								  minus: {},
-								  plus: {})
-    }
-}
+//struct NumberIncrementButtonView_Previews: PreviewProvider {
+//    static var previews: some View {
+//		NumberIncrementButtonView(counter: ,
+//								  minus: {},
+//								  plus: {})
+//    }
+//}
