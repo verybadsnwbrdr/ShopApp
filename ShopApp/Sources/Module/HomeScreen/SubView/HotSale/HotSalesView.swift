@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HotSalesView: View {
 	@Binding var homeStores: [HomeStore]
+	var openDetail: () -> ()
 	
 	var body: some View {
 		VStack {
@@ -27,7 +28,8 @@ struct HotSalesView: View {
 							.overlay(alignment: .bottomLeading) {
 								HotSalesLeftPartView(isNew: model.isNew,
 													 title: model.title,
-													 subtitle: model.subtitle)
+													 subtitle: model.subtitle,
+													 openDetail: openDetail)
 								.padding(.leading, 25)
 								.padding(.bottom, 26)
 							}

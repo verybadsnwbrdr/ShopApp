@@ -9,7 +9,8 @@ import SwiftUI
 
 struct BestSellerView: View {
 	@Binding var bestSellers: [BestSeller]
-	var action: (Binding<BestSeller>) -> ()
+	var makeFavourite: (Binding<BestSeller>) -> ()
+	var openDetailView: () -> ()
 	
 	var columns = [
 		GridItem(.flexible()),
@@ -23,7 +24,7 @@ struct BestSellerView: View {
 			LazyVGrid(columns: columns, spacing: 14) {
 				ForEach($bestSellers, id: \.id) { model in
 					RoundedRectangle(cornerRadius: 10)
-						.foregroundColor(.white)
+						.fill(.white)
 						.frame(height: 227)
 						.overlay(alignment: .top) {
 							AsyncImageView(stringURL: model.picture.wrappedValue, cornerRadius: 10)
@@ -38,13 +39,16 @@ struct BestSellerView: View {
 						}
 						.overlay(alignment: .topTrailing) {
 							Button {
-								action(model)
+								makeFavourite(model)
 							} label: {
 								FavouriteCircleImageView(isFavorites: model.isFavorites)
 									.frame(width: 25)
 									.padding(.trailing, 12)
 									.padding(.top, 10)
 							}
+						}
+						.onTapGesture {
+							openDetailView()
 						}
 				}
 			}

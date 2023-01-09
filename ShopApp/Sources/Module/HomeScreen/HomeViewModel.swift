@@ -8,7 +8,8 @@
 import SwiftUI
 
 class HomeViewModel: ObservableObject, Identifiable {
-
+	
+	@Published var text: String = String()
 	@Published var categories: [HomeScreenModel] = HomeScreenModel.mockModels
 	@Published var bestSeller: [BestSeller] = [] // = BestSeller.mock
 	@Published var homeStore: [HomeStore] = [] // = HomeStore.mock
@@ -25,8 +26,12 @@ class HomeViewModel: ObservableObject, Identifiable {
 		}
 	}
 	
-	func open(_ item: Model) {
-		coordinator.open(item)
+	func openDetail() {
+		coordinator.open(.detail)
+	}
+	
+	func openFilter() {
+		coordinator.openFilter()
 	}
 	
 	func selectCategory(_ model: Binding<HomeScreenModel>) {

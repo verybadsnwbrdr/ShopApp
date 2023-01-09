@@ -12,6 +12,8 @@ struct HotSalesLeftPartView: View {
 	@Binding var title: String
 	@Binding var subtitle: String
 	
+	var openDetail: () -> ()
+	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 20) {
 			if let isNew = isNew, isNew {
@@ -19,7 +21,7 @@ struct HotSalesLeftPartView: View {
 					.frame(width: 27)
 					.foregroundColor(Colors.orange.color)
 					.overlay {
-						Localization.new.text
+						Localization.new.textView
 							.foregroundColor(.white)
 							.font(Fonts.ten.systemBold)
 					}
@@ -33,14 +35,15 @@ struct HotSalesLeftPartView: View {
 					.foregroundColor(.white)
 					.font(Fonts.eleven.systemRegular)
 			}
+			
 			Button {
-				
+				openDetail()
 			} label: {
 				RoundedRectangle(cornerRadius: 5)
 					.foregroundColor(.white)
 					.frame(width: 98, height: 23)
 					.overlay {
-						Localization.buyNow.text
+						Localization.buyNow.textView
 							.font(Fonts.eleven.systemBold)
 							.foregroundColor(Colors.darkBlue.color)
 					}

@@ -15,8 +15,8 @@ struct FavouriteCircleImageView: View {
 			.foregroundColor(.white)
 			.overlay {
 				Image(isFavorites ?
-					  Images.favouriteFill.rawValue :
-						Images.favourite.rawValue)
+					  Images.favourite.rawValue :
+						Images.favouriteFill.rawValue)
 				.foregroundColor(Colors.orange.color)
 			}
 			.shadow(color: .black.opacity(0.20),

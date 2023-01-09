@@ -8,12 +8,14 @@
 import SwiftUI
 
 enum Colors: String {
+	case white
 	case orange
 	case darkBlue
 	case lightGray
 	case darkGray
 	case backroundColor
 	case shadow
+	case incrementButtonColor
 	
 	var color: Color { .init(rawValue) }
 }

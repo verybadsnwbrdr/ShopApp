@@ -22,6 +22,24 @@ enum Images: String {
 	case favouriteFill
 	case favourite
 	
+	case dot
+	case bag
+	case like
+	case person
+	
+	case cancel
+	
+	case star
+	case ram
+	case camera
+	case core
+	case sd
+	case check
+	
+	case minus
+	case plus
+	case bucket
+	
 	var image: Image { .init(rawValue) }
 	var sytemImage: Image { .init(systemName: rawValue) }
 }

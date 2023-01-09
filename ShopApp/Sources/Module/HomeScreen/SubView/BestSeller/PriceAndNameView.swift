@@ -15,10 +15,10 @@ struct PriceAndNameView: View {
     var body: some View {
 		VStack(alignment: .leading) {
 			HStack(alignment: .center) {
-				Text("$\(discountPrice)")
+				Text("$\(priceWithoutDiscount)")
 					.font(Fonts.sixteen.bold)
 					.foregroundColor(Colors.darkBlue.color)
-				Text("$\(priceWithoutDiscount)")
+				Text("$\(discountPrice)")
 					.font(Fonts.ten.medium)
 					.strikethrough()
 					.foregroundColor(Colors.lightGray.color)

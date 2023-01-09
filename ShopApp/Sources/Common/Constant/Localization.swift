@@ -19,6 +19,22 @@ enum Localization: String {
 	case iphone = "Iphone 12"
 	case superMega = "Súper. Mega. Rápido."
 	case bestSeller = "Best Seller"
+	case filterOptions = "Filter options"
+	case done = "Done"
 	
-	var text: Text { .init(rawValue) }
+	case productDetails = "Product Details"
+	case shop = "Shop"
+	case details = "Details"
+	case features = "Features"
+	case selectColorAndCapacity = "Select color and capacity"
+	case addToCard = "Add to card"
+	
+	case myCart = "My Cart"
+	case addAddress = "Add address"
+	case total = "Total"
+	case delivery = "Delivery"
+	case checkOut = "Checkout"
+	case free = "Free"
+	
+	var textView: Text { .init(rawValue) }
 }

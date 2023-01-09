@@ -19,7 +19,7 @@ struct SearchAndQRView: View {
 					HStack {
 						Images.search.image
 						TextField(text: $text) {
-							Localization.search.text
+							Localization.search.textView
 								.font(Fonts.twelve.regular)
 						}
 						.shadow(color: Colors.shadow.color,
