@@ -8,19 +8,29 @@
 import SwiftUI
 
 enum Localization: String {
-	case location = "Zihuatanejo, Gro"
-	case selectCategory = "Select Category"
-	case hotSales = "Hot sales"
+	
+	// MARK: - HomeView
+	
 	case viewAll = "view all"
 	case seeMore = "see more"
 	case search = "Search"
+	case location = "Zihuatanejo, Gro"
+	case selectCategory = "Select Category"
+	case hotSales = "Hot sales"
 	case buyNow = "Buy now!"
 	case new = "New"
-	case iphone = "Iphone 12"
-	case superMega = "Súper. Mega. Rápido."
 	case bestSeller = "Best Seller"
+	
+	// MARK: - FilterView
+	
 	case filterOptions = "Filter options"
 	case done = "Done"
+	
+	// MARK: - TabBar
+	
+	case explorer = "Explorer"
+	
+	// MARK: - DetailView
 	
 	case productDetails = "Product Details"
 	case shop = "Shop"
@@ -29,12 +39,16 @@ enum Localization: String {
 	case selectColorAndCapacity = "Select color and capacity"
 	case addToCard = "Add to card"
 	
+	// MARK: - CartView
+	
 	case myCart = "My Cart"
 	case addAddress = "Add address"
 	case total = "Total"
 	case delivery = "Delivery"
 	case checkOut = "Checkout"
 	case free = "Free"
+	
+	// MARK: - Init TextView
 	
 	var textView: Text { .init(rawValue) }
 }

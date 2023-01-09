@@ -12,13 +12,11 @@ struct CoordinatorView: View {
 	
 	var body: some View {
 		NavigationStack(path: $coordinator.path) {
-			ZStack {
+			TabBarView(coordinator: self.coordinator) {
 				HomeView(viewModel: coordinator.homeViewModel)
-					.padding(.bottom, 45)
-				TabBarView(coordinator: self.coordinator)
 			}
 			.navigationDestination(for: CoordinatorTab.self) { tab in
-				coordinator.openScreen(tab)
+				coordinator.destination(tab)
 			}
 		}
 		.sheet(item: $coordinator.filterViewModel) { viewModel in
@@ -35,3 +33,4 @@ struct CoordinatorView_Previews: PreviewProvider {
 		CoordinatorView(coordinator: .shared)
 	}
 }
+

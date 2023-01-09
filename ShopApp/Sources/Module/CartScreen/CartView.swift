@@ -24,6 +24,7 @@ struct CartView: View {
 										 name: model.name,
 										 finalPrice: model.finalPrice,
 										 counter: model.number,
+										 picture: model.picture,
 										 minusAction: { viewModel.decrement(model.id) },
 										 plusAction: { viewModel.increment(model.id) },
 										 bucketAction: { viewModel.removeFromCart(model.id) })
@@ -59,14 +60,14 @@ private extension CartView {
 		ToolbarItemGroup(placement: .principal) {
 			HStack(spacing: 9) {
 				SquareRoundedButtonView(buttonAction: viewModel.previousScreen,
-										image: Images.cancel,
+										image: Images.backShevron,
 										color: .darkBlue)
 				Spacer()
 				Localization.addAddress.textView
 					.font(Fonts.fifteen.medium)
 					.tint(Colors.darkBlue.color)
 				SquareRoundedButtonView(buttonAction: viewModel.selectAdress,
-										image: Images.bag,
+										image: Images.addAdress,
 										color: .orange)
 			}
 		}

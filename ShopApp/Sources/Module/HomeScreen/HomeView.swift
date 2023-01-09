@@ -16,19 +16,23 @@ struct HomeView: View {
 			VStack(spacing: 24) {
 				TopHomeSubView(openFilter: viewModel.openFilter)
 					.padding([.leading, .trailing], 35)
-				SelectCategoryView(categories: $viewModel.categories,
+				SelectCategoryView(categories: viewModel.categories,
 								   action: { viewModel.selectCategory($0) })
 				SearchAndQRView(text: $viewModel.text)
 					.padding([.leading, .trailing], 35)
-				HotSalesView(homeStores: $viewModel.homeStore,
+				HotSalesView(homeStores: viewModel.model.homeStore,
 							 openDetail: viewModel.openDetail)
-				BestSellerView(bestSellers: $viewModel.bestSeller,
-							   makeFavourite: { viewModel.makeFavourite($0) },
+				BestSellerView(bestSellers: viewModel.model.bestSeller,
+							   makeFavourite: viewModel.makeFavourite,
 							   openDetailView: viewModel.openDetail )
 			}
 			.padding(.leading, 17)
 		}
 		.background(Colors.backroundColor.color)
+//		.onAppear(perform: viewModel.fetch)
+		.onAppear {
+			viewModel.fetch()
+		}
 	}
 }
 

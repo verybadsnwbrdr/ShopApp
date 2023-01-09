@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FavouriteCircleImageView: View {
-	@Binding var isFavorites: Bool
+	var isFavorites: Bool
 	
     var body: some View {
 		Circle()

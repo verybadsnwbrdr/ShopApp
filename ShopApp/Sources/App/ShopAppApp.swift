@@ -9,12 +9,16 @@ import SwiftUI
 
 @main
 struct ShopAppApp: App {
-	@StateObject var coordinator = CoordinatorObject(modelService: ModelService(), cartModelService: CartModelService())
 	
-    var body: some Scene {
-        WindowGroup {
-//			HomeView(viewModel: HomeViewModel(coordinator: CoordinatorObject()))
+	@StateObject var coordinator = CoordinatorObject(modelService: ModelService(),
+													 cartModelService: CartModelService(),
+													 detailModelService: DetailModelService())
+//	@StateObject var coordinator = CoordinatorObject(modelService: ModelService(),
+//													 cartModelService: CartModelService())
+	
+	var body: some Scene {
+		WindowGroup {
 			CoordinatorView(coordinator: coordinator)
-        }
-    }
+		}
+	}
 }

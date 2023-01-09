@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct HotSalesLeftPartView: View {
-	@Binding var isNew: Bool?
-	@Binding var title: String
-	@Binding var subtitle: String
+	var isNew: Bool?
+	var title: String
+	var subtitle: String
 	
 	var openDetail: () -> ()
 	

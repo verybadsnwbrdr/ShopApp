@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SelectCategoryCircleView: View {
-	@Binding var isSelected: Bool
+	var isSelected: Bool
 	var image: Images
 	var category: String
 	
@@ -16,12 +16,12 @@ struct SelectCategoryCircleView: View {
 		VStack {
 			Circle()
 				.foregroundColor(
-					isSelected ? Colors.orange.color : .white
+					isSelected ? Colors.orange.color : Colors.white.color
 				)
 				.overlay {
 					image.image
 						.foregroundColor(
-							isSelected ? .white : Colors.darkGray.color
+							isSelected ? Colors.white.color : Colors.darkGray.color
 						)
 				}
 			Text(category)
@@ -33,7 +33,7 @@ struct SelectCategoryCircleView: View {
 
 struct SelectCategoryCircleView_Previews: PreviewProvider {
     static var previews: some View {
-		SelectCategoryCircleView(isSelected: .constant(true),
+		SelectCategoryCircleView(isSelected: true,
 				   image: .books,
 				   category: "Books")
     }

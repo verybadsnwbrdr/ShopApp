@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DetailModel: Codable {
+struct DetailModel: Codable, Identifiable {
 	var cpu, camera: String
 	var capacity, color: [String]
 	var id: String

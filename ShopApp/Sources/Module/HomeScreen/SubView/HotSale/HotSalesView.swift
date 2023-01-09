@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HotSalesView: View {
-	@Binding var homeStores: [HomeStore]
+	var homeStores: [HomeStore]//@Binding
 	var openDetail: () -> ()
 	
 	var body: some View {
@@ -17,11 +17,11 @@ struct HotSalesView: View {
 					   buttonTitle: Localization.seeMore.rawValue)
 			ScrollView(.horizontal, showsIndicators: false) {
 				HStack {
-					ForEach($homeStores, id: \.id) { model in
+					ForEach(homeStores) { model in
 						RoundedRectangle(cornerRadius: 10)
 							.frame(width: 360, height: 180)
 							.overlay(alignment: .leading) {
-								AsyncImageView(stringURL: model.picture.wrappedValue,
+								AsyncImageView(stringURL: model.picture,
 											   offset: (98, 0),
 											   cornerRadius: 10)
 							}

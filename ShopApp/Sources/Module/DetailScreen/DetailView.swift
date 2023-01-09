@@ -8,22 +8,35 @@
 import SwiftUI
 
 struct DetailView: View {
+	
 	@ObservedObject var viewModel: DetailViewModel
 
 	var body: some View {
 		VStack {
-			CarouselView(images: viewModel.model.images)
-			Spacer()
-			PhoneInfoView(model: $viewModel.model,
-						  makeFavourite: { viewModel.makeFavourite($0) },
-						  selectColor: { viewModel.selectColor($0) },
-						  addToCart: viewModel.addToCart)
+			content
 		}
+		.onAppear { viewModel.fetch() }
 		.padding(.top)
 		.background(Colors.backroundColor.color, ignoresSafeAreaEdges: .all)
 		.ignoresSafeArea(.all, edges: .bottom)
 		.navigationBarBackButtonHidden()
 		.toolbar { navigationBar }
+	}
+	
+	@ViewBuilder
+	var content: some View {
+		if let model = viewModel.model {
+			VStack {
+				CarouselView(images: model.images)
+				Spacer()
+				PhoneInfoView(model: model,
+							  makeFavourite: viewModel.makeFavourite,
+							  selectColor: viewModel.selectColor,
+							  addToCart: viewModel.addToCart)
+			}
+		} else {
+			Colors.backroundColor.color
+		}
 	}
 }
 
@@ -32,7 +45,7 @@ private extension DetailView {
 		ToolbarItemGroup(placement: .principal) {
 			HStack {
 				SquareRoundedButtonView(buttonAction: viewModel.previousScreen,
-										image: Images.cancel,
+										image: Images.backShevron,
 										color: .darkBlue)
 				Spacer()
 				Localization.productDetails.textView

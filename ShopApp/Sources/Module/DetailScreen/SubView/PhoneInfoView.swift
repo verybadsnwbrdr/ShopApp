@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct PhoneInfoView: View {
-	@Binding var model: DetailModel
-	var makeFavourite: (Binding<DetailModel>) -> ()
+	var model: DetailModel //@Binding
+	var makeFavourite: () -> ()
 	var selectColor: (String) -> ()
-	var addToCart: () -> ()
+	var addToCart: (DetailModel) -> ()
 	
 	var body: some View {
 		VStack(alignment: .leading) {
 			HeaderPhoneInfoView(title: model.title,
-								makeFavourite: { makeFavourite($model) },
+								makeFavourite: makeFavourite,
 								rating: model.rating)
 			Spacer()
 			HStack {
@@ -51,7 +51,7 @@ struct PhoneInfoView: View {
 					.font(Fonts.sixteen.medium)
 					.tint(Colors.darkBlue.color)
 				HStack {
-					ColorSelectView(isSelected: .constant(false),
+					ColorSelectView(isSelected: true,
 									colors: model.color,
 									selectColor: selectColor)
 					Spacer()
@@ -60,7 +60,7 @@ struct PhoneInfoView: View {
 				}
 			}
 			Spacer()
-			TextButtonView(buttonAction: addToCart,
+			TextButtonView(buttonAction: { addToCart(model) },
 						   title:
 							Localization.addToCard.rawValue + "       " + model.price.moneyDescription())
 			.frame(height: 54)
@@ -76,11 +76,13 @@ struct PhoneInfoView: View {
 	}
 }
 
-struct PhoneInfoView_Previews: PreviewProvider {
-	static var previews: some View {
-		PhoneInfoView(model: .constant(DetailViewModel.init(coordinator: CoordinatorObject.shared, modelService: DetailModelService()).model),
-					  makeFavourite: { $0 },
-					  selectColor: { $0 },
-					  addToCart: { })
-	}
-}
+//struct PhoneInfoView_Previews: PreviewProvider {
+//	static var previews: some View {
+//		PhoneInfoView(model: DetailViewModel(coordinator: CoordinatorObject.shared, modelService: DetailModelService()).model,
+//					  makeFavourite: {  },
+//					  selectColor: { _ in },
+//					  addToCart: { })
+//	}
+//}
+
+//DetailViewModel(coordinator: CoordinatorObject.shared, modelService: DetailModelService().model

@@ -10,20 +10,32 @@ import SwiftUI
 class HomeViewModel: ObservableObject, Identifiable {
 	
 	@Published var text: String = String()
-	@Published var categories: [HomeScreenModel] = HomeScreenModel.mockModels
-	@Published var bestSeller: [BestSeller] = [] // = BestSeller.mock
-	@Published var homeStore: [HomeStore] = [] // = HomeStore.mock
+	@Published var categories: [HomeScreenModel] = HomeScreenModel.model
+//	@Published var bestSeller: [BestSeller] = []
+//	@Published var homeStore: [HomeStore] = []
 	@Published var modelService: ModelService
+	@Published var model: Model
+//	{
+//		willSet {
+//			bestSeller = newValue.bestSeller
+//			homeStore = newValue.homeStore
+//		}
+//	}
 	
 	private unowned let coordinator: CoordinatorObject
 	
 	init(coordinator: CoordinatorObject) {
 		self.coordinator = coordinator
 		self.modelService = ModelService()
-		modelService.fetchBestSeller { model in
-			self.bestSeller = model.bestSeller
-			self.homeStore = model.homeStore
-		}
+		model = .init(homeStore: [], bestSeller: [])
+	}
+	
+	func fetch() {
+		let urlStr = "https://run.mocky.io/v3/654bd15e-b121-49ba-a588-960956b15175"
+		guard let url = URL(string: urlStr) else { return }
+		modelService.fetch(from: url)
+			.receive(on: RunLoop.main)
+			.assign(to: &$model)
 	}
 	
 	func openDetail() {
@@ -34,16 +46,15 @@ class HomeViewModel: ObservableObject, Identifiable {
 		coordinator.openFilter()
 	}
 	
-	func selectCategory(_ model: Binding<HomeScreenModel>) {
+	func selectCategory(_ model: HomeScreenModel) {
 		withAnimation {
 			for i in categories.indices {
-				categories[i].isSelected = false
+				categories[i].isSelected = categories[i].id == model.id ? true : false
 			}
-			model.isSelected.wrappedValue.toggle()
 		}
 	}
 	
-	func makeFavourite(_ model: Binding<BestSeller>) {
-		model.isFavorites.wrappedValue.toggle()
+	func makeFavourite(_ model: BestSeller) {
+//		model.isFavorites.toggle()
 	}
 }
