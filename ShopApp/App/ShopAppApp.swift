@@ -13,8 +13,6 @@ struct ShopAppApp: App {
 	@StateObject var coordinator = CoordinatorObject(modelService: ModelService(),
 													 cartModelService: CartModelService(),
 													 detailModelService: DetailModelService())
-//	@StateObject var coordinator = CoordinatorObject(modelService: ModelService(),
-//													 cartModelService: CartModelService())
 	
 	var body: some Scene {
 		WindowGroup {
