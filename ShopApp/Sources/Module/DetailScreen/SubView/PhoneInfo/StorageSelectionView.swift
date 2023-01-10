@@ -10,6 +10,7 @@ import SwiftUI
 struct StorageSelectionView: View {
 	var capacities: [String]
 	var buttonAction: () -> ()
+	@State var isSelected = false
 	
 	var body: some View {
 		HStack {
@@ -37,6 +38,24 @@ struct StorageSelectionView: View {
 			}
 		}
 		.font(Fonts.thirteen.bold)
+	}
+	
+	private func button(isSelected: Bool) -> some View {
+		Button {
+			buttonAction()
+		} label: {
+			RoundedRectangle(cornerRadius: 10)
+				.fill(
+					isSelected ? Colors.orange.color : Colors.darkGray.color
+				)
+				.frame(width: 71, height: 30)
+				.overlay {
+					Text((capacities.first ?? "") + " Gb")
+						.tint(
+							isSelected ? Colors.white.color : Colors.darkGray.color
+						)
+				}
+		}
 	}
 }
 

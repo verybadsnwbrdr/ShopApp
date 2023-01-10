@@ -8,8 +8,8 @@
 import Foundation
 
 struct Model: Codable {
-	let homeStore: [HomeStore]
-	let bestSeller: [BestSeller]
+	var homeStore: [HomeStore]
+	var bestSeller: [BestSeller]
 
 	enum CodingKeys: String, CodingKey {
 		case homeStore = "home_store"

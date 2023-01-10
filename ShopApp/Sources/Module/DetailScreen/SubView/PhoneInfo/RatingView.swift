@@ -11,10 +11,11 @@ struct RatingView: View {
 	
 	var rating: Double
 	private let maxRating = 5
-	private var roundedRating: Int {
-		Int(rating.rounded())
-	}
-	@State var starCounter = 0
+	@State private var starCounter = 0
+//	private var roundedRating: Int {
+//		Int(rating.rounded())
+//	}
+	
 //	private var ratingArr: [Bool] {
 //		.init(repeating: true, count: roundedRating) + .init(repeating: false, count: 5 - roundedRating)
 //	}
@@ -34,7 +35,9 @@ struct RatingView: View {
 	var star: some View {
 		starCounter += 1
 		return Images.star.image
-			.foregroundColor(roundedRating >= starCounter ? .orange : .gray)
+			.foregroundColor(
+				Int(rating.rounded()) >= starCounter ? .orange : .gray
+			)
 	}
 }
 

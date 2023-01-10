@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BestSellerView: View {
 	var bestSellers: [BestSeller]
-	var makeFavourite: (BestSeller) -> ()
+	var makeFavourite: (Int) -> ()
 	var openDetailView: () -> ()
 	
 	var columns = [
@@ -39,7 +39,7 @@ struct BestSellerView: View {
 						}
 						.overlay(alignment: .topTrailing) {
 							Button {
-								makeFavourite(model)
+								makeFavourite(model.id)
 							} label: {
 								FavouriteCircleImageView(isFavorites: model.isFavorites)
 									.frame(width: 25)

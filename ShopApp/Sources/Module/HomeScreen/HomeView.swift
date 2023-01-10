@@ -18,7 +18,7 @@ struct HomeView: View {
 					.padding([.leading, .trailing], 35)
 				SelectCategoryView(categories: viewModel.categories,
 								   action: { viewModel.selectCategory($0) })
-				SearchAndQRView(text: $viewModel.text)
+				SearchAndQRView(text: $viewModel.searchText)
 					.padding([.leading, .trailing], 35)
 				HotSalesView(homeStores: viewModel.model.homeStore,
 							 openDetail: viewModel.openDetail)

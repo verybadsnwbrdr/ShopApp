@@ -9,18 +9,12 @@ import SwiftUI
 
 class HomeViewModel: ObservableObject, Identifiable {
 	
-	@Published var text: String = String()
+	@Published var searchText: String = String()
 	@Published var categories: [HomeScreenModel] = HomeScreenModel.model
 //	@Published var bestSeller: [BestSeller] = []
 //	@Published var homeStore: [HomeStore] = []
 	@Published var modelService: ModelService
 	@Published var model: Model
-//	{
-//		willSet {
-//			bestSeller = newValue.bestSeller
-//			homeStore = newValue.homeStore
-//		}
-//	}
 	
 	private unowned let coordinator: CoordinatorObject
 	
@@ -54,7 +48,11 @@ class HomeViewModel: ObservableObject, Identifiable {
 		}
 	}
 	
-	func makeFavourite(_ model: BestSeller) {
-//		model.isFavorites.toggle()
+	func makeFavourite(_ id: Int) {
+		for i in model.bestSeller.indices {
+			if model.bestSeller[i].id == id {
+				model.bestSeller[i].isFavorites.toggle()
+			}
+		}
 	}
 }
