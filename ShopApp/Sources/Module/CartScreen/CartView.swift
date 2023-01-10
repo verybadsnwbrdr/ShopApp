@@ -20,21 +20,20 @@ struct CartView: View {
 				ScrollView {
 					VStack(spacing: 30) {
 						ForEach(viewModel.models) { model in
-							CellCartView(id: model.id,
-										 name: model.name,
+							CellCartView(name: model.name,
 										 finalPrice: model.finalPrice,
 										 counter: model.number,
 										 picture: model.picture,
 										 minusAction: { viewModel.decrement(model.id) },
 										 plusAction: { viewModel.increment(model.id) },
 										 bucketAction: { viewModel.removeFromCart(model.id) })
-							.padding([.leading, .trailing], 33)
+							.padding(.horizontal, 33)
 						}
 					}
 				}
 				Spacer()
 				TotalPriceAndDeliveryView(totalPrice: viewModel.totalPrice)
-				TextButtonView(buttonAction: { },
+				TextButtonView(buttonAction: viewModel.buy,
 							   title: Localization.checkOut.rawValue)
 				.frame(height: 54)
 				.padding([.horizontal, .bottom], 44)

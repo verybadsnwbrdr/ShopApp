@@ -59,6 +59,10 @@ final class CartViewModel: ObservableObject {
 	func decrement(_ id: UUID) {
 		self.modelService.decrement(id)
 	}
+	
+	func buy() {
+		self.modelService.removeAll()
+	}
 }
 
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PhoneInfoView: View {
-	var model: DetailModel //@Binding
+	var model: DetailModel
 	var makeFavourite: () -> ()
 	var selectColor: (String) -> ()
 	var addToCart: (DetailModel) -> ()

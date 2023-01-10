@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct CellCartView: View {
-	var id: UUID
-	
 	var name: String
 	var finalPrice: Int
 	var counter: Int

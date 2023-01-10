@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HeaderPhoneInfoView: View {
+	
 	var title: String
 	var makeFavourite: () -> ()
 	var rating: Double

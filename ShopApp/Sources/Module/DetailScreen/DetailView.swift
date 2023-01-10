@@ -25,17 +25,19 @@ struct DetailView: View {
 	
 	@ViewBuilder
 	var content: some View {
-		if let model = viewModel.model {
-			VStack {
-				CarouselView(images: model.images)
-				Spacer()
-				PhoneInfoView(model: model,
-							  makeFavourite: viewModel.makeFavourite,
-							  selectColor: viewModel.selectColor,
-							  addToCart: viewModel.addToCart)
+		Group {
+			if let model = viewModel.model {
+				VStack {
+					CarouselView(images: model.images)
+					Spacer()
+					PhoneInfoView(model: model,
+								  makeFavourite: viewModel.makeFavourite,
+								  selectColor: viewModel.selectColor,
+								  addToCart: viewModel.addToCart)
+				}
+			} else {
+				Colors.backroundColor.color
 			}
-		} else {
-			Colors.backroundColor.color
 		}
 	}
 }

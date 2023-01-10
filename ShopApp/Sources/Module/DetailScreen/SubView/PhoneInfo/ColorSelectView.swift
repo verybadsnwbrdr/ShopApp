@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ColorSelectView: View {
-	var isSelected: Bool // @Binding
+	
+	var isSelected: Bool
 	var colors: [String]
 	var selectColor: (String) -> ()
 	
