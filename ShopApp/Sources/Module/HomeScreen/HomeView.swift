@@ -29,16 +29,12 @@ struct HomeView: View {
 			.padding(.leading, 17)
 		}
 		.background(Colors.backroundColor.color)
-//		.onAppear(perform: viewModel.fetch)
-		.onAppear {
-			viewModel.fetch()
-		}
 	}
 }
 
-struct HomeView_Previews: PreviewProvider {
-	static var previews: some View {
-		HomeView(viewModel: .init(coordinator: .shared))
-	}
-}
+//struct HomeView_Previews: PreviewProvider {
+//	static var previews: some View {
+//		HomeView(viewModel: .init(coordinator: .shared))
+//	}
+//}
 

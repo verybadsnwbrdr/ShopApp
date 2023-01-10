@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CartView: View {
+	
 	@ObservedObject var viewModel: CartViewModel
 
 	var body: some View {
@@ -19,20 +20,20 @@ struct CartView: View {
 			VStack {
 				ScrollView {
 					VStack(spacing: 30) {
-						ForEach(viewModel.models) { model in
-							CellCartView(name: model.name,
-										 finalPrice: model.finalPrice,
-										 counter: model.number,
-										 picture: model.picture,
-										 minusAction: { viewModel.decrement(model.id) },
-										 plusAction: { viewModel.increment(model.id) },
-										 bucketAction: { viewModel.removeFromCart(model.id) })
+						ForEach(viewModel.model.basket) { model in
+							CellCartView(name: model.title,
+										 finalPrice: model.price,
+										 picture: model.images,
+										 minusAction: { viewModel.delete(model) },
+										 plusAction: { viewModel.addToCart(model) },
+										 bucketAction: { viewModel.delete(model) })
 							.padding(.horizontal, 33)
 						}
 					}
 				}
 				Spacer()
-				TotalPriceAndDeliveryView(totalPrice: viewModel.totalPrice)
+				TotalPriceAndDeliveryView(totalPrice: viewModel.model.total,
+										  delivery: viewModel.model.delivery)
 				TextButtonView(buttonAction: viewModel.buy,
 							   title: Localization.checkOut.rawValue)
 				.frame(height: 54)
@@ -73,11 +74,11 @@ private extension CartView {
 	}
 }
 
-struct CartView_Previews: PreviewProvider {
-	static var previews: some View {
-		CartView(viewModel: CartViewModel(
-			coordinator: CoordinatorObject.shared,
-			modelService: CartModelService())
-		)
-	}
-}
+//struct CartView_Previews: PreviewProvider {
+//	static var previews: some View {
+//		CartView(viewModel: CartViewModel(
+//			coordinator: CoordinatorObject.shared,
+//			modelService: CartModelService())
+//		)
+//	}
+//}

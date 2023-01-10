@@ -11,32 +11,19 @@ struct RatingView: View {
 	
 	var rating: Double
 	private let maxRating = 5
-	@State private var starCounter = 0
-//	private var roundedRating: Int {
-//		Int(rating.rounded())
-//	}
-	
-//	private var ratingArr: [Bool] {
-//		.init(repeating: true, count: roundedRating) + .init(repeating: false, count: 5 - roundedRating)
-//	}
 	
     var body: some View {
 		HStack {
-//			ForEach(ratingArr, id: \.self) { bool in
-//				Images.star.image
-//					.foregroundColor(bool ? .orange : .gray)
-//			}
-			ForEach(0 ..< maxRating, id: \.self) { _ in
-				star
+			ForEach(0 ..< maxRating, id: \.self) { index in
+				starView(index)
 			}
 		}
     }
 	
-	var star: some View {
-		starCounter += 1
-		return Images.star.image
+	func starView(_ index: Int) -> some View {
+		Images.star.image
 			.foregroundColor(
-				Int(rating.rounded()) >= starCounter ? .orange : .gray
+				Int(rating.rounded()) >= index ? .yellow : .gray
 			)
 	}
 }

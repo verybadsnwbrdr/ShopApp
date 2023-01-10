@@ -21,19 +21,19 @@ class CoordinatorObject: ObservableObject {
 										  detailModelService: DetailModelService())
 	//DELETE
 
-	@Published var homeViewModel: HomeViewModel!
-	@Published var detailViewModel: DetailViewModel!
+	var homeViewModel: HomeViewModel!
+	var detailViewModel: DetailViewModel!
+	var cartViewModel: CartViewModel!
 	@Published var filterViewModel: FilterViewModel?
-	@Published var cartViewModel: CartViewModel!
 	
-	private let modelService: ModelService
+//	private let modelService: ModelService
 	@Published var path: [CoordinatorTab] = []
 	
 	init(modelService: ModelService,
 		 cartModelService: CartModelService,
 		 detailModelService: DetailModelService) {
-		self.modelService = modelService
-		self.homeViewModel = .init(coordinator: self)
+//		self.modelService = modelService
+		self.homeViewModel = .init(coordinator: self, modelService: modelService)
 		self.cartViewModel = .init(coordinator: self, modelService: cartModelService)
 		self.detailViewModel = .init(coordinator: self, modelService: detailModelService)
 	}
@@ -69,7 +69,7 @@ class CoordinatorObject: ObservableObject {
 		path.removeAll()
 	}
 	
-	func addToCard(_ model: CartModel) {
-		self.cartViewModel.addToCart(model)
+	func addToCard() {
+		self.cartViewModel.add()
 	}
 }

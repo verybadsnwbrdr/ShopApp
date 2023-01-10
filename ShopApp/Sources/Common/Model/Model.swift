@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Model: Codable {
+struct Model: Decodable {
 	var homeStore: [HomeStore]
 	var bestSeller: [BestSeller]
 
@@ -17,7 +17,7 @@ struct Model: Codable {
 	}
 }
 
-struct HomeStore: Codable, Identifiable {
+struct HomeStore: Decodable, Identifiable {
 	var id: Int
 	var isNew: Bool?
 	var title, subtitle: String
@@ -32,7 +32,7 @@ struct HomeStore: Codable, Identifiable {
 	}
 }
 
-struct BestSeller: Codable, Identifiable {
+struct BestSeller: Decodable, Identifiable {
 	var id: Int
 	var isFavorites: Bool
 	var title: String

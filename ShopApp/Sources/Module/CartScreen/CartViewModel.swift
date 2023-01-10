@@ -13,26 +13,22 @@ final class CartViewModel: ObservableObject {
 	private unowned let coordinator: CoordinatorObject
 	private var cancellable: AnyCancellable?
 	
-	@ObservedObject var modelService: CartModelService
-	
-	@Published private(set) var models: [CartModel] = []
-	@Published private(set) var totalPrice: Int = 0
-	@Published private(set) var count: Int = 0
+	@ObservedObject private var modelService: CartModelService
+	@Published private(set) var model: CartModel
 	
 
 	init(coordinator: CoordinatorObject,
 		 modelService: CartModelService) {
 		self.coordinator = coordinator
 		self.modelService = modelService
+		self.model = modelService.model
 		fetch()
 	}
 	
 	private func fetch() {
-		cancellable = modelService.$models
-			.sink { [unowned self] models in
-				self.models = models
-				totalPrice = models.map { $0.finalPrice }.reduce(0, +)
-				count = models.map { $0.number }.reduce(0, +)
+		cancellable = modelService.$model
+			.sink { [unowned self] model in
+				self.model = model
 			}
 	}
 	
@@ -44,24 +40,20 @@ final class CartViewModel: ObservableObject {
 		
 	}
 	
-	func addToCart(_ model: CartModel) {
+	func addToCart(_ model: Basket) {
 		self.modelService.addToCart(model)
 	}
-	
-	func removeFromCart(_ id: UUID) {
-		self.modelService.removeFromCart(id)
-	}
 
-	func increment(_ id: UUID) {
-		self.modelService.increment(id)
-	}
-	
-	func decrement(_ id: UUID) {
-		self.modelService.decrement(id)
+	func delete(_ model: Basket) {
+		self.modelService.deleteOne(model)
 	}
 	
 	func buy() {
 		self.modelService.removeAll()
+	}
+	
+	func add() {
+		self.modelService.add()
 	}
 }
 

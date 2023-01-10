@@ -15,7 +15,7 @@ struct DetailView: View {
 		VStack {
 			content
 		}
-		.onAppear { viewModel.fetch() }
+//		.onAppear { viewModel.fetch() }
 		.padding(.top)
 		.background(Colors.backroundColor.color, ignoresSafeAreaEdges: .all)
 		.ignoresSafeArea(.all, edges: .bottom)
@@ -62,8 +62,8 @@ private extension DetailView {
 	}
 }
 
-struct DetailView_Previews: PreviewProvider {
-	static var previews: some View {
-		DetailView(viewModel: DetailViewModel(coordinator: CoordinatorObject.shared, modelService: .init()))
-	}
-}
+//struct DetailView_Previews: PreviewProvider {
+//	static var previews: some View {
+//		DetailView(viewModel: DetailViewModel(coordinator: CoordinatorObject.shared, modelService: .init()))
+//	}
+//}

@@ -33,8 +33,8 @@ struct TopHomeSubView: View {
     }
 }
 
-struct TopHomeSubView_Previews: PreviewProvider {
-    static var previews: some View {
-		TopHomeSubView(openFilter: { })
-    }
-}
+//struct TopHomeSubView_Previews: PreviewProvider {
+//    static var previews: some View {
+//		TopHomeSubView(openFilter: { })
+//    }
+//}

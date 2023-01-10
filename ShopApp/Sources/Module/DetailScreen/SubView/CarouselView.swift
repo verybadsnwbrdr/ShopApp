@@ -40,12 +40,12 @@ struct CarouselView: View {
 	}
 }
 
-struct CarouselView_Previews: PreviewProvider {
-    static var previews: some View {
-		CarouselView(images: [
-			"https://avatars.mds.yandex.net/get-mpic/5235334/img_id5575010630545284324.png/orig",
-			"https://avatars.mds.yandex.net/get-mpic/5235334/img_id5575010630545284324.png/orig",
-			"https://www.manualspdf.ru/thumbs/products/l/1260237-samsung-galaxy-note-20-ultra.jpg"
-		])
-    }
-}
+//struct CarouselView_Previews: PreviewProvider {
+//    static var previews: some View {
+//		CarouselView(images: [
+//			"https://avatars.mds.yandex.net/get-mpic/5235334/img_id5575010630545284324.png/orig",
+//			"https://avatars.mds.yandex.net/get-mpic/5235334/img_id5575010630545284324.png/orig",
+//			"https://www.manualspdf.ru/thumbs/products/l/1260237-samsung-galaxy-note-20-ultra.jpg"
+//		])
+//    }
+//}

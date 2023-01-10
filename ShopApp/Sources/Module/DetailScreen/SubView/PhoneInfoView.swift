@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct PhoneInfoView: View {
+	
 	var model: DetailModel
 	var makeFavourite: () -> ()
 	var selectColor: (String) -> ()
-	var addToCart: (DetailModel) -> ()
+	var addToCart: () -> ()
 	
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -56,13 +57,12 @@ struct PhoneInfoView: View {
 									selectColor: selectColor)
 					Spacer()
 					StorageSelectionView(capacities: model.capacity,
-										 buttonAction: {})
+										 buttonAction: makeFavourite)
 				}
 			}
 			Spacer()
-			TextButtonView(buttonAction: { addToCart(model) },
-						   title:
-							Localization.addToCard.rawValue + "       " + model.price.moneyDescription())
+			TextButtonView(buttonAction: addToCart,
+						   title: Localization.addToCard.rawValue + "       " + model.price.moneyDescription())
 			.frame(height: 54)
 		}
 		.padding([.leading, .trailing], 37)

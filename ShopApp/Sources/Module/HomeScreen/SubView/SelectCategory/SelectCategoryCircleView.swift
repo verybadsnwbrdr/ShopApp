@@ -31,10 +31,10 @@ struct SelectCategoryCircleView: View {
     }
 }
 
-struct SelectCategoryCircleView_Previews: PreviewProvider {
-    static var previews: some View {
-		SelectCategoryCircleView(isSelected: true,
-				   image: .books,
-				   category: "Books")
-    }
-}
+//struct SelectCategoryCircleView_Previews: PreviewProvider {
+//    static var previews: some View {
+//		SelectCategoryCircleView(isSelected: true,
+//				   image: .books,
+//				   category: "Books")
+//    }
+//}

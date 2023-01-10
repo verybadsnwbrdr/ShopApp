@@ -44,7 +44,7 @@ struct TabBarView<Content: View>: View {
 		ForEach(tabs) { element in
 			HStack {
 				element.image.image
-					.badge(element.tab == .cart ? coordinator.cartViewModel.models.count : 0)
+					.badge(element.tab == .cart ? coordinator.cartViewModel.model.basket.count : 0)
 				if let text = element.text {
 					Text(text)
 				}
@@ -68,11 +68,11 @@ extension TabBarView {
 	}
 }
 
-struct TabBarView_Previews: PreviewProvider {
-	static var previews: some View {
-		TabBarView(coordinator: CoordinatorObject.shared) {
-			Color.red
-		}
-	}
-}
+//struct TabBarView_Previews: PreviewProvider {
+//	static var previews: some View {
+//		TabBarView(coordinator: CoordinatorObject.shared) {
+//			Color.red
+//		}
+//	}
+//}
 

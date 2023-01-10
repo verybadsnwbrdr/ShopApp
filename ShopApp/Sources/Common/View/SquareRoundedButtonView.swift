@@ -27,10 +27,10 @@ struct SquareRoundedButtonView: View {
     }
 }
 
-struct SquareRoundedButtonView_Previews: PreviewProvider {
-    static var previews: some View {
-		SquareRoundedButtonView(buttonAction: { },
-								image: Images.cancel,
-								color: .darkBlue)
-    }
-}
+//struct SquareRoundedButtonView_Previews: PreviewProvider {
+//    static var previews: some View {
+//		SquareRoundedButtonView(buttonAction: { },
+//								image: Images.cancel,
+//								color: .darkBlue)
+//    }
+//}

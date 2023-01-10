@@ -7,20 +7,16 @@
 
 import Foundation
 
-struct CartModel: Identifiable {
-	var id = UUID()
-	var name: String
-	var picture: String
-	var price: Int
-	var finalPrice: Int { price * number }
-	var deliveryPrice: Int?
-	var number: Int
+struct CartModel: Decodable {
+	var basket: [Basket] = []
+	var delivery: String = String()
+	var id: String = String()
+	var total: Int = 0
 }
 
-//extension CartModel {
-//	static var mockModel = CartModel(name: "Samsung",
-//									 picture: "",
-//									 price: 1500,
-////									 finalPrice: 3000,
-//									 number: 2)
-//}
+struct Basket: Codable, Identifiable {
+	var id: Int
+	var images: String
+	var price: Int
+	var title: String
+}

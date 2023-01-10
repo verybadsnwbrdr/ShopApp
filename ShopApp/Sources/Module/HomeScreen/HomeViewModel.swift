@@ -7,27 +7,24 @@
 
 import SwiftUI
 
-class HomeViewModel: ObservableObject, Identifiable {
+final class HomeViewModel: ObservableObject, Identifiable {
 	
 	@Published var searchText: String = String()
 	@Published var categories: [HomeScreenModel] = HomeScreenModel.model
-//	@Published var bestSeller: [BestSeller] = []
-//	@Published var homeStore: [HomeStore] = []
-	@Published var modelService: ModelService
-	@Published var model: Model
+	@Published private var modelService: ModelService
+	@Published var model: Model!
 	
 	private unowned let coordinator: CoordinatorObject
 	
-	init(coordinator: CoordinatorObject) {
+	init(coordinator: CoordinatorObject, modelService: ModelService) {
 		self.coordinator = coordinator
-		self.modelService = ModelService()
-		model = .init(homeStore: [], bestSeller: [])
+		self.modelService = modelService
+		self.model = modelService.model
+		fetch()
 	}
 	
 	func fetch() {
-		let urlStr = "https://run.mocky.io/v3/654bd15e-b121-49ba-a588-960956b15175"
-		guard let url = URL(string: urlStr) else { return }
-		modelService.fetch(from: url)
+		modelService.fetch(from: EndPoint.homeURL.optionalURL)
 			.receive(on: RunLoop.main)
 			.assign(to: &$model)
 	}

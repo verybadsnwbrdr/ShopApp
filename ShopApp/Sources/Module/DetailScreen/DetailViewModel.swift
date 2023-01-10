@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import Combine
 
-class DetailViewModel: ObservableObject, Identifiable {
-	
+final class DetailViewModel: ObservableObject, Identifiable {
+
 	private unowned let coordinator: CoordinatorObject
 	@Published var modelService: DetailModelService
 	@Published var model: DetailModel?
@@ -16,15 +17,13 @@ class DetailViewModel: ObservableObject, Identifiable {
 	init(coordinator: CoordinatorObject, modelService: DetailModelService) {
 		self.coordinator = coordinator
 		self.modelService = modelService
-		
-//		self.model = modelService.fetchData("https://run.mocky.io/v3/6c14c560-15c6-4248-b9d2-b4508df7d4f5")
-		
+		fetch()
 	}
 	
 	func fetch() {
-		modelService.fetchBestSeller { [unowned self] detailModel in
-			self.model = detailModel
-		}
+		modelService.fetch(from: EndPoint.detailURL.optionalURL)
+			.receive(on: RunLoop.main)
+			.assign(to: &$model)
 	}
 	
 	func previousScreen() {
@@ -43,11 +42,15 @@ class DetailViewModel: ObservableObject, Identifiable {
 		self.coordinator.open(.cart)
 	}
 	
-	func addToCart(_ model: DetailModel) {
-		let outputModel = CartModel(name: model.title,
-									picture: model.images.first!,
-									price: model.price,
-									number: 1)
-		self.coordinator.addToCard(outputModel)
+//	func addToCart(_ model: DetailModel) {
+//		let outputModel = CartModel(name: model.title,
+//									picture: model.images.first!,
+//									price: model.price,
+//									number: 1)
+//		self.coordinator.addToCard(outputModel)
+//	}
+	
+	func addToCart() {
+		self.coordinator.addToCard()
 	}
 }

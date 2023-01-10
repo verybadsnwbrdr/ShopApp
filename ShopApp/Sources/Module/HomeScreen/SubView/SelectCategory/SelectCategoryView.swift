@@ -35,9 +35,9 @@ struct SelectCategoryView: View {
     }
 }
 
-struct SelectCategoryView_Previews: PreviewProvider {
-    static var previews: some View {
-		SelectCategoryView(categories: HomeScreenModel.model,
-						   action: { _ in })
-    }
-}
+//struct SelectCategoryView_Previews: PreviewProvider {
+//    static var previews: some View {
+//		SelectCategoryView(categories: HomeScreenModel.model,
+//						   action: { _ in })
+//    }
+//}

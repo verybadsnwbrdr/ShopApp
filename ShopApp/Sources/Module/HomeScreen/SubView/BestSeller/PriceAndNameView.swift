@@ -29,11 +29,11 @@ struct PriceAndNameView: View {
 		}
     }
 }
-
-struct PriceAndNameView_Previews: PreviewProvider {
-    static var previews: some View {
-		PriceAndNameView(name: "Samsung Galaxy s20 Ultra",
-						 discountPrice: 1047,
-						 priceWithoutDiscount: 1500)
-    }
-}
+//
+//struct PriceAndNameView_Previews: PreviewProvider {
+//    static var previews: some View {
+//		PriceAndNameView(name: "Samsung Galaxy s20 Ultra",
+//						 discountPrice: 1047,
+//						 priceWithoutDiscount: 1500)
+//    }
+//}

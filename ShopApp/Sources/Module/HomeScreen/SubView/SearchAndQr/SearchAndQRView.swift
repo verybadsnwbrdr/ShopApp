@@ -41,8 +41,8 @@ struct SearchAndQRView: View {
     }
 }
 
-struct SearchAndQRView_Previews: PreviewProvider {
-    static var previews: some View {
-		SearchAndQRView(text: .constant(""))
-    }
-}
+//struct SearchAndQRView_Previews: PreviewProvider {
+//    static var previews: some View {
+//		SearchAndQRView(text: .constant(""))
+//    }
+//}

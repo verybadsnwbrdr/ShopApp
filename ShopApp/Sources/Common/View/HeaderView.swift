@@ -27,8 +27,8 @@ struct HeaderView: View {
     }
 }
 
-struct HeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-		HeaderView(title: "Select", buttonTitle: "view all")
-    }
-}
+//struct HeaderView_Previews: PreviewProvider {
+//    static var previews: some View {
+//		HeaderView(title: "Select", buttonTitle: "view all")
+//    }
+//}

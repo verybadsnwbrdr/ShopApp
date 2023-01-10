@@ -38,10 +38,10 @@ struct HeaderPhoneInfoView: View {
     }
 }
 
-struct HeaderPhoneInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-		HeaderPhoneInfoView(title: "Samsung",
-							makeFavourite: {},
-							rating: 4.6)
-    }
-}
+//struct HeaderPhoneInfoView_Previews: PreviewProvider {
+//    static var previews: some View {
+//		HeaderPhoneInfoView(title: "Samsung",
+//							makeFavourite: {},
+//							rating: 4.6)
+//    }
+//}

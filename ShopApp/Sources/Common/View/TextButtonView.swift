@@ -25,8 +25,8 @@ struct TextButtonView: View {
     }
 }
 
-struct TextButtonView_Previews: PreviewProvider {
-    static var previews: some View {
-		TextButtonView(buttonAction: { }, title: "Done")
-    }
-}
+//struct TextButtonView_Previews: PreviewProvider {
+//    static var previews: some View {
+//		TextButtonView(buttonAction: { }, title: "Done")
+//    }
+//}

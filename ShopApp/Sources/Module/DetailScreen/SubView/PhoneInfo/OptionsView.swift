@@ -19,9 +19,9 @@ struct OptionsView: View {
 		}
     }
 }
-
-struct OptionsView_Previews: PreviewProvider {
-    static var previews: some View {
-		OptionsView(image: .core, title: "Ex")
-    }
-}
+//
+//struct OptionsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//		OptionsView(image: .core, title: "Ex")
+//    }
+//}

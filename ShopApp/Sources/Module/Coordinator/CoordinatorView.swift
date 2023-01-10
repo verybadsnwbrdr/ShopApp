@@ -11,8 +11,8 @@ struct CoordinatorView: View {
 	@ObservedObject var coordinator: CoordinatorObject
 	
 	var body: some View {
-		NavigationStack(path: $coordinator.path) {
-			TabBarView(coordinator: self.coordinator) {
+		TabBarView(coordinator: self.coordinator) {
+			NavigationStack(path: $coordinator.path) {
 				HomeView(viewModel: coordinator.homeViewModel)
 			}
 			.navigationDestination(for: CoordinatorTab.self) { tab in

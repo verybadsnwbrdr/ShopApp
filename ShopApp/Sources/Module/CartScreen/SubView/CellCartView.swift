@@ -10,7 +10,7 @@ import SwiftUI
 struct CellCartView: View {
 	var name: String
 	var finalPrice: Int
-	var counter: Int
+	var counter: Int = 1
 	var picture: String
 	var minusAction: () -> ()
 	var plusAction: () -> ()

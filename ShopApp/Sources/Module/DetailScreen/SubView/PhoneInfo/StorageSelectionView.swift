@@ -59,8 +59,8 @@ struct StorageSelectionView: View {
 	}
 }
 
-struct StorageSelectionView_Previews: PreviewProvider {
-	static var previews: some View {
-		StorageSelectionView(capacities: ["128", "256"], buttonAction: {})
-	}
-}
+//struct StorageSelectionView_Previews: PreviewProvider {
+//	static var previews: some View {
+//		StorageSelectionView(capacities: ["128", "256"], buttonAction: {})
+//	}
+//}
