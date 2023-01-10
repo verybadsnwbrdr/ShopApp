@@ -20,6 +20,6 @@ extension HomeScreenModel {
 		HomeScreenModel(category: "Computer", image: .computer),
 		HomeScreenModel(category: "Health", image: .health),
 		HomeScreenModel(category: "Books", image: .books),
-		HomeScreenModel(category: "Random", image: .health)
+		HomeScreenModel(category: "Random", image: .phone)
 	]
 }

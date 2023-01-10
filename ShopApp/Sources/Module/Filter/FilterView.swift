@@ -26,12 +26,28 @@ struct FilterView: View {
 				.frame(width: 86, height: 37)
 			}
 			.font(Fonts.eighteen.medium)
-			SectionsFilterView(sectionName: "Brand", filter: "Samsung")
-			SectionsFilterView(sectionName: "Price", filter: "$300 - $500")
-			SectionsFilterView(sectionName: "Size", filter: "4.5 to 5.5 inches")
+			
+			SectionsFilterView(sectionName: FilterLocalization.brand.rawValue,
+							   filter: FilterLocalization.brandFilter.rawValue)
+			
+			SectionsFilterView(sectionName: FilterLocalization.price.rawValue,
+							   filter: FilterLocalization.priceFilter.rawValue)
+			
+			SectionsFilterView(sectionName: FilterLocalization.size.rawValue,
+							   filter: FilterLocalization.sizeFilter.rawValue)
 		}
 		.padding([.leading, .trailing], 35)
 		.padding(.top, 24)
 		.padding(.bottom, 44)
     }
+}
+
+fileprivate enum FilterLocalization: String {
+	case brand = "Brand"
+	case price = "Price"
+	case size = "Size"
+	
+	case brandFilter = "Samsung"
+	case priceFilter = "$300 - $500"
+	case sizeFilter = "4.5 to 5.5 inches"
 }

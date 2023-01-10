@@ -26,9 +26,12 @@ struct ColorSelectView: View {
 		Button {
 			action(hexString)
 		} label: {
+			if isSelected {
+				Images.check.image
+			}
 			Circle()
 				.fill(Color(hex: hexString) ?? .black)
-				.frame(width: 39)
+				.frame(width: 39, height: 39)
 				.overlay {
 					if isSelected {
 						Images.check.image

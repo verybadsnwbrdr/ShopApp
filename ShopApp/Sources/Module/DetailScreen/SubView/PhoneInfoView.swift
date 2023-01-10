@@ -15,7 +15,7 @@ struct PhoneInfoView: View {
 	var addToCart: () -> ()
 	
 	var body: some View {
-		VStack(alignment: .leading) {
+		VStack(alignment: .leading, spacing: 5) {
 			HeaderPhoneInfoView(title: model.title,
 								makeFavourite: makeFavourite,
 								rating: model.rating)

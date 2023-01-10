@@ -12,13 +12,13 @@ struct SectionsFilterView: View {
 	var sectionName: String
 	var filter: String
 	
-    var body: some View {
+	var body: some View {
 		VStack(alignment: .leading) {
 			Text(sectionName)
 				.font(Fonts.eighteen.medium)
 			
 			Button {
-			
+				
 			} label: {
 				RoundedRectangle(cornerRadius: 5)
 					.fill(.white)
@@ -32,10 +32,10 @@ struct SectionsFilterView: View {
 							Images.chevronDown.sytemImage
 								.foregroundColor(Colors.darkGray.view)
 						}
-						.padding([.leading, .trailing], 14)
+						.padding(.horizontal, 14)
 					}
 			}
 		}
 		.tint(Colors.darkBlue.view)
-    }
+	}
 }

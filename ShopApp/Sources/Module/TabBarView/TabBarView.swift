@@ -11,7 +11,7 @@ struct TabBarView<Content: View>: View {
 	
 	@ObservedObject var coordinator: CoordinatorObject
 	@State private var tabs: [TabItem] = [
-		.init(text: Localization.explorer.rawValue, image: .dot, tab: .detail),
+		.init(text: Localization.explorer.rawValue, image: .dot, tab: .home),
 		.init(image: .bag, tab: .cart),
 		.init(image: .like, tab: .another),
 		.init(image: .person, tab: .another)
@@ -52,7 +52,7 @@ struct TabBarView<Content: View>: View {
 			.foregroundColor(.white)
 			.onTapGesture {
 				withAnimation {
-					coordinator.open(element.tab)
+					self.coordinator.open(element.tab)
 				}
 			}
 		}

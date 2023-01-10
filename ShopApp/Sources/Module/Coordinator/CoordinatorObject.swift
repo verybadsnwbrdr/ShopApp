@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 enum CoordinatorTab: Hashable {
 	case home
@@ -15,7 +16,7 @@ enum CoordinatorTab: Hashable {
 }
 
 class CoordinatorObject: ObservableObject {
-
+	
 	var homeViewModel: HomeViewModel!
 	var detailViewModel: DetailViewModel!
 	var cartViewModel: CartViewModel!
@@ -35,7 +36,7 @@ class CoordinatorObject: ObservableObject {
 		path.append(item)
 	}
 	
-	func destination(_ tab: CoordinatorTab) -> AnyView  { 
+	func destination(_ tab: CoordinatorTab) -> AnyView  {
 		switch tab {
 		case .detail:
 			return AnyView(DetailView(viewModel: detailViewModel!))

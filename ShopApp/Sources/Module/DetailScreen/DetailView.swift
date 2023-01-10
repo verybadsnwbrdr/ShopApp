@@ -28,6 +28,7 @@ struct DetailView: View {
 			if let model = viewModel.model {
 				VStack {
 					CarouselView(images: model.images)
+						.frame(maxHeight: 350)
 					Spacer()
 					PhoneInfoView(model: model,
 								  makeFavourite: viewModel.makeFavourite,

@@ -41,11 +41,15 @@ struct CartView: View {
 			}
 			.padding(.top, 60)
 			.background(
-				RoundedRectangle(cornerRadius: 30)
-					.fill(Colors.darkBlue.view)
-					.shadow(color: Colors.shadow.view, radius: 20)
+				Group {
+					RoundedRectangle(cornerRadius: 30)
+						.fill(Colors.darkBlue.view)
+						.shadow(color: Colors.shadow.view, radius: 20)
+					Rectangle()
+						.offset(y: 300)
+						.fill(Colors.darkBlue.view)
+				}
 			)
-			
 		}
 		.padding(.top)
 		.background(Colors.backroundColor.view, ignoresSafeAreaEdges: .all)

@@ -17,7 +17,14 @@ struct CoordinatorView: View {
 				HomeView(viewModel: self.coordinator.homeViewModel)
 			}
 			.navigationDestination(for: CoordinatorTab.self) { tab in
-				self.coordinator.destination(tab)
+				switch tab {
+				case .detail:
+					DetailView(viewModel: self.coordinator.detailViewModel!)
+				case .cart:
+					CartView(viewModel: self.coordinator.cartViewModel!)
+				default:
+					EmptyView()
+				}
 			}
 		}
 		.sheet(item: $coordinator.filterViewModel) { viewModel in
