@@ -7,28 +7,30 @@
 
 import SwiftUI
 
-class DetailViewModel: ObservableObject, Identifiable {
-	
+final class DetailViewModel: ObservableObject, Identifiable {
+
 	private unowned let coordinator: CoordinatorObject
-	@Published var modelService: DetailModelService
-	@Published var model: DetailModel = DetailModel(cpu: "", camera: "", capacity: [], color: [], id: "", images: [], isFavorites: false, price: 1, rating: 1, sd: "", ssd: "", title: "")
+	@Published private var modelService: DetailModelService
+	@Published private(set) var model: DetailModel?
 	
 	init(coordinator: CoordinatorObject, modelService: DetailModelService) {
 		self.coordinator = coordinator
 		self.modelService = modelService
-		modelService.fetchBestSeller { detailModel in
-			self.model = detailModel
-		}
-//		self.model = modelService.fetchData("https://run.mocky.io/v3/6c14c560-15c6-4248-b9d2-b4508df7d4f5")
-		
+		fetch()
+	}
+	
+	private func fetch() {
+		modelService.fetch(from: EndPoint.detailURL.optionalURL)
+			.receive(on: RunLoop.main)
+			.assign(to: &$model)
 	}
 	
 	func previousScreen() {
 		coordinator.previousScreen()
 	}
 	
-	func makeFavourite(_ model: Binding<DetailModel>) {
-		model.isFavorites.wrappedValue.toggle()
+	func makeFavourite() {
+		self.model?.isFavorites.toggle()
 	}
 	
 	func selectColor(_ color: String) {
@@ -36,7 +38,7 @@ class DetailViewModel: ObservableObject, Identifiable {
 	}
 	
 	func openCart() {
-		self.coordinator.openCart()
+		self.coordinator.open(.cart)
 	}
 	
 	func addToCart() {

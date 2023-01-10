@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct HotSalesLeftPartView: View {
-	@Binding var isNew: Bool?
-	@Binding var title: String
-	@Binding var subtitle: String
 	
+	var isNew: Bool?
+	var title: String
+	var subtitle: String
 	var openDetail: () -> ()
 	
 	var body: some View {
@@ -19,7 +19,7 @@ struct HotSalesLeftPartView: View {
 			if let isNew = isNew, isNew {
 				Circle()
 					.frame(width: 27)
-					.foregroundColor(Colors.orange.color)
+					.foregroundColor(Colors.orange.view)
 					.overlay {
 						Localization.new.textView
 							.foregroundColor(.white)
@@ -45,15 +45,9 @@ struct HotSalesLeftPartView: View {
 					.overlay {
 						Localization.buyNow.textView
 							.font(Fonts.eleven.systemBold)
-							.foregroundColor(Colors.darkBlue.color)
+							.foregroundColor(Colors.darkBlue.view)
 					}
 			}
 		}
 	}
 }
-
-//struct HotSalesLeftPartView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HotSalesLeftPartView()
-//    }
-//}

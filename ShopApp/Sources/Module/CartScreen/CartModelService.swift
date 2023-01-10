@@ -8,34 +8,37 @@
 import Foundation
 import Combine
 
-final class CartModelService: ObservableObject {
-	@Published var models: [CartModel] = []
+final class CartModelService: ObservableObject, Fetchable {
 	
-	func addToCart(_ model: CartModel) {
-		models.append(model)
+	@Published var model: CartModel
+	
+	init() {
+		self.model = CartModel()
 	}
 	
-	func removeFromCart(_ id: UUID) {
-		models.removeAll { $0.id == id }
+	func addToCart(_ model: Basket) {
+		self.model.basket.append(model)
+		self.model.total += model.price
 	}
 	
-	func increment(_ id: UUID) {
-		for i in models.indices {
-			if models[i].id == id {
-				models[i].number += 1
+	func add() {
+		fetch(from: EndPoint.cartURL.optionalURL)
+			.assign(to: &$model)
+	}
+	
+	func deleteOne(_ model: Basket) {
+		guard self.model.basket.filter({ $0.id == model.id }).count > 0 else { return }
+		for i in self.model.basket.indices {
+			if self.model.basket[i].id == model.id {
+				let deleted = self.model.basket.remove(at: i)
+				self.model.total -= deleted.price
+				return
 			}
 		}
 	}
 	
-	func decrement(_ id: UUID) {
-		for i in models.indices {
-			if models[i].id == id {
-				guard models[i].number > 1 else {
-					removeFromCart(id)
-					return
-				}
-				models[i].number -= 1
-			}
-		}
+	func removeAll() {
+		self.model.basket.removeAll()
+		self.model.total = 0
 	}
 }

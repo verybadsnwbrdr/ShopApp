@@ -8,20 +8,22 @@
 import SwiftUI
 
 struct HotSalesView: View {
-	@Binding var homeStores: [HomeStore]
+	
+	var homeStores: [HomeStore]
 	var openDetail: () -> ()
 	
 	var body: some View {
 		VStack {
 			HeaderView(title: Localization.hotSales.rawValue,
 					   buttonTitle: Localization.seeMore.rawValue)
+			
 			ScrollView(.horizontal, showsIndicators: false) {
 				HStack {
-					ForEach($homeStores, id: \.id) { model in
+					ForEach(homeStores) { model in
 						RoundedRectangle(cornerRadius: 10)
 							.frame(width: 360, height: 180)
 							.overlay(alignment: .leading) {
-								AsyncImageView(stringURL: model.picture.wrappedValue,
+								AsyncImageView(stringURL: model.picture,
 											   offset: (98, 0),
 											   cornerRadius: 10)
 							}
@@ -33,7 +35,6 @@ struct HotSalesView: View {
 								.padding(.leading, 25)
 								.padding(.bottom, 26)
 							}
-						
 					}
 				}
 				.padding(.trailing, 21)
@@ -41,9 +42,3 @@ struct HotSalesView: View {
 		}
 	}
 }
-
-//struct HotSalesView_Previews: PreviewProvider {
-//	static var previews: some View {
-//		HotSalesView(viewModel: MainViewModel(coordinator: CoordinatorObject()))
-//	}
-//}

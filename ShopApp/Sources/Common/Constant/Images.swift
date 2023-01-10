@@ -28,6 +28,8 @@ enum Images: String {
 	case person
 	
 	case cancel
+	case backShevron
+	case addAdress
 	
 	case star
 	case ram

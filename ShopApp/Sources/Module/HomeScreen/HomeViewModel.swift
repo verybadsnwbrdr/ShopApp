@@ -7,23 +7,26 @@
 
 import SwiftUI
 
-class HomeViewModel: ObservableObject, Identifiable {
+final class HomeViewModel: ObservableObject, Identifiable {
 	
-	@Published var text: String = String()
-	@Published var categories: [HomeScreenModel] = HomeScreenModel.mockModels
-	@Published var bestSeller: [BestSeller] = [] // = BestSeller.mock
-	@Published var homeStore: [HomeStore] = [] // = HomeStore.mock
-	@Published var modelService: ModelService
+	@Published var searchText: String = String()
+	@Published private(set) var categories: [HomeScreenModel] = HomeScreenModel.model
+	@Published private var modelService: ModelService
+	@Published private(set) var model: Model!
 	
 	private unowned let coordinator: CoordinatorObject
 	
-	init(coordinator: CoordinatorObject) {
+	init(coordinator: CoordinatorObject, modelService: ModelService) {
 		self.coordinator = coordinator
-		self.modelService = ModelService()
-		modelService.fetchBestSeller { model in
-			self.bestSeller = model.bestSeller
-			self.homeStore = model.homeStore
-		}
+		self.modelService = modelService
+		self.model = modelService.model
+		fetch()
+	}
+	
+	private func fetch() {
+		modelService.fetch(from: EndPoint.homeURL.optionalURL)
+			.receive(on: RunLoop.main)
+			.assign(to: &$model)
 	}
 	
 	func openDetail() {
@@ -34,16 +37,19 @@ class HomeViewModel: ObservableObject, Identifiable {
 		coordinator.openFilter()
 	}
 	
-	func selectCategory(_ model: Binding<HomeScreenModel>) {
+	func selectCategory(_ model: HomeScreenModel) {
 		withAnimation {
 			for i in categories.indices {
-				categories[i].isSelected = false
+				categories[i].isSelected = categories[i].id == model.id ? true : false
 			}
-			model.isSelected.wrappedValue.toggle()
 		}
 	}
 	
-	func makeFavourite(_ model: Binding<BestSeller>) {
-		model.isFavorites.wrappedValue.toggle()
+	func makeFavourite(_ id: Int) {
+		for i in model.bestSeller.indices {
+			if model.bestSeller[i].id == id {
+				model.bestSeller[i].isFavorites.toggle()
+			}
+		}
 	}
 }

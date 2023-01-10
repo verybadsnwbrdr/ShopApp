@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TopHomeSubView: View {
+	
 	var openFilter: () -> ()
 	
     var body: some View {
@@ -19,9 +20,9 @@ struct TopHomeSubView: View {
 				Images.location.image
 				Localization.location.textView
 					.font(Fonts.fifteen.medium)
-					.foregroundColor(Colors.darkBlue.color)
+					.foregroundColor(Colors.darkBlue.view)
 				Images.chevronDown.sytemImage
-					.foregroundColor(Colors.darkGray.color)
+					.foregroundColor(Colors.darkGray.view)
 			}
 			Spacer()
 			Button {
@@ -30,11 +31,5 @@ struct TopHomeSubView: View {
 				Images.filter.image
 			}
 		}
-    }
-}
-
-struct TopHomeSubView_Previews: PreviewProvider {
-    static var previews: some View {
-		TopHomeSubView(openFilter: { })
     }
 }

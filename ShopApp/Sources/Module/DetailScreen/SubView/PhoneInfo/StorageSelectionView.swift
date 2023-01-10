@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct StorageSelectionView: View {
+	
 	var capacities: [String]
 	var buttonAction: () -> ()
+	@State var isSelected = false
 	
 	var body: some View {
 		HStack {
@@ -17,7 +19,7 @@ struct StorageSelectionView: View {
 				buttonAction()
 			} label: {
 				RoundedRectangle(cornerRadius: 10)
-					.fill(Colors.orange.color)
+					.fill(Colors.orange.view)
 					.frame(width: 71, height: 30)
 					.overlay {
 						Text((capacities.first ?? "") + " Gb")
@@ -32,16 +34,28 @@ struct StorageSelectionView: View {
 					.frame(width: 71, height: 30)
 					.overlay {
 						Text((capacities.last ?? "") + " Gb")
-							.tint(Colors.darkGray.color)
+							.tint(Colors.darkGray.view)
 					}
 			}
 		}
 		.font(Fonts.thirteen.bold)
 	}
-}
-
-struct StorageSelectionView_Previews: PreviewProvider {
-	static var previews: some View {
-		StorageSelectionView(capacities: ["128", "256"], buttonAction: {})
+	
+	private func button(isSelected: Bool) -> some View {
+		Button {
+			buttonAction()
+		} label: {
+			RoundedRectangle(cornerRadius: 10)
+				.fill(
+					isSelected ? Colors.orange.view : Colors.darkGray.view
+				)
+				.frame(width: 71, height: 30)
+				.overlay {
+					Text((capacities.first ?? "") + " Gb")
+						.tint(
+							isSelected ? Colors.white.view : Colors.darkGray.view
+						)
+				}
+		}
 	}
 }

@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct TotalPriceAndDeliveryView: View {
+	
 	var totalPrice: Int
+	var delivery: String
 	
     var body: some View {
 		VStack {
 			Divider()
 				.background(Color.white)
 				.padding(4)
+			
 			HStack {
 				VStack(alignment: .leading, spacing: 16) {
 					Localization.total.textView
@@ -24,7 +27,7 @@ struct TotalPriceAndDeliveryView: View {
 				Spacer()
 				VStack(alignment: .leading, spacing: 16) {
 					Text(totalPrice.moneyDescription() + " us")
-					Localization.free.textView
+					Text(delivery)
 				}
 				.font(Fonts.fifteen.bold)
 			}
@@ -37,11 +40,5 @@ struct TotalPriceAndDeliveryView: View {
 				.padding(4)
 				.padding(.bottom, 27)
 		}
-    }
-}
-
-struct TotalPriceAndDeliveryView_Previews: PreviewProvider {
-    static var previews: some View {
-        TotalPriceAndDeliveryView(totalPrice: 1500)
     }
 }

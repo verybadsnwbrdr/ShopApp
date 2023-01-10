@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Model: Codable {
-	let homeStore: [HomeStore]
-	let bestSeller: [BestSeller]
+struct Model: Decodable {
+	var homeStore: [HomeStore]
+	var bestSeller: [BestSeller]
 
 	enum CodingKeys: String, CodingKey {
 		case homeStore = "home_store"
@@ -17,7 +17,7 @@ struct Model: Codable {
 	}
 }
 
-struct HomeStore: Codable {
+struct HomeStore: Decodable, Identifiable {
 	var id: Int
 	var isNew: Bool?
 	var title, subtitle: String
@@ -32,7 +32,7 @@ struct HomeStore: Codable {
 	}
 }
 
-struct BestSeller: Codable {
+struct BestSeller: Decodable, Identifiable {
 	var id: Int
 	var isFavorites: Bool
 	var title: String
@@ -49,24 +49,3 @@ struct BestSeller: Codable {
 	}
 }
 
-extension BestSeller {
-	static var mock = [
-		BestSeller(id: 2,
-				   isFavorites: true,
-				   title: "Samsung Galaxy s20 Ultr",
-				   priceWithoutDiscount: 1500,
-				   discountPrice: 1047,
-				   picture: "asd")
-	]
-}
-
-extension HomeStore {
-	static var mock = [
-		HomeStore(id: 1,
-				  isNew: true,
-				  title: "Iphone 12",
-				  subtitle: "dasd",
-				  picture: "asd",
-				  isBuy: true)
-	]
-}

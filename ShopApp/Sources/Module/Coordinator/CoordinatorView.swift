@@ -8,17 +8,23 @@
 import SwiftUI
 
 struct CoordinatorView: View {
+	
 	@ObservedObject var coordinator: CoordinatorObject
 	
 	var body: some View {
 		NavigationStack(path: $coordinator.path) {
-			ZStack {
-				HomeView(viewModel: coordinator.homeViewModel)
-					.padding(.bottom, 45)
-				TabBarView(coordinator: self.coordinator)
+			TabBarView(coordinator: self.coordinator) {
+				HomeView(viewModel: self.coordinator.homeViewModel)
 			}
 			.navigationDestination(for: CoordinatorTab.self) { tab in
-				coordinator.openScreen(tab)
+				switch tab {
+				case .detail:
+					DetailView(viewModel: self.coordinator.detailViewModel!)
+				case .cart:
+					CartView(viewModel: self.coordinator.cartViewModel!)
+				default:
+					EmptyView()
+				}
 			}
 		}
 		.sheet(item: $coordinator.filterViewModel) { viewModel in
@@ -26,12 +32,6 @@ struct CoordinatorView: View {
 				.presentationDetents([.height(375)])
 		}
 		.padding(.top)
-		.background(Colors.backroundColor.color, ignoresSafeAreaEdges: .all)
-	}
-}
-
-struct CoordinatorView_Previews: PreviewProvider {
-	static var previews: some View {
-		CoordinatorView(coordinator: .shared)
+		.background(Colors.backroundColor.view, ignoresSafeAreaEdges: .all)
 	}
 }

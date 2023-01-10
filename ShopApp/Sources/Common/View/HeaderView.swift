@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HeaderView: View {
+	
 	var title: String
 	var buttonTitle: String
 	
@@ -15,20 +16,14 @@ struct HeaderView: View {
 		HStack {
 			Text(title)
 				.font(Fonts.twentyFive.bold)
-				.foregroundColor(Colors.darkBlue.color)
+				.foregroundColor(Colors.darkBlue.view)
 			Spacer()
 			Button(action: {}) {
 				Text(buttonTitle)
 					.font(Fonts.fifteen.regular)
-					.foregroundColor(Colors.orange.color)
+					.foregroundColor(Colors.orange.view)
 			}
 		}
 		.padding(.trailing, 33)
-    }
-}
-
-struct HeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-		HeaderView(title: "Select", buttonTitle: "view all")
     }
 }

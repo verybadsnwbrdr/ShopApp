@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CartView: View {
+	
 	@ObservedObject var viewModel: CartViewModel
 
 	var body: some View {
@@ -19,35 +20,39 @@ struct CartView: View {
 			VStack {
 				ScrollView {
 					VStack(spacing: 30) {
-						ForEach(viewModel.models) { model in
-							CellCartView(id: model.id,
-										 name: model.name,
-										 finalPrice: model.finalPrice,
-										 counter: model.number,
-										 minusAction: { viewModel.decrement(model.id) },
-										 plusAction: { viewModel.increment(model.id) },
-										 bucketAction: { viewModel.removeFromCart(model.id) })
-							.padding([.leading, .trailing], 33)
+						ForEach(viewModel.model.basket) { model in
+							CellCartView(name: model.title,
+										 finalPrice: model.price,
+										 picture: model.images,
+										 minusAction: { viewModel.delete(model) },
+										 plusAction: { viewModel.addToCart(model) },
+										 bucketAction: { viewModel.delete(model) })
+							.padding(.horizontal, 33)
 						}
 					}
 				}
 				Spacer()
-				TotalPriceAndDeliveryView(totalPrice: viewModel.totalPrice)
-				TextButtonView(buttonAction: { },
+				TotalPriceAndDeliveryView(totalPrice: viewModel.model.total,
+										  delivery: viewModel.model.delivery)
+				TextButtonView(buttonAction: viewModel.buy,
 							   title: Localization.checkOut.rawValue)
 				.frame(height: 54)
 				.padding([.horizontal, .bottom], 44)
 			}
 			.padding(.top, 60)
 			.background(
-				RoundedRectangle(cornerRadius: 30)
-					.fill(Colors.darkBlue.color)
-					.shadow(color: Colors.shadow.color, radius: 20)
+				Group {
+					RoundedRectangle(cornerRadius: 30)
+						.fill(Colors.darkBlue.view)
+						.shadow(color: Colors.shadow.view, radius: 20)
+					Rectangle()
+						.offset(y: 300)
+						.fill(Colors.darkBlue.view)
+				}
 			)
-			
 		}
 		.padding(.top)
-		.background(Colors.backroundColor.color, ignoresSafeAreaEdges: .all)
+		.background(Colors.backroundColor.view, ignoresSafeAreaEdges: .all)
 		.ignoresSafeArea(.all, edges: .bottom)
 		.navigationBarBackButtonHidden()
 		.toolbar { navigationBar }
@@ -59,25 +64,16 @@ private extension CartView {
 		ToolbarItemGroup(placement: .principal) {
 			HStack(spacing: 9) {
 				SquareRoundedButtonView(buttonAction: viewModel.previousScreen,
-										image: Images.cancel,
+										image: Images.backShevron,
 										color: .darkBlue)
 				Spacer()
 				Localization.addAddress.textView
 					.font(Fonts.fifteen.medium)
-					.tint(Colors.darkBlue.color)
+					.tint(Colors.darkBlue.view)
 				SquareRoundedButtonView(buttonAction: viewModel.selectAdress,
-										image: Images.bag,
+										image: Images.addAdress,
 										color: .orange)
 			}
 		}
-	}
-}
-
-struct CartView_Previews: PreviewProvider {
-	static var previews: some View {
-		CartView(viewModel: CartViewModel(
-			coordinator: CoordinatorObject.shared,
-			modelService: CartModelService())
-		)
 	}
 }

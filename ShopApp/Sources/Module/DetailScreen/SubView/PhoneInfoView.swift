@@ -8,22 +8,23 @@
 import SwiftUI
 
 struct PhoneInfoView: View {
-	@Binding var model: DetailModel
-	var makeFavourite: (Binding<DetailModel>) -> ()
+	
+	var model: DetailModel
+	var makeFavourite: () -> ()
 	var selectColor: (String) -> ()
 	var addToCart: () -> ()
 	
 	var body: some View {
-		VStack(alignment: .leading) {
+		VStack(alignment: .leading, spacing: 5) {
 			HeaderPhoneInfoView(title: model.title,
-								makeFavourite: { makeFavourite($model) },
+								makeFavourite: makeFavourite,
 								rating: model.rating)
 			Spacer()
 			HStack {
 				Localization.shop.textView
 					.overlay(alignment: .bottom) {
 						RoundedRectangle(cornerRadius: 1)
-							.fill(Colors.orange.color)
+							.fill(Colors.orange.view)
 							.frame(width: 86, height: 2)
 							.offset(y: 8)
 					}
@@ -33,7 +34,7 @@ struct PhoneInfoView: View {
 				Localization.features.textView
 			}
 			.font(Fonts.twenty.bold)
-			.tint(Colors.darkBlue.color)
+			.tint(Colors.darkBlue.view)
 			Spacer()
 			HStack {
 				OptionsView(image: .core, title: model.cpu)
@@ -44,25 +45,24 @@ struct PhoneInfoView: View {
 				Spacer()
 				OptionsView(image: .sd, title: model.ssd)
 			}
-			.foregroundColor(Colors.lightGray.color)
+			.foregroundColor(Colors.lightGray.view)
 			Spacer()
 			VStack(alignment: .leading) {
 				Localization.selectColorAndCapacity.textView
 					.font(Fonts.sixteen.medium)
-					.tint(Colors.darkBlue.color)
+					.tint(Colors.darkBlue.view)
 				HStack {
-					ColorSelectView(isSelected: .constant(false),
+					ColorSelectView(isSelected: true,
 									colors: model.color,
 									selectColor: selectColor)
 					Spacer()
 					StorageSelectionView(capacities: model.capacity,
-										 buttonAction: {})
+										 buttonAction: makeFavourite)
 				}
 			}
 			Spacer()
 			TextButtonView(buttonAction: addToCart,
-						   title:
-							Localization.addToCard.rawValue + "       " + model.price.moneyDescription())
+						   title: Localization.addToCard.rawValue + "       " + model.price.moneyDescription())
 			.frame(height: 54)
 		}
 		.padding([.leading, .trailing], 37)
@@ -71,16 +71,7 @@ struct PhoneInfoView: View {
 		.background(
 			RoundedRectangle(cornerRadius: 30, style: .continuous)
 				.fill(.white)
-				.shadow(color: Colors.shadow.color, radius: 20)
+				.shadow(color: Colors.shadow.view, radius: 20)
 		)
-	}
-}
-
-struct PhoneInfoView_Previews: PreviewProvider {
-	static var previews: some View {
-		PhoneInfoView(model: .constant(DetailViewModel.init(coordinator: CoordinatorObject.shared, modelService: DetailModelService()).model),
-					  makeFavourite: { $0 },
-					  selectColor: { $0 },
-					  addToCart: { })
 	}
 }

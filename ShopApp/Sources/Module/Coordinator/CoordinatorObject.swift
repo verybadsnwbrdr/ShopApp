@@ -6,42 +6,44 @@
 //
 
 import SwiftUI
+import Combine
 
 enum CoordinatorTab: Hashable {
+	case home
 	case detail
 	case cart
+	case another
 }
 
 class CoordinatorObject: ObservableObject {
-	//DELETE
-	static var shared = CoordinatorObject(modelService: ModelService(), cartModelService: CartModelService())
-	//DELETE
-
-	@Published var homeViewModel: HomeViewModel!
-	@Published var detailViewModel: DetailViewModel?
+	
+	var homeViewModel: HomeViewModel!
+	var detailViewModel: DetailViewModel!
+	var cartViewModel: CartViewModel!
+	
 	@Published var filterViewModel: FilterViewModel?
-	@Published var cartViewModel: CartViewModel!
+	@Published var path: [CoordinatorTab] = []
 	
-	private let modelService: ModelService
-	@Published var path = [CoordinatorTab]()
-	
-	init(modelService: ModelService, cartModelService: CartModelService) {
-		self.modelService = modelService
-		self.homeViewModel = .init(coordinator: self)
-		self.cartViewModel = .init(coordinator: self, modelService: CartModelService())
+	init(modelService: ModelService,
+		 cartModelService: CartModelService,
+		 detailModelService: DetailModelService) {
+		self.homeViewModel = .init(coordinator: self, modelService: modelService)
+		self.cartViewModel = .init(coordinator: self, modelService: cartModelService)
+		self.detailViewModel = .init(coordinator: self, modelService: detailModelService)
 	}
 	
 	func open(_ item: CoordinatorTab) {
-		self.detailViewModel = .init(coordinator: self, modelService: DetailModelService())
 		path.append(item)
 	}
 	
-	func openScreen(_ tab: CoordinatorTab) -> AnyView  {
+	func destination(_ tab: CoordinatorTab) -> AnyView  {
 		switch tab {
 		case .detail:
 			return AnyView(DetailView(viewModel: detailViewModel!))
 		case .cart:
 			return AnyView(CartView(viewModel: cartViewModel!))
+		default:
+			return AnyView(EmptyView())
 		}
 	}
 	
@@ -57,15 +59,11 @@ class CoordinatorObject: ObservableObject {
 		self.filterViewModel = nil
 	}
 	
-	func openCart() {
-		path.append(.cart)
-	}
-	
 	func homeScreen() {
 		path.removeAll()
 	}
 	
 	func addToCard() {
-		self.cartViewModel.addToCart(.init(name: "test", picture: "sasd", price: 1500, number: 1))
+		self.cartViewModel.add()
 	}
 }

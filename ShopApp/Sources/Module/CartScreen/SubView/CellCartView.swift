@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct CellCartView: View {
-	var id: UUID
-	//
+	
+	let counter = 1
+	
 	var name: String
 	var finalPrice: Int
-	var counter: Int
+	var picture: String
 	var minusAction: () -> ()
 	var plusAction: () -> ()
 	var bucketAction: () -> ()
@@ -23,17 +24,17 @@ struct CellCartView: View {
 				.fill(.white)
 				.frame(width: 88, height: 88)
 				.overlay {
-					Text(id.description)
-						.foregroundColor(Colors.darkBlue.color)
+					AsyncImageView(stringURL: picture, cornerRadius: 10)
+						.padding(8)
 				}
 			
 			VStack(alignment: .leading, spacing: 7) {
 				Text(name)
-					.foregroundColor(Colors.white.color)
+					.foregroundColor(Colors.white.view)
 					.multilineTextAlignment(.leading)
 				
 				Text(finalPrice.moneyDescription())
-					.foregroundColor(Colors.orange.color)
+					.foregroundColor(Colors.orange.view)
 			}
 			.font(Fonts.twenty.medium)
 			
@@ -53,9 +54,3 @@ struct CellCartView: View {
 		}
     }
 }
-
-//struct CellCartView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CellCartView()
-//    }
-//}

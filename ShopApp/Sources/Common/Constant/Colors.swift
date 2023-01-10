@@ -17,5 +17,5 @@ enum Colors: String {
 	case shadow
 	case incrementButtonColor
 	
-	var color: Color { .init(rawValue) }
+	var view: Color { .init(rawValue) }
 }

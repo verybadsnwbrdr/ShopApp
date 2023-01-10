@@ -9,23 +9,23 @@ import SwiftUI
 
 struct RatingView: View {
 	
-	let rating: Double
+	var rating: Double
 	private let maxRating = 5
-	private var roundedRating: Int {
-		Int(rating.rounded())
-	}
-	private var ratingArr: [Bool] {
-		.init(repeating: true, count: roundedRating) + .init(repeating: false, count: 5 - roundedRating)
-	}
 	
     var body: some View {
 		HStack {
-			ForEach(ratingArr, id: \.self) { bool in
-				Images.star.image
-					.foregroundColor(bool ? .orange : .gray)
+			ForEach(0 ..< maxRating, id: \.self) { index in
+				starView(index)
 			}
 		}
     }
+	
+	private func starView(_ index: Int) -> some View {
+		Images.star.image
+			.foregroundColor(
+				Int(rating.rounded()) >= index ? .yellow : .gray
+			)
+	}
 }
 
 struct RatingView_Previews: PreviewProvider {
