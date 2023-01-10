@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SearchAndQRView: View {
+	
 	@Binding var text: String
 	
     var body: some View {
@@ -22,16 +23,17 @@ struct SearchAndQRView: View {
 							Localization.search.textView
 								.font(Fonts.twelve.regular)
 						}
-						.shadow(color: Colors.shadow.color,
+						.shadow(color: Colors.shadow.view,
 								radius: 20)
 					}
 					.offset(x: 24)
 				}
+			
 			Button(action: { }) {
 				Circle()
 					.frame(width: 34)
-					.foregroundColor(Colors.orange.color)
-					.shadow(color: Colors.shadow.color,
+					.foregroundColor(Colors.orange.view)
+					.shadow(color: Colors.shadow.view,
 							radius: 20)
 					.overlay {
 						Images.qrCode.image
@@ -40,9 +42,3 @@ struct SearchAndQRView: View {
 		}
     }
 }
-
-//struct SearchAndQRView_Previews: PreviewProvider {
-//    static var previews: some View {
-//		SearchAndQRView(text: .constant(""))
-//    }
-//}

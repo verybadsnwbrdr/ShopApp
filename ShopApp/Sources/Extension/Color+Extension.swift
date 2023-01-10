@@ -11,8 +11,6 @@ extension Color {
 	public init?(hex: String) {
 		let r, g, b, a: CGFloat
 		let hexColor = hex.replacingOccurrences(of: "#", with: "")
-//		let start = hex.index(hex.startIndex, offsetBy: 1)
-//		let hexColor = String(hex[start...])
 		var rgb: UInt64 = 0
 		guard Scanner(string: hexColor).scanHexInt64(&rgb) else { return nil }
 		
@@ -34,4 +32,3 @@ extension Color {
 		return
 	}
 }
-

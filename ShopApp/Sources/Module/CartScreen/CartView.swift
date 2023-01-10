@@ -42,13 +42,13 @@ struct CartView: View {
 			.padding(.top, 60)
 			.background(
 				RoundedRectangle(cornerRadius: 30)
-					.fill(Colors.darkBlue.color)
-					.shadow(color: Colors.shadow.color, radius: 20)
+					.fill(Colors.darkBlue.view)
+					.shadow(color: Colors.shadow.view, radius: 20)
 			)
 			
 		}
 		.padding(.top)
-		.background(Colors.backroundColor.color, ignoresSafeAreaEdges: .all)
+		.background(Colors.backroundColor.view, ignoresSafeAreaEdges: .all)
 		.ignoresSafeArea(.all, edges: .bottom)
 		.navigationBarBackButtonHidden()
 		.toolbar { navigationBar }
@@ -65,7 +65,7 @@ private extension CartView {
 				Spacer()
 				Localization.addAddress.textView
 					.font(Fonts.fifteen.medium)
-					.tint(Colors.darkBlue.color)
+					.tint(Colors.darkBlue.view)
 				SquareRoundedButtonView(buttonAction: viewModel.selectAdress,
 										image: Images.addAdress,
 										color: .orange)
@@ -73,12 +73,3 @@ private extension CartView {
 		}
 	}
 }
-
-//struct CartView_Previews: PreviewProvider {
-//	static var previews: some View {
-//		CartView(viewModel: CartViewModel(
-//			coordinator: CoordinatorObject.shared,
-//			modelService: CartModelService())
-//		)
-//	}
-//}

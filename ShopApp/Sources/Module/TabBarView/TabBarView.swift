@@ -33,10 +33,10 @@ struct TabBarView<Content: View>: View {
 			}
 			.frame(height: 72)
 			.frame(maxWidth: .infinity)
-			.background(Colors.darkBlue.color.ignoresSafeArea(edges: .bottom))
+			.background(Colors.darkBlue.view.ignoresSafeArea(edges: .bottom))
 			.cornerRadius(30)
 		}
-		.background(Colors.backroundColor.color, ignoresSafeAreaEdges: .all)
+		.background(Colors.backroundColor.view, ignoresSafeAreaEdges: .all)
 		.ignoresSafeArea()
 	}
 	
@@ -67,12 +67,4 @@ extension TabBarView {
 		var tab: CoordinatorTab
 	}
 }
-
-//struct TabBarView_Previews: PreviewProvider {
-//	static var previews: some View {
-//		TabBarView(coordinator: CoordinatorObject.shared) {
-//			Color.red
-//		}
-//	}
-//}
 

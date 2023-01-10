@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct HotSalesView: View {
-	var homeStores: [HomeStore]//@Binding
+	
+	var homeStores: [HomeStore]
 	var openDetail: () -> ()
 	
 	var body: some View {
 		VStack {
 			HeaderView(title: Localization.hotSales.rawValue,
 					   buttonTitle: Localization.seeMore.rawValue)
+			
 			ScrollView(.horizontal, showsIndicators: false) {
 				HStack {
 					ForEach(homeStores) { model in
@@ -33,7 +35,6 @@ struct HotSalesView: View {
 								.padding(.leading, 25)
 								.padding(.bottom, 26)
 							}
-						
 					}
 				}
 				.padding(.trailing, 21)
@@ -41,9 +42,3 @@ struct HotSalesView: View {
 		}
 	}
 }
-
-//struct HotSalesView_Previews: PreviewProvider {
-//	static var previews: some View {
-//		HotSalesView(viewModel: MainViewModel(coordinator: CoordinatorObject()))
-//	}
-//}

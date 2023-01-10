@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AsyncImageView: View {
+	
 	var stringURL: String
 	var offset: (x: CGFloat, y: CGFloat) = (0, 0)
 	var cornerRadius: CGFloat = 0

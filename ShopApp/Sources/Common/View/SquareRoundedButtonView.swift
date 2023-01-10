@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SquareRoundedButtonView: View {
+	
 	var buttonAction: () -> ()
 	var image: Images
 	var color: Colors
@@ -17,7 +18,7 @@ struct SquareRoundedButtonView: View {
 			buttonAction()
 		} label: {
 			RoundedRectangle(cornerRadius: 10)
-				.fill(color.color)
+				.fill(color.view)
 				.frame(width: 37, height: 37)
 				.overlay {
 					image.image
@@ -26,11 +27,3 @@ struct SquareRoundedButtonView: View {
 		}
     }
 }
-
-//struct SquareRoundedButtonView_Previews: PreviewProvider {
-//    static var previews: some View {
-//		SquareRoundedButtonView(buttonAction: { },
-//								image: Images.cancel,
-//								color: .darkBlue)
-//    }
-//}

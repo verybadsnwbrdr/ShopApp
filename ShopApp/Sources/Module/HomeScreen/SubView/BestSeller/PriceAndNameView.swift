@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PriceAndNameView: View {
+	
 	var name: String
 	var discountPrice: Int
 	var priceWithoutDiscount: Int
@@ -17,23 +18,15 @@ struct PriceAndNameView: View {
 			HStack(alignment: .center) {
 				Text("$\(priceWithoutDiscount)")
 					.font(Fonts.sixteen.bold)
-					.foregroundColor(Colors.darkBlue.color)
+					.foregroundColor(Colors.darkBlue.view)
 				Text("$\(discountPrice)")
 					.font(Fonts.ten.medium)
 					.strikethrough()
-					.foregroundColor(Colors.lightGray.color)
+					.foregroundColor(Colors.lightGray.view)
 			}
 			Text(name)
 				.font(Fonts.ten.regular)
-				.foregroundColor(Colors.darkBlue.color)
+				.foregroundColor(Colors.darkBlue.view)
 		}
     }
 }
-//
-//struct PriceAndNameView_Previews: PreviewProvider {
-//    static var previews: some View {
-//		PriceAndNameView(name: "Samsung Galaxy s20 Ultra",
-//						 discountPrice: 1047,
-//						 priceWithoutDiscount: 1500)
-//    }
-//}

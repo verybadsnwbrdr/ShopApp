@@ -28,13 +28,6 @@ struct HomeView: View {
 			}
 			.padding(.leading, 17)
 		}
-		.background(Colors.backroundColor.color)
+		.background(Colors.backroundColor.view)
 	}
 }
-
-//struct HomeView_Previews: PreviewProvider {
-//	static var previews: some View {
-//		HomeView(viewModel: .init(coordinator: .shared))
-//	}
-//}
-

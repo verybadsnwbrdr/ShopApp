@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FavouriteCircleImageView: View {
+	
 	var isFavorites: Bool
 	
     var body: some View {
@@ -17,7 +18,7 @@ struct FavouriteCircleImageView: View {
 				Image(isFavorites ?
 					  Images.favourite.rawValue :
 						Images.favouriteFill.rawValue)
-				.foregroundColor(Colors.orange.color)
+				.foregroundColor(Colors.orange.view)
 			}
 			.shadow(color: .black.opacity(0.20),
 					radius: 20)

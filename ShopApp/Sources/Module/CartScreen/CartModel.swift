@@ -14,7 +14,7 @@ struct CartModel: Decodable {
 	var total: Int = 0
 }
 
-struct Basket: Codable, Identifiable {
+struct Basket: Decodable, Identifiable {
 	var id: Int
 	var images: String
 	var price: Int

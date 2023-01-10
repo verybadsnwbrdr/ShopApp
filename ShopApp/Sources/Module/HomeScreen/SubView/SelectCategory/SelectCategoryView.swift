@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SelectCategoryView: View {
+	
 	var categories: [HomeScreenModel]
 	var action: (HomeScreenModel) -> ()
 	
@@ -15,6 +16,7 @@ struct SelectCategoryView: View {
 		VStack {
 			HeaderView(title: Localization.selectCategory.rawValue,
 					   buttonTitle: Localization.viewAll.rawValue)
+			
 			ScrollView(.horizontal, showsIndicators: false) {
 				HStack(spacing: 18) {
 					ForEach(categories) { model in
@@ -29,15 +31,8 @@ struct SelectCategoryView: View {
 				}
 				.padding(.trailing, 21)
 			}
-			.shadow(color: Colors.shadow.color,
+			.shadow(color: Colors.shadow.view,
 					radius: 20)
 		}
     }
 }
-
-//struct SelectCategoryView_Previews: PreviewProvider {
-//    static var previews: some View {
-//		SelectCategoryView(categories: HomeScreenModel.model,
-//						   action: { _ in })
-//    }
-//}

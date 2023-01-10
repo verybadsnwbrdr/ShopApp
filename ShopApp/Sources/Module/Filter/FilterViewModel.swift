@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FilterViewModel: ObservableObject, Identifiable {
+final class FilterViewModel: ObservableObject, Identifiable {
 	
 	private unowned let coordinator: CoordinatorObject
 	

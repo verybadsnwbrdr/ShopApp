@@ -56,6 +56,3 @@ final class CartViewModel: ObservableObject {
 		self.modelService.add()
 	}
 }
-
-
-

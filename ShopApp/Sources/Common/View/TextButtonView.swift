@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TextButtonView: View {
+	
 	var buttonAction: () -> ()
 	var title: String
 	
@@ -16,7 +17,7 @@ struct TextButtonView: View {
 			buttonAction()
 		} label: {
 			RoundedRectangle(cornerRadius: 10)
-				.fill(Colors.orange.color)
+				.fill(Colors.orange.view)
 				.overlay {
 					Text(title)
 						.tint(.white)
@@ -24,9 +25,3 @@ struct TextButtonView: View {
 		}
     }
 }
-
-//struct TextButtonView_Previews: PreviewProvider {
-//    static var previews: some View {
-//		TextButtonView(buttonAction: { }, title: "Done")
-//    }
-//}

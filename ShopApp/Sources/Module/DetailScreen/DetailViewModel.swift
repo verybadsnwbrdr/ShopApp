@@ -6,13 +6,12 @@
 //
 
 import SwiftUI
-import Combine
 
 final class DetailViewModel: ObservableObject, Identifiable {
 
 	private unowned let coordinator: CoordinatorObject
-	@Published var modelService: DetailModelService
-	@Published var model: DetailModel?
+	@Published private var modelService: DetailModelService
+	@Published private(set) var model: DetailModel?
 	
 	init(coordinator: CoordinatorObject, modelService: DetailModelService) {
 		self.coordinator = coordinator
@@ -20,7 +19,7 @@ final class DetailViewModel: ObservableObject, Identifiable {
 		fetch()
 	}
 	
-	func fetch() {
+	private func fetch() {
 		modelService.fetch(from: EndPoint.detailURL.optionalURL)
 			.receive(on: RunLoop.main)
 			.assign(to: &$model)
@@ -41,14 +40,6 @@ final class DetailViewModel: ObservableObject, Identifiable {
 	func openCart() {
 		self.coordinator.open(.cart)
 	}
-	
-//	func addToCart(_ model: DetailModel) {
-//		let outputModel = CartModel(name: model.title,
-//									picture: model.images.first!,
-//									price: model.price,
-//									number: 1)
-//		self.coordinator.addToCard(outputModel)
-//	}
 	
 	func addToCart() {
 		self.coordinator.addToCard()

@@ -10,9 +10,9 @@ import SwiftUI
 final class HomeViewModel: ObservableObject, Identifiable {
 	
 	@Published var searchText: String = String()
-	@Published var categories: [HomeScreenModel] = HomeScreenModel.model
+	@Published private(set) var categories: [HomeScreenModel] = HomeScreenModel.model
 	@Published private var modelService: ModelService
-	@Published var model: Model!
+	@Published private(set) var model: Model!
 	
 	private unowned let coordinator: CoordinatorObject
 	
@@ -23,7 +23,7 @@ final class HomeViewModel: ObservableObject, Identifiable {
 		fetch()
 	}
 	
-	func fetch() {
+	private func fetch() {
 		modelService.fetch(from: EndPoint.homeURL.optionalURL)
 			.receive(on: RunLoop.main)
 			.assign(to: &$model)

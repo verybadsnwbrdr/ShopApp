@@ -19,7 +19,7 @@ struct FilterView: View {
 										color: .darkBlue)
 				Spacer()
 				Localization.filterOptions.textView
-					.tint(Colors.darkBlue.color)
+					.tint(Colors.darkBlue.view)
 				Spacer()
 				TextButtonView(buttonAction: viewModel.close,
 							   title: Localization.done.rawValue)
@@ -33,11 +33,5 @@ struct FilterView: View {
 		.padding([.leading, .trailing], 35)
 		.padding(.top, 24)
 		.padding(.bottom, 44)
-    }
-}
-
-struct FilterView_Previews: PreviewProvider {
-    static var previews: some View {
-		FilterView(viewModel: FilterViewModel(coordinator: .shared))
     }
 }

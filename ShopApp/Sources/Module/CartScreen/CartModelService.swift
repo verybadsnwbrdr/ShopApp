@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class CartModelService: ObservableObject, FetchableProtocol {
+final class CartModelService: ObservableObject, Fetchable {
 	
 	@Published var model: CartModel
 	

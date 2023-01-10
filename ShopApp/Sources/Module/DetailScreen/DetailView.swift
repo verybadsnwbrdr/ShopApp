@@ -15,16 +15,15 @@ struct DetailView: View {
 		VStack {
 			content
 		}
-//		.onAppear { viewModel.fetch() }
 		.padding(.top)
-		.background(Colors.backroundColor.color, ignoresSafeAreaEdges: .all)
+		.background(Colors.backroundColor.view, ignoresSafeAreaEdges: .all)
 		.ignoresSafeArea(.all, edges: .bottom)
 		.navigationBarBackButtonHidden()
 		.toolbar { navigationBar }
 	}
 	
 	@ViewBuilder
-	var content: some View {
+	private var content: some View {
 		Group {
 			if let model = viewModel.model {
 				VStack {
@@ -36,7 +35,7 @@ struct DetailView: View {
 								  addToCart: viewModel.addToCart)
 				}
 			} else {
-				Colors.backroundColor.color
+				Colors.backroundColor.view
 			}
 		}
 	}
@@ -52,7 +51,7 @@ private extension DetailView {
 				Spacer()
 				Localization.productDetails.textView
 					.font(Fonts.eighteen.medium)
-					.tint(Colors.darkBlue.color)
+					.tint(Colors.darkBlue.view)
 				Spacer()
 				SquareRoundedButtonView(buttonAction: viewModel.openCart,
 										image: Images.bag,
@@ -61,9 +60,3 @@ private extension DetailView {
 		}
 	}
 }
-
-//struct DetailView_Previews: PreviewProvider {
-//	static var previews: some View {
-//		DetailView(viewModel: DetailViewModel(coordinator: CoordinatorObject.shared, modelService: .init()))
-//	}
-//}

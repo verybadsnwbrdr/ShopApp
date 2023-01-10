@@ -17,13 +17,13 @@ struct HeaderPhoneInfoView: View {
 		HStack {
 			Text(title)
 				.font(Fonts.twentyFive.medium)
-				.tint(Colors.darkBlue.color)
+				.tint(Colors.darkBlue.view)
 			Spacer()
 				Button {
 					makeFavourite()
 				} label: {
 					RoundedRectangle(cornerRadius: 10)
-						.fill(Colors.darkBlue.color)
+						.fill(Colors.darkBlue.view)
 						.frame(width: 37, height: 37)
 						.overlay {
 							Images.favourite.image
@@ -37,11 +37,3 @@ struct HeaderPhoneInfoView: View {
 		}
     }
 }
-
-//struct HeaderPhoneInfoView_Previews: PreviewProvider {
-//    static var previews: some View {
-//		HeaderPhoneInfoView(title: "Samsung",
-//							makeFavourite: {},
-//							rating: 4.6)
-//    }
-//}

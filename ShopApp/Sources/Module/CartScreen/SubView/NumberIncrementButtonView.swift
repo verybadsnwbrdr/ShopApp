@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct NumberIncrementButtonView: View {
+	
 	var counter: Int
 	var minus: () -> ()
 	var plus: () -> ()
 	
     var body: some View {
 		RoundedRectangle(cornerRadius: 26)
-			.fill(Colors.incrementButtonColor.color)
+			.fill(Colors.incrementButtonColor.view)
 			.frame(width: 26, height: 68)
 			.overlay {
 				VStack(spacing: 6) {
@@ -23,7 +24,7 @@ struct NumberIncrementButtonView: View {
 						.font(Fonts.twenty.medium)
 					button(systemImage: .plus, action: plus)
 				}
-				.foregroundColor(Colors.white.color)
+				.foregroundColor(Colors.white.view)
 			}
     }
 	
@@ -39,11 +40,3 @@ struct NumberIncrementButtonView: View {
 		}
 	}
 }
-
-//struct NumberIncrementButtonView_Previews: PreviewProvider {
-//    static var previews: some View {
-//		NumberIncrementButtonView(counter: ,
-//								  minus: {},
-//								  plus: {})
-//    }
-//}

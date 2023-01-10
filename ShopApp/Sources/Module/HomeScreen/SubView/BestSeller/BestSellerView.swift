@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BestSellerView: View {
+	
 	var bestSellers: [BestSeller]
 	var makeFavourite: (Int) -> ()
 	var openDetailView: () -> ()
@@ -56,9 +57,3 @@ struct BestSellerView: View {
 		}
 	}
 }
-
-//struct BestSellerView_Previews: PreviewProvider {
-//	static var previews: some View {
-//		BestSellerView(viewModel: MainViewModel(coordinator: CoordinatorObject()))
-//	}
-//}

@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct CellCartView: View {
+	
+	let counter = 1
+	
 	var name: String
 	var finalPrice: Int
-	var counter: Int = 1
 	var picture: String
 	var minusAction: () -> ()
 	var plusAction: () -> ()
@@ -28,11 +30,11 @@ struct CellCartView: View {
 			
 			VStack(alignment: .leading, spacing: 7) {
 				Text(name)
-					.foregroundColor(Colors.white.color)
+					.foregroundColor(Colors.white.view)
 					.multilineTextAlignment(.leading)
 				
 				Text(finalPrice.moneyDescription())
-					.foregroundColor(Colors.orange.color)
+					.foregroundColor(Colors.orange.view)
 			}
 			.font(Fonts.twenty.medium)
 			

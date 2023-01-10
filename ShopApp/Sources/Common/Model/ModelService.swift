@@ -6,18 +6,11 @@
 //
 
 import Foundation
-import Combine
 
-final class ModelService: FetchableProtocol {
+final class ModelService: Fetchable {
 	@Published var model: Model
 
 	init() {
 		model = Model.init(homeStore: [], bestSeller: [])
 	}
-//	
-//	fetch() {
-//		fetch(from: EndPoint.homeURL.optionalURL)
-//			.receive(on: RunLoop.main)
-//			.assign(to: &$model)
-//	}
 }

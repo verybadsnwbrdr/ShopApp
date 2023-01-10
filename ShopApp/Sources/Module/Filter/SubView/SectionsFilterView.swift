@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SectionsFilterView: View {
+	
 	var sectionName: String
 	var filter: String
 	
@@ -21,7 +22,7 @@ struct SectionsFilterView: View {
 			} label: {
 				RoundedRectangle(cornerRadius: 5)
 					.fill(.white)
-					.border(Colors.lightGray.color, width: 1)
+					.border(Colors.lightGray.view, width: 1)
 					.frame(height: 37)
 					.overlay {
 						HStack {
@@ -29,19 +30,12 @@ struct SectionsFilterView: View {
 								.font(Fonts.eighteen.regular)
 							Spacer()
 							Images.chevronDown.sytemImage
-								.foregroundColor(Colors.darkGray.color)
+								.foregroundColor(Colors.darkGray.view)
 						}
 						.padding([.leading, .trailing], 14)
-						
 					}
 			}
 		}
-		.tint(Colors.darkBlue.color)
+		.tint(Colors.darkBlue.view)
     }
 }
-
-//struct SectionsFilterView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SectionsFilterView()
-//    }
-//}

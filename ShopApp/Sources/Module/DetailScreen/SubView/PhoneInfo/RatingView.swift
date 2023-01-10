@@ -20,7 +20,7 @@ struct RatingView: View {
 		}
     }
 	
-	func starView(_ index: Int) -> some View {
+	private func starView(_ index: Int) -> some View {
 		Images.star.image
 			.foregroundColor(
 				Int(rating.rounded()) >= index ? .yellow : .gray

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A53EFC7296DAE73005B05B0 /* FetchableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53EFC6296DAE73005B05B0 /* FetchableProtocol.swift */; };
+		3A53EFC7296DAE73005B05B0 /* Fetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53EFC6296DAE73005B05B0 /* Fetchable.swift */; };
 		3AB187A1296408840010B711 /* CoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB187A0296408840010B711 /* CoordinatorView.swift */; };
 		3AB187A3296408B40010B711 /* CoordinatorObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB187A2296408B40010B711 /* CoordinatorObject.swift */; };
 		3AB187A6296408FD0010B711 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB187A5296408FD0010B711 /* HomeView.swift */; };
@@ -66,7 +66,7 @@
 
 /* Begin PBXFileReference section */
 		3A53EFC5296DA2CB005B05B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		3A53EFC6296DAE73005B05B0 /* FetchableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchableProtocol.swift; sourceTree = "<group>"; };
+		3A53EFC6296DAE73005B05B0 /* Fetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetchable.swift; sourceTree = "<group>"; };
 		3AB187A0296408840010B711 /* CoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorView.swift; sourceTree = "<group>"; };
 		3AB187A2296408B40010B711 /* CoordinatorObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorObject.swift; sourceTree = "<group>"; };
 		3AB187A5296408FD0010B711 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -135,6 +135,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A53EFC8296DD4A8005B05B0 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				3A53EFC6296DAE73005B05B0 /* Fetchable.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		3AB187A4296408EC0010B711 /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,7 +194,6 @@
 				3AE7A3F3296A9D8F000A306A /* Color+Extension.swift */,
 				3AECEC8F296AE80800141409 /* Image+Extension .swift */,
 				3AECEC91296AE96800141409 /* Int+Extension.swift */,
-				3A53EFC6296DAE73005B05B0 /* FetchableProtocol.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -280,8 +287,9 @@
 		3ACF06E22963F1A9004DD16D /* ShopApp */ = {
 			isa = PBXGroup;
 			children = (
-				3A53EFC5296DA2CB005B05B0 /* Info.plist */,
+				3ACF06F32963F279004DD16D /* App */,
 				3ACF06F22963F21F004DD16D /* Sources */,
+				3A53EFC5296DA2CB005B05B0 /* Info.plist */,
 				3ACF06F12963F1EB004DD16D /* Resources */,
 				3ACF06E92963F1AB004DD16D /* Preview Content */,
 			);
@@ -307,10 +315,10 @@
 		3ACF06F22963F21F004DD16D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				3A53EFC8296DD4A8005B05B0 /* Protocol */,
 				3AB187D029660FB80010B711 /* Extension */,
 				3ACF06F52963F2A7004DD16D /* Common */,
 				3ACF06F42963F27E004DD16D /* Module */,
-				3ACF06F32963F279004DD16D /* App */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -548,7 +556,7 @@
 				3AECEC90296AE80800141409 /* Image+Extension .swift in Sources */,
 				3AE7A3DC2968086A000A306A /* SquareRoundedButtonView.swift in Sources */,
 				3AE7A3E7296823D5000A306A /* StorageSelectionView.swift in Sources */,
-				3A53EFC7296DAE73005B05B0 /* FetchableProtocol.swift in Sources */,
+				3A53EFC7296DAE73005B05B0 /* Fetchable.swift in Sources */,
 				3AB187B02964139C0010B711 /* DetailViewModel.swift in Sources */,
 				3AE7A3E129681B1A000A306A /* OptionsView.swift in Sources */,
 				3AB187AE296413850010B711 /* DetailView.swift in Sources */,

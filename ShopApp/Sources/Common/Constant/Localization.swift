@@ -46,7 +46,6 @@ enum Localization: String {
 	case total = "Total"
 	case delivery = "Delivery"
 	case checkOut = "Checkout"
-	case free = "Free"
 	
 	// MARK: - Init TextView
 	

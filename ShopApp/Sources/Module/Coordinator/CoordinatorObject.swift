@@ -15,24 +15,17 @@ enum CoordinatorTab: Hashable {
 }
 
 class CoordinatorObject: ObservableObject {
-	//DELETE
-	static var shared = CoordinatorObject(modelService: ModelService(),
-										  cartModelService: CartModelService(),
-										  detailModelService: DetailModelService())
-	//DELETE
 
 	var homeViewModel: HomeViewModel!
 	var detailViewModel: DetailViewModel!
 	var cartViewModel: CartViewModel!
-	@Published var filterViewModel: FilterViewModel?
 	
-//	private let modelService: ModelService
+	@Published var filterViewModel: FilterViewModel?
 	@Published var path: [CoordinatorTab] = []
 	
 	init(modelService: ModelService,
 		 cartModelService: CartModelService,
 		 detailModelService: DetailModelService) {
-//		self.modelService = modelService
 		self.homeViewModel = .init(coordinator: self, modelService: modelService)
 		self.cartViewModel = .init(coordinator: self, modelService: cartModelService)
 		self.detailViewModel = .init(coordinator: self, modelService: detailModelService)
