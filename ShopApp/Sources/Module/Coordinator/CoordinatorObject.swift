@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 enum CoordinatorTab: Hashable {
 	case home
@@ -15,35 +14,51 @@ enum CoordinatorTab: Hashable {
 	case another
 }
 
-class CoordinatorObject: ObservableObject {
+final class CoordinatorObject: ObservableObject {
 	
-	var homeViewModel: HomeViewModel!
-	var detailViewModel: DetailViewModel!
-	var cartViewModel: CartViewModel!
-	
+	// MARK: - ViewModels
+	private(set) var homeViewModel: HomeViewModel!
 	@Published var filterViewModel: FilterViewModel?
+	
+	// MARK: - ModelServices
+	private(set) var detailModelService: DetailModelService
+	private(set) var cartModelService: CartModelService
+
 	@Published var path: [CoordinatorTab] = []
 	
-	init(modelService: ModelService,
+	init(modelService: HomeModelService,
 		 cartModelService: CartModelService,
 		 detailModelService: DetailModelService) {
+		self.detailModelService = detailModelService
+		self.cartModelService = cartModelService
 		self.homeViewModel = .init(coordinator: self, modelService: modelService)
-		self.cartViewModel = .init(coordinator: self, modelService: cartModelService)
-		self.detailViewModel = .init(coordinator: self, modelService: detailModelService)
 	}
+	
+	// MARK: - Methods
+	
+	func addToCard() {
+		self.cartModelService.add()
+	}
+}
+
+// MARK: - Navigation Methods
+
+extension CoordinatorObject {
 	
 	func open(_ item: CoordinatorTab) {
 		path.append(item)
 	}
 	
-	func destination(_ tab: CoordinatorTab) -> AnyView  {
+	func destination(_ tab: CoordinatorTab) -> AnyView?  {
 		switch tab {
 		case .detail:
-			return AnyView(DetailView(viewModel: detailViewModel!))
+			let viewModel = DetailViewModel(coordinator: self, modelService: detailModelService)
+			return AnyView(DetailView(viewModel: viewModel))
 		case .cart:
-			return AnyView(CartView(viewModel: cartViewModel!))
+			let viewModel = CartViewModel(coordinator: self, modelService: cartModelService)
+			return AnyView(CartView(viewModel: viewModel))
 		default:
-			return AnyView(EmptyView())
+			return nil
 		}
 	}
 	
@@ -57,13 +72,5 @@ class CoordinatorObject: ObservableObject {
 	
 	func closeFilter() {
 		self.filterViewModel = nil
-	}
-	
-	func homeScreen() {
-		path.removeAll()
-	}
-	
-	func addToCard() {
-		self.cartViewModel.add()
 	}
 }

@@ -1,5 +1,5 @@
 //
-//  MainModel.swift
+//  HomeModel.swift
 //  ShopApp
 //
 //  Created by Anton on 03.01.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Model: Decodable {
+struct HomeModel: Decodable {
 	var homeStore: [HomeStore]
 	var bestSeller: [BestSeller]
 

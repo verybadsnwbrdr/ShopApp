@@ -22,16 +22,20 @@ final class CartViewModel: ObservableObject {
 		self.coordinator = coordinator
 		self.modelService = modelService
 		self.model = modelService.model
-		fetch()
+		bind()
 	}
 	
-	private func fetch() {
+	private func bind() {
 		cancellable = modelService.$model
 			.sink { [unowned self] model in
 				self.model = model
 			}
 	}
-	
+}
+
+// MARK: - Navigation
+
+extension CartViewModel {
 	func previousScreen() {
 		self.coordinator.previousScreen()
 	}
@@ -39,6 +43,11 @@ final class CartViewModel: ObservableObject {
 	func selectAdress() {
 		
 	}
+}
+
+// MARK: - ModelUpdate
+
+extension CartViewModel {
 	
 	func addToCart(_ model: Basket) {
 		self.modelService.addToCart(model)

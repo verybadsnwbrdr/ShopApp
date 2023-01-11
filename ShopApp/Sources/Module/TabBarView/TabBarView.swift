@@ -44,7 +44,7 @@ struct TabBarView<Content: View>: View {
 		ForEach(tabs) { element in
 			HStack {
 				element.image.image
-					.badge(element.tab == .cart ? coordinator.cartViewModel.model.basket.count : 0)
+					.badge(element.tab == .cart ? coordinator.cartModelService.model.basket.count : 0)
 				if let text = element.text {
 					Text(text)
 				}
