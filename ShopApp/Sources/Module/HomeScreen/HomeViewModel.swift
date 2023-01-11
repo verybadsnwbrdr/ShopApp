@@ -11,23 +11,28 @@ final class HomeViewModel: ObservableObject, Identifiable {
 	
 	@Published var searchText: String = String()
 	@Published private(set) var categories: [HomeScreenModel] = HomeScreenModel.model
-	@Published private var modelService: ModelService
-	@Published private(set) var model: Model!
+	@Published private var modelService: HomeModelService
+	@Published private(set) var model: HomeModel!
 	
 	private unowned let coordinator: CoordinatorObject
 	
-	init(coordinator: CoordinatorObject, modelService: ModelService) {
+	init(coordinator: CoordinatorObject, modelService: HomeModelService) {
 		self.coordinator = coordinator
 		self.modelService = modelService
 		self.model = modelService.model
-		fetch()
+		bind()
 	}
 	
-	private func fetch() {
+	private func bind() {
 		modelService.fetch(from: EndPoint.homeURL.optionalURL)
 			.receive(on: RunLoop.main)
 			.assign(to: &$model)
 	}
+}
+
+// MARK: - Navigation
+
+extension HomeViewModel {
 	
 	func openDetail() {
 		coordinator.open(.detail)
@@ -36,6 +41,11 @@ final class HomeViewModel: ObservableObject, Identifiable {
 	func openFilter() {
 		coordinator.openFilter()
 	}
+}
+
+// MARK: - ModelUpdate
+
+extension HomeViewModel {
 	
 	func selectCategory(_ model: HomeScreenModel) {
 		withAnimation {

@@ -16,18 +16,31 @@ final class DetailViewModel: ObservableObject, Identifiable {
 	init(coordinator: CoordinatorObject, modelService: DetailModelService) {
 		self.coordinator = coordinator
 		self.modelService = modelService
-		fetch()
+		bind()
 	}
 	
-	private func fetch() {
+	private func bind() {
 		modelService.fetch(from: EndPoint.detailURL.optionalURL)
 			.receive(on: RunLoop.main)
 			.assign(to: &$model)
 	}
-	
+}
+
+// MARK: - Navigation
+
+extension DetailViewModel {
 	func previousScreen() {
 		coordinator.previousScreen()
 	}
+	
+	func openCart() {
+		self.coordinator.open(.cart)
+	}
+}
+
+// MARK: - ModelUpdate
+
+extension DetailViewModel {
 	
 	func makeFavourite() {
 		self.model?.isFavorites.toggle()
@@ -36,11 +49,7 @@ final class DetailViewModel: ObservableObject, Identifiable {
 	func selectColor(_ color: String) {
 		
 	}
-	
-	func openCart() {
-		self.coordinator.open(.cart)
-	}
-	
+
 	func addToCart() {
 		self.coordinator.addToCard()
 	}

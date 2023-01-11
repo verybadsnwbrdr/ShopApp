@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct ShopAppApp: App {
 	
-	@StateObject var coordinator = CoordinatorObject(modelService: ModelService(),
+	@StateObject var coordinator = CoordinatorObject(modelService: HomeModelService(),
 													 cartModelService: CartModelService(),
 													 detailModelService: DetailModelService())
 	
